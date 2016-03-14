@@ -2,9 +2,10 @@
   "name": "lol_game_stats_server",
   "version": "1.0.0",
   "description": "In-game statistics",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "mocha test/"
   },
   "repository": {
     "type": "git",
