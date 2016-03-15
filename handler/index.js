@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var autoload = require("auto-load");
 
