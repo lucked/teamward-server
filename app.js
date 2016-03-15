@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 
-var handlers = require('./handler/');
+var handlers = require('./lib').handler;
 
 app.get('/game/data', handlers.game.data.get);
 
