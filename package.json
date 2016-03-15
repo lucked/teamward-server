@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Neamar/lol-game-stats-server#readme",
   "dependencies": {
+    "async": "^1.5.2",
+    "auto-load": "^2.1.0",
     "express": "^4.13.4",
     "supertest": "^1.2.0"
   },

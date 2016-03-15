@@ -12,5 +12,20 @@ describe("Main server", function() {
         .expect(/summoner param/i)
         .end(done);
     });
+
+    it("should require region param", function(done) {
+      supertest(app)
+        .get('/game/data?summoner=neamar')
+        .expect(409)
+        .expect(/region param/i)
+        .end(done);
+    });
+
+    it("should succeed with summoner and region param", function(done) {
+      supertest(app)
+        .get('/game/data?summoner=neamar&region=euw')
+        .expect(200)
+        .end(done);
+    });
   });
 });

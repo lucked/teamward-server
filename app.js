@@ -3,17 +3,8 @@
 var express = require('express');
 var app = express();
 
-app.get('/game/data', function(req, res) {
-  if(!req.params.summoner) {
-    res.status(409).send('Missing summoner param!');
-    return;
-  }
+var handlers = require('./handler/');
 
-  if(!req.params.summoner) {
-    res.status(409).send('Missing summoner param!');
-    return;
-  }
-  res.send('Hello World!');
-});
+app.get('/game/data', handlers.game.data.get);
 
 module.exports = app;
