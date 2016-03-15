@@ -1,6 +1,6 @@
 "use strict";
 
-var app = require('../app');
+var app = require('../../../app');
 var supertest = require('supertest');
 
 describe("Main server", function() {
