@@ -29,21 +29,21 @@ describe("Summoner data", function() {
     });
   });
 
-  describe('getTopChampions()', function() {
+  describe('getChampions()', function() {
     before(function() {
       nock('https://euw.api.pvp.net')
-        .get('/championmastery/location/EUW1/player/70448430/topchampions')
+        .get('/championmastery/location/EUW1/player/70448430/champions')
         .query(true)
-        .reply(200, require('../mocks/top-champions.json'));
+        .reply(200, require('../mocks/summoner-champions.json'));
     });
 
     it("should return top champions for summoner", function(done) {
-      summonerData.getTopChampions(70448430, 'euw', function(err, data) {
+      summonerData.getChampions(70448430, 'euw', function(err, data) {
         if(err) {
           return done(err);
         }
 
-        assert.equal(data.length, 3);
+        assert.ok(data.length);
         assert.equal(data[0].championId, 420);
         done();
       });
