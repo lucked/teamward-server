@@ -25,6 +25,26 @@ describe("Ddragon info", function() {
         done();
       });
     });
+
+    it("should cache champion information", function(done) {
+      nock('http://ddragon.leagueoflegends.com')
+        .get('/realms/euw.json')
+        .reply(404)
+        .get('/cdn/6.5.1/data/en_US/champion.json')
+        .reply(404);
+
+      ddragonInfo.getChampionData('euw', 420, function(err, data) {
+        if(err) {
+          return done(err);
+        }
+
+        assert.equal(data.id, 'Illaoi');
+
+        nock.cleanAll();
+        done();
+      });
+    });
+
   });
 
   describe("Summoner spell info", function() {
