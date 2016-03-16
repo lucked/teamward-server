@@ -50,4 +50,25 @@ describe("Summoner data", function() {
     });
   });
 
+  describe('getCurrentRank()', function() {
+    before(function() {
+      nock('https://euw.api.pvp.net')
+        .get('/api/lol/euw/v2.5/league/by-summoner/19083089/entry')
+        .query(true)
+        .reply(200, require('../mocks/league-entry.json'));
+
+    });
+
+    it("should return current rank for summoner", function(done) {
+      summonerData.getCurrentRank(19083089, 'euw', function(err, data) {
+        if(err) {
+          return done(err);
+        }
+
+        assert.ok(data[19083089]);
+        assert.equal(data[19083089][0].tier, 'GOLD');
+        done();
+      });
+    });
+  });
 });
