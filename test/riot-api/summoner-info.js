@@ -21,9 +21,8 @@ describe("Summoner data", function() {
           return done(err);
         }
 
-        assert.ok(data.neamar);
-        assert.equal(data.neamar.summonerName, 'neamar');
-        assert.equal(data.neamar.accountId, 219773652);
+        assert.equal(data.summonerName, 'neamar');
+        assert.equal(data.accountId, 219773652);
         done();
       });
     });
