@@ -15,5 +15,22 @@
             "isFreshBlood": false,
             "isInactive": false
         }]
+    }],
+    "19917877": [{
+        "name": "Jax's Army",
+        "tier": "GOLD",
+        "queue": "RANKED_SOLO_5x5",
+        "entries": [{
+            "playerOrTeamId": "19917877",
+            "playerOrTeamName": "Zhak",
+            "division": "V",
+            "leaguePoints": 24,
+            "wins": 45,
+            "losses": 57,
+            "isHotStreak": false,
+            "isVeteran": false,
+            "isFreshBlood": false,
+            "isInactive": false
+        }]
     }]
 }
