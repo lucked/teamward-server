@@ -1,26 +1,9 @@
 {
     "neamar": {
-        "platformId": "EUW1",
-        "accountId": 219773652,
-        "summonerName": "neamar",
-        "summonerId": 70448430,
+        "id": 70448430,
+        "name": "neamar",
+        "profileIconId": 26,
         "summonerLevel": 30,
-        "highestRank": "UNRANKED",
-        "enemyBadge": 0,
-        "allyBadge": 0,
-        "profileIcon": 26,
-        "currentUser": {
-            "platformId": "EUW1",
-            "accountId": 219773652
-        },
-        "elo": {
-            "0": 0,
-            "2": 967,
-            "31": 960,
-            "32": 960,
-            "33": 960,
-            "65": 1235,
-            "400": 915
-        }
+        "revisionDate": 1458328077000
     }
 }
