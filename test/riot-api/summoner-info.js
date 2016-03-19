@@ -28,6 +28,27 @@ describe("Summoner data", function() {
     });
   });
 
+  describe('getSummonersData()', function() {
+    before(function() {
+      nock('https://euw.api.pvp.net')
+        .get('/api/lol/euw/v1.4/summoner/70448430,19083089,19917877,57780340,53870009,19917878,27321542,78179191,38621938,79947339')
+        .query(true)
+        .reply(200, require('../mocks/summoners.json'));
+    });
+
+    it("should return summoner data", function(done) {
+      summonerData.getSummonersData([70448430, 19083089, 19917877, 57780340, 53870009, 19917878, 27321542, 78179191, 38621938, 79947339], 'euw', function(err, data) {
+        if(err) {
+          return done(err);
+        }
+
+        assert.equal(Object.keys(data).length, 10);
+        assert.equal(data[19083089].name, "N4dlPb");
+        done();
+      });
+    });
+  });
+
   describe('getChampions()', function() {
     before(function() {
       nock('https://euw.api.pvp.net')
@@ -49,7 +70,7 @@ describe("Summoner data", function() {
     });
   });
 
-  describe('getCurrentRank()', function() {
+  describe('getCurrentRanks()', function() {
     before(function() {
       nock('https://euw.api.pvp.net')
         .get('/api/lol/euw/v2.5/league/by-summoner/19083089,19917877/entry')
@@ -58,8 +79,8 @@ describe("Summoner data", function() {
 
     });
 
-    it("should return current rank for summoner", function(done) {
-      summonerData.getCurrentRank([19083089, 19917877], 'euw', function(err, data) {
+    it("should return current rank for summoners", function(done) {
+      summonerData.getCurrentRanks([19083089, 19917877], 'euw', function(err, data) {
         if(err) {
           return done(err);
         }

@@ -14,9 +14,12 @@ describe("Game data", function() {
       .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
       .query(true)
       .reply(200, require('../mocks/summoner-by-name.json'))
-      .get('/api/lol/euw/v2.5/league/by-summoner/70448430,19083089,19917877,57780340,53870009,219773652,27321542,78179191,38621938,79947339/entry')
+      .get('/api/lol/euw/v2.5/league/by-summoner/70448430,19083089,19917877,57780340,53870009,19917878,27321542,78179191,38621938,79947339/entry')
       .query(true)
-      .reply(200, require('../mocks/league-entry.json'));
+      .reply(200, require('../mocks/league-entry.json'))
+      .get('/api/lol/euw/v1.4/summoner/70448430,19083089,19917877,57780340,53870009,19917878,27321542,78179191,38621938,79947339')
+      .query(true)
+      .reply(200, require('../mocks/summoners.json'));
 
     // Fake the same reply for each call to /champions
     var participants = require('../mocks/get-spectator-game-info.json').participants;
@@ -46,6 +49,7 @@ describe("Game data", function() {
       assert.equal(data.participants.length, 10);
       assert.equal(data.participants[0].champion.name, 'Illaoi');
       assert.equal(data.participants[0].summoner.name, 'Neamar');
+      assert.equal(data.participants[0].summoner.level, 30);
       assert.equal(data.participants[0].spellD.name, 'Flash');
       assert.equal(data.participants[1].currentSeasonRank.tier, 'GOLD');
       done();
