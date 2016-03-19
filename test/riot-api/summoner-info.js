@@ -10,7 +10,7 @@ describe("Summoner data", function() {
   describe('getSummonerData()', function() {
     before(function() {
       nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v2.2/summoner/by-name/neamar')
+        .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
         .query(true)
         .reply(200, require('../mocks/summoner-by-name.json'));
     });
