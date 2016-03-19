@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --recursive -t 50000 test/",
-    "lint": "jshint app.js lib/ handler/ test/ config/",
+    "test": "mocha --recursive -t 20000 test/",
+    "lint": "jshint app.js bin/ lib/ test/ config/",
     "style": "jscs ."
   },
   "repository": {

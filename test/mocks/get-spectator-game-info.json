@@ -8,11 +8,11 @@
         "teamId": 100,
         "spell1Id": 4,
         "spell2Id": 11,
-        "championId": 64,
+        "championId": 420,
         "profileIconId": 7,
-        "summonerName": "Unlucky Kitus",
+        "summonerName": "Neamar",
         "bot": false,
-        "summonerId": 46428795,
+        "summonerId": 70448430,
         "runes": [{
             "count": 9,
             "runeId": 5257
@@ -71,7 +71,7 @@
         "profileIconId": 23,
         "summonerName": "MrFaper",
         "bot": false,
-        "summonerId": 57098259,
+        "summonerId": 19083089,
         "runes": [{
             "count": 5,
             "runeId": 5267
@@ -136,7 +136,7 @@
         "profileIconId": 982,
         "summonerName": "whitewolfhd",
         "bot": false,
-        "summonerId": 67628078,
+        "summonerId": 19917877,
         "runes": [{
             "count": 7,
             "runeId": 5245
