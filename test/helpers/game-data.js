@@ -58,4 +58,7 @@ describe("Game data", function() {
       done();
     });
   });
+
+  it.skip("should fail for unknown summoners")
+  it.skip("should fail for summoners not in game")
 });
