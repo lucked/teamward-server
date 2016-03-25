@@ -45,6 +45,8 @@ describe("Game data", function() {
         return done(err);
       }
 
+      require('fs').writeFileSync('/tmp/game.json', JSON.stringify(data));
+
       assert.equal(data.map_id, 11);
       assert.equal(data.teams.length, 2);
       assert.equal(data.teams[0].team_id, 100);
@@ -52,7 +54,7 @@ describe("Game data", function() {
       assert.equal(data.teams[0].players[0].summoner.name, 'Neamar');
       assert.equal(data.teams[0].players[0].summoner.level, 30);
       assert.equal(data.teams[0].players[0].spell_d.name, 'Flash');
-      assert.equal(data.teams[0].players[1].currentSeasonRank.tier, 'GOLD');
+      assert.equal(data.teams[0].players[1].current_season_rank.tier, 'GOLD');
       done();
     });
   });
