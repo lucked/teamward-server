@@ -12,5 +12,6 @@ var currentEnv = process.env.NODE_ENV || 'development';
 
 module.exports = {
   apiKey: process.env.RIOT_API_KEY,
+  verifyKey: process.env.RIOT_VERIFY_KEY || "N/C",
   mongoUrl: process.env.MONGO_URL || ("mongodb://localhost/" + currentEnv)
 };
