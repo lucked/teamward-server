@@ -1,9 +1,9 @@
 "use strict";
 
 var nock = require('nock');
+var supertest = require('supertest');
 
 var app = require('../../../app');
-var supertest = require('supertest');
 
 describe("Main server", function() {
   describe("GET /game/data", function() {
