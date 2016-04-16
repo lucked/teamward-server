@@ -51,6 +51,8 @@ describe("Game data", function() {
       assert.equal(data.teams.length, 2);
       assert.equal(data.teams[0].team_id, 100);
       assert.equal(data.teams[0].players[0].champion.name, 'Illaoi');
+      assert.equal(data.teams[0].players[0].champion.ad, 8);
+      assert.equal(data.teams[0].players[0].champion.ap, 3);
       assert.equal(data.teams[0].players[0].summoner.name, 'Neamar');
       assert.equal(data.teams[0].players[0].summoner.level, 30);
       assert.equal(data.teams[0].players[0].spell_d.name, 'Flash');
