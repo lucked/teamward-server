@@ -6,9 +6,14 @@ if(process.env.OPBEAT_APP_ID) {
     secretToken: process.env.OPBEAT_SECRET_TOKEN
   });
 }
+var throng = require('throng');
 
-var app = require('../app');
+var start = function() {
+  var app = require('../app');
 
-app.listen(process.env.PORT || 3000, function() {
-  console.log('App listening on port 3000!');
-});
+  app.listen(process.env.PORT || 3000, function() {
+    console.log('App listening on port 3000!');
+  });
+};
+
+throng(process.env.WEB_CONCURRENCY || 1, start);
