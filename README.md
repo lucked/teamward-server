@@ -1,4 +1,5 @@
-# League Of Legends: game statistics
+# Teamward: League Of Legends game statistics
+> This is the server component. The client is [here](https://github.com/neamar/teamward-client).
 
 Get information about your current games:
 
