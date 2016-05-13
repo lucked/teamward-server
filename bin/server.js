@@ -1,4 +1,6 @@
 "use strict";
+require('heroku-self-ping')(process.env.APP_URL);
+
 var opbeat;
 if(process.env.OPBEAT_APP_ID) {
   opbeat = require('opbeat').start({
