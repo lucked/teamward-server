@@ -46,7 +46,7 @@ describe("Main server", function() {
         function sendRequest(cb) {
           supertest(app)
             .get('/push?summoner=neamar&region=euw&token=123')
-            .expect(204)
+            .expect(200)
             .end(rarity.slice(1, cb));
         },
         function checkToken(cb) {
@@ -66,7 +66,7 @@ describe("Main server", function() {
         function sendRequest(cb) {
           supertest(app)
             .get('/push?summoner=neamar2&region=na&token=123')
-            .expect(204)
+            .expect(200)
             .end(rarity.slice(1, cb));
         },
         function checkToken(cb) {
