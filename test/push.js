@@ -5,6 +5,7 @@ var async = require("async");
 var rarity = require("rarity");
 var mongoose = require('mongoose');
 var supertest = require('supertest');
+var nock = require('nock');
 
 var app = require('../app');
 
@@ -16,6 +17,20 @@ describe("Main server", function() {
     before(function(next) {
       Token.remove({}, next);
     });
+
+    before(function() {
+      nock('https://euw.api.pvp.net')
+        .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
+        .query(true)
+        .reply(200, require('./mocks/summoner-by-name.json'));
+    });
+    before(function() {
+      nock('https://na.api.pvp.net')
+        .get('/api/lol/na/v1.4/summoner/by-name/neamar2')
+        .query(true)
+        .reply(200, require('./mocks/summoner-by-name.json'));
+    });
+
 
     it("should require summoner name", function(done) {
       supertest(app)
@@ -54,6 +69,7 @@ describe("Main server", function() {
         },
         function ensureTokenSaved(token, cb) {
           assert.equal(token.summonerName, "neamar");
+          assert.equal(token.summonerId, "70448430");
           assert.equal(token.region, "euw");
 
           cb();
@@ -74,6 +90,7 @@ describe("Main server", function() {
         },
         function ensureTokenSaved(token, cb) {
           assert.equal(token.summonerName, "neamar2");
+          assert.equal(token.summonerId, "70448430");
           assert.equal(token.region, "na");
 
           cb();
