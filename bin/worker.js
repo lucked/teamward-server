@@ -13,7 +13,6 @@ if(process.env.OPBEAT_APP_ID) {
   }
 }
 
-
 if(!process.env.GCM_API_KEY) {
   throw new Error("Missing required environment variable GCM_API_KEY");
 }
