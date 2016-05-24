@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var supertest = require('supertest');
 var nock = require('nock');
 
-var app = require('../app');
+var app = require('../../app');
 
 describe("Main server", function() {
   describe("GET /push", function() {
@@ -22,13 +22,13 @@ describe("Main server", function() {
       nock('https://euw.api.pvp.net')
         .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
         .query(true)
-        .reply(200, require('./mocks/summoner-by-name.json'));
+        .reply(200, require('../mocks/summoner-by-name.json'));
     });
     before(function() {
       nock('https://na.api.pvp.net')
         .get('/api/lol/na/v1.4/summoner/by-name/neamar2')
         .query(true)
-        .reply(200, require('./mocks/summoner-by-name.json'));
+        .reply(200, require('../mocks/summoner-by-name.json'));
     });
 
 
