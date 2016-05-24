@@ -14,7 +14,7 @@ describe("Main server", function() {
         .reply(200, require('../../mocks/summoner-by-name.json'))
         .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/70448430')
         .query(true)
-        .reply(404, require('../../mocks/get-spectator-game-info-not-in-game.json'));
+        .reply(404, require('../../mocks/get-spectator-game-info-404.json'));
     });
 
     it("should require summoner name", function(done) {
