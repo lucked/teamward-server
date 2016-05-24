@@ -6,7 +6,6 @@ var summonerData = require('../../lib/riot-api/summoner-info');
 
 
 describe("Summoner data", function() {
-
   describe('getSummonerData()', function() {
     it("should return summoner data", function(done) {
       nock('https://euw.api.pvp.net')
