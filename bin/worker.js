@@ -20,4 +20,4 @@ if(!process.env.GCM_API_KEY) {
 require('../app');
 
 // Start worker
-require('../lib/worker/worker')(opbeat);
+require('../lib/worker/push-notifier')(opbeat);
