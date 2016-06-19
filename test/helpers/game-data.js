@@ -11,9 +11,6 @@ describe("Game data", function() {
       .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/70448430')
       .query(true)
       .reply(200, require('../mocks/get-spectator-game-info.json'))
-      .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
-      .query(true)
-      .reply(200, require('../mocks/summoner-by-name.json'))
       .get('/api/lol/euw/v2.5/league/by-summoner/70448430,19083089,19917877,57780340,53870009,19917878,27321542,78179191,38621938,79947339/entry')
       .query(true)
       .reply(200, require('../mocks/league-entry.json'))
@@ -40,7 +37,7 @@ describe("Game data", function() {
   });
 
   it("should return current game data", function(done) {
-    gameData('neamar', 'euw', function(err, data) {
+    gameData('70448430', 'euw', function(err, data) {
       if(err) {
         return done(err);
       }
