@@ -21,3 +21,4 @@ require('../app');
 
 // Start worker
 require('../lib/worker/push-notifier')(opbeat);
+// require('../lib/worker/game-crawler')(opbeat);
