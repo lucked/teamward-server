@@ -2,7 +2,7 @@
 
 var nock = require('nock');
 var assert = require('assert');
-var gameData = require('../../lib/helpers/game-data');
+var gameData = require('../../lib/helper/game-data');
 
 
 describe("Game data", function() {

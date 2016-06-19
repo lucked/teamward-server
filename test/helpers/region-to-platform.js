@@ -1,7 +1,7 @@
 'use strict';
 
 var assert = require('assert');
-var regionToPlatform = require('../../lib/helpers/region-to-platform.js');
+var regionToPlatform = require('../../lib/helper/region-to-platform.js');
 
 describe("regionToPlatform()", function() {
   it('should return platfrom from region', function() {

@@ -23,9 +23,9 @@ Most of the code is in the `lib/` folder.
 
 * `lib/ddragon` contains helpers to deal with the Riot Static Data: champion avatar, champions stats, summoner icons, etc. 
 * `lib/handler` contains the actual HTTP handler used by Express to serve your requests. The most interesting one is probably `lib/handler/game/data.js`.
-* `lib/helpers` is a set of useful helpers used throughout the code.
+* `lib/helper` is a set of useful helpers used throughout the code.
 * `lib/middleware` is a collection of small composable middlewares used with express
-* `lib/models` defines the data model used for persisting data
+* `lib/model` defines the data model used for persisting data
 * `lib/riot-api` communicates with the Riot API. An interesting file in here is `lib/riot-api/request.js`: it will handle all the rate limiting and is used as a low-level library for all requests to the Riot API. It will also cache requests, and serve data from cache. 
 
 ## Using locally
