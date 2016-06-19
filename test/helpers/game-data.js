@@ -35,7 +35,7 @@ describe("Game data", function() {
 
   it("should return current game data", function(done) {
     var fakeGameData = require('../mocks/get-spectator-game-info.json');
-    gameData(fakeGameData, 'euw', function(err, data) {
+    gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
       if(err) {
         return done(err);
       }
