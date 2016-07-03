@@ -2,11 +2,12 @@
   {
     "scope": "https://euw.api.pvp.net:443",
     "method": "get",
-    "path": "/api/lol/euw/v1.4/summoner/by-name/neamar",
+    "path": "/api/lol/euw/v1.4/summoner/by-name/amoki",
     "body": "",
     "status": 200,
     "response": [
-      "1f8b0800000000000000258b3b0a80301005eff2ea14eb2f84d436827887a02b04cc46e2a791dcdd88cd3433f340d80597601ff805d668a29a6aad202e302ca65f2bec29ae7ee3618e3294f04b8e2b84289c46be79836d4821f1ed0f1fa57767b9ab56371d19534094f30b155567f86d000000"
+      "1f8b0800000000000000",
+      "1d8bc10a83301005ffe59d73c8563795dc845e84fe4468b7b068b212ab17f1df1b3ad7993991b2cd8a7842df8837df0f14a87328290b22c6bf7558ab7d7491e965656a1d11b3c3b6e76c45ea530e59103bef50e5d04dad3cd2b7edd4873b3307f68debfa016c31d9c86d000000"
     ],
     "headers": {
       "access-control-allow-headers": "Content-Type",
@@ -14,30 +15,37 @@
       "access-control-allow-origin": "*",
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "date": "Sun, 03 Jul 2016 13:10:00 GMT",
+      "date": "Sun, 03 Jul 2016 14:32:45 GMT",
       "vary": "Accept-Encoding, User-Agent",
-      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IBVg9QDwkHHh5UFUMFUVdUAgRVU1FbCQUDAlcEFWw=",
-      "x-rate-limit-count": "1:10,3:600",
-      "content-length": "115",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IBVwtbDQkAHh5UFUMBWVYHAARVU1EGCwFWAAQAFWw=",
+      "x-rate-limit-count": "1:10,1:600",
+      "transfer-encoding": "chunked",
       "connection": "Close"
     }
   },
   {
     "scope": "https://euw.api.pvp.net:443",
     "method": "get",
-    "path": "/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/86002026",
+    "path": "/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/20481613",
     "body": "",
-    "status": 404,
-    "response": {
-      "status": {
-        "message": "Not Found",
-        "status_code": 404
-      }
-    },
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "d5985d6fda301486ff4a956ba4c5df49ef1085ad6ad93acab4ad53350530342b89b37c6c4315ff7d4e402321f8c04251b7dec527c70ef6d3f73dc74fd6cc0be4e5c43ac782dad87108b75b56e045f910c2ad22dc5713699d5bed41bb6fad46868b281fe9b7879d37dd8bafafdbfdee3af23e9399eca870eacff229386b599117a7fed88fbc304dacf32f4f562abda098dfd66b25919ccf51fe48d70f387f207aedf1831744be0a8b20d213c56aeacfe5e57835e43a5c676441a04219bfd56be75fd43b7b37386bf7aef4e78c546a9d4fbd792237af15bf94618ca8202d2bce42b9faa4b1ca42fdb6bb1acbdf6298b265eb4f849623429422ac1c71dc52a43c1b41e51c548e90f23ab81211cbfbfc349254c6fefa4b632f7c2c165d0d2f8a5dc608e773ac62682b86d126b69d47803c6ace23c07a0463731e41e63c4acc790cc8e378799f479b6085590d2b84ec3a5749eac5524e5536f700b20826042341f79125888112809fd549ad23a41c618752821035ee22024e0d11208f02a78d8053032901e882d63b82921c8c0d26b44a09b17750c2588d9276a01e7d48796cea20bd9dcdf97085890f2c8ee60303e785b1f9bf135611888fa62a02f101a90890b78f0f484508aff151876336f7c249d65371f7878c214804b66d77072265d3c0c8641a55db129588099e436dab9939c1b263361958769a9a1380c70b9813283b342fc06aba83510dad8eba561d3fbbe52ec095c0ba60726db6b7ec39969253989379f79b5282805343dc2c3e70a905892420aefa3b2b94e02a25a20c09daa6a40e09766a88fc54fa6fe283ee245c2238dde54e95ea971babdf8a6f21a36f3995887352a8804306a507c8031ced347000eb018e863901a1aa4acf36554cd42d0dd31a568117ce549245ba1d84c062baf011f629ca9e932bcff3fb1362401ea7c6bc53355d102485d998fc49d7c0bbeae23a2537b11f4829af21777218e70eddc508378a0f398c9e17f4ada64dd57fda7a8312b3ed5bf5a6ca75eaecf4bc70bc381bc8c98d2e9fc1e69bb8d8d6b5f33e9561ec484eaa5570793674587dbc2dd46593a20d0d653b468039ffa976ed99da790c5cfa6c7b9b53bf4b4488d43bb6be8a139944be9c83d821c65dd7f9abdbc4aab999226679d29dc1b35440903c35ab809a96d5cdef8a2059cb21d1fba446898c75d7adf7e9c992e1385e44a966e14a2ef429bf7dfcfe2de8707135ea7d9adcdd74b3766f463f0f5fd9037ef76b70d1b7969a96b9974e555c9066753f7c44a57bf0cd65b7c66ce485a19c74d6b0e5e772bf7af336f5e274e8e75c21ca0563cce52ee7eb1bf66b19ced287dc6ed9f2379cf092eb93170000"
+    ],
     "headers": {
+      "accept-ranges": "bytes",
+      "age": "0",
+      "cache-control": "no-cache, max-age=180",
+      "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "x-rate-limit-count": "2:10,4:600",
-      "content-length": "66",
+      "date": "Sun, 03 Jul 2016 14:32:45 GMT",
+      "expires": "Thu, 01 Jan 1970 00:00:00 UTC",
+      "pragma": "No-cache",
+      "via": "1.1 varnish",
+      "x-rate-limit-count": "2:10,2:600",
+      "x-varnish": "1672257583",
+      "transfer-encoding": "chunked",
       "connection": "Close"
     }
   }
