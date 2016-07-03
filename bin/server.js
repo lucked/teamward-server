@@ -1,5 +1,4 @@
 "use strict";
-require('newrelic');
 
 require('heroku-self-ping')(process.env.APP_URL);
 
