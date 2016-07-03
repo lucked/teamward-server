@@ -1,5 +1,6 @@
 exports.config = {
   agent_enabled: "NEW_RELIC_LICENSE_KEY" in process.env,
+  app_name: "Teamward",
   capture_params: true,
   apdex_t: 0.250,
   error_collector: {
