@@ -2,7 +2,7 @@
 var nock = require('nock');
 var fs = require("fs");
 
-var TEST_BASE_FOLDER = __dirname;
+var TEST_BASE_FOLDER = __dirname + "/mocks";
 
 
 function getMockFilePath(mochaContext) {
@@ -19,7 +19,7 @@ function getMockFilePath(mochaContext) {
  *
  * In the beginning of your test, call this function with "this" and done.
  * You'll get a function returned, once your test is over just call this function to save all the mocks to disk (hint: overwrite the done function from mocha).
- * You can now replace the call to recordTest with a call to setupNock, and magic will happen (HTTP requests will be read through the disk)
+ * You can now replace the call to recordTest with a call to useNock, and magic will happen (HTTP requests will be read through the disk)
  */
 module.exports.recordNock = function(mochaContext, done) {
   require("../../lib/riot-api/cache.js").disableCaching = true;
@@ -56,7 +56,7 @@ module.exports.recordNock = function(mochaContext, done) {
 };
 
 
-module.exports.setupNock = function(mochaContext, done) {
+module.exports.useNock = function(mochaContext, done) {
   nock.disableNetConnect();
 
   var testPath = getMockFilePath(mochaContext);

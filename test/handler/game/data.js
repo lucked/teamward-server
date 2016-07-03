@@ -39,7 +39,7 @@ describe("Main server", function() {
     });
 
     it("should succeed with summoner and region param", function(done) {
-      done = recorder.setupNock(this, done);
+      done = recorder.useNock(this, done);
 
       supertest(app)
         .get('/game/data?summoner=neamar&region=euw')
