@@ -8,6 +8,7 @@ var gameData = require('../../lib/helper/game-data');
 describe("Game data", function() {
 
   it("should return current game data", function(done) {
+    this.timeout(40000);
     done = recorder.useNock(this, done);
     var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
     gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
