@@ -58,7 +58,6 @@ module.exports.setupNock = function(mochaContext, done) {
 
 module.exports.useNock = function(mochaContext, done) {
   nock.disableNetConnect();
-
   var testPath = getMockFilePath(mochaContext);
 
   var nocks = require(testPath);
@@ -71,7 +70,6 @@ module.exports.useNock = function(mochaContext, done) {
 
   return function() {
     nock.enableNetConnect();
-    nock.cleanAll();
     done();
   };
 };

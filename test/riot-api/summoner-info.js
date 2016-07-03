@@ -25,7 +25,7 @@ describe("Summoner data", function() {
       nock('https://euw.api.pvp.net')
         .get('/api/lol/euw/v1.4/summoner/by-name/neamarDoesNotExists')
         .query(true)
-        .reply(500, require('../mocks/summoner-by-name-500.json'));
+        .reply(500, require('../mocks/mocks/custom_summoner-by-name-500.json'));
 
       summonerData.getSummonerData('neamarDoesNotExists', 'euw', function(err) {
         if(!err) {
