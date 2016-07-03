@@ -3,6 +3,7 @@
 var nock = require('nock');
 var assert = require('assert');
 var gameInfo = require('../../lib/riot-api/game-info');
+var recorder = require('../mocks/recorder');
 
 
 describe("Game info", function() {
@@ -44,10 +45,7 @@ describe("Game info", function() {
 
   describe("getExistingGame()", function() {
     it("should return existing game information", function(done) {
-      nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v2.2/match/2718749954')
-        .query(true)
-        .reply(200, require('../mocks/match.json'));
+      done = recorder.useNock(this, done);
 
       gameInfo.getExistingGame(2718749954, 'euw', function(err, data) {
         if(err) {

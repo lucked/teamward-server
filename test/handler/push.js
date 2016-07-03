@@ -5,8 +5,8 @@ var async = require("async");
 var rarity = require("rarity");
 var mongoose = require('mongoose');
 var supertest = require('supertest');
-var nock = require('nock');
 
+var recorder = require('../mocks/recorder');
 var app = require('../../app');
 
 describe("Main server", function() {
@@ -17,20 +17,6 @@ describe("Main server", function() {
     before(function(next) {
       Token.remove({}, next);
     });
-
-    before(function() {
-      nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
-        .query(true)
-        .reply(200, require('../mocks/summoner-by-name.json'));
-    });
-    before(function() {
-      nock('https://na.api.pvp.net')
-        .get('/api/lol/na/v1.4/summoner/by-name/neamar2')
-        .query(true)
-        .reply(200, require('../mocks/summoner-by-name.json'));
-    });
-
 
     it("should require summoner name", function(done) {
       supertest(app)
@@ -57,10 +43,11 @@ describe("Main server", function() {
     });
 
     it("should save Token with summoner, region and token param", function(done) {
+      done = recorder.useNock(this, done);
       async.waterfall([
         function sendRequest(cb) {
           supertest(app)
-            .get('/push?summoner=neamar&region=euw&token=123')
+            .get('/push?summoner=riotneamar&region=euw&token=123')
             .expect(200)
             .end(rarity.slice(1, cb));
         },
@@ -68,7 +55,7 @@ describe("Main server", function() {
           Token.findOne({token: "123"}, rarity.slice(2, cb));
         },
         function ensureTokenSaved(token, cb) {
-          assert.equal(token.summonerName, "neamar");
+          assert.equal(token.summonerName, "riotneamar");
           assert.equal(token.summonerId, "70448430");
           assert.equal(token.region, "euw");
 
@@ -78,10 +65,11 @@ describe("Main server", function() {
     });
 
     it("should overwrite existing token with new summoner, region and token param", function(done) {
+      done = recorder.useNock(this, done);
       async.waterfall([
         function sendRequest(cb) {
           supertest(app)
-            .get('/push?summoner=neamar2&region=na&token=123')
+            .get('/push?summoner=neamarNA&region=na&token=123')
             .expect(200)
             .end(rarity.slice(1, cb));
         },

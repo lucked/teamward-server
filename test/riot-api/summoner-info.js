@@ -3,23 +3,20 @@
 var nock = require('nock');
 var assert = require('assert');
 var summonerData = require('../../lib/riot-api/summoner-info');
+var recorder = require('../mocks/recorder');
 
 
 describe("Summoner data", function() {
   describe('getSummonerData()', function() {
     it("should return summoner data", function(done) {
-      nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
-        .query(true)
-        .reply(200, require('../mocks/summoner-by-name.json'));
-
+      done = recorder.useNock(this, done);
       summonerData.getSummonerData('neamar', 'euw', function(err, data) {
         if(err) {
           return done(err);
         }
 
-        assert.equal(data.name, 'neamar');
-        assert.equal(data.id, 70448430);
+        assert.equal(data.name, 'Neamar');
+        assert.equal(data.id, 86002026);
         done();
       });
     });
@@ -42,14 +39,9 @@ describe("Summoner data", function() {
   });
 
   describe('getSummonersData()', function() {
-    before(function() {
-      nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v1.4/summoner/70448430,19083089,19917877,57780340,53870009,19917878,27321542,78179191,38621938,79947339')
-        .query(true)
-        .reply(200, require('../mocks/summoners.json'));
-    });
-
     it("should return summoner data", function(done) {
+      done = recorder.useNock(this, done);
+
       summonerData.getSummonersData([70448430, 19083089, 19917877, 57780340, 53870009, 19917878, 27321542, 78179191, 38621938, 79947339], 'euw', function(err, data) {
         if(err) {
           return done(err);
@@ -63,14 +55,9 @@ describe("Summoner data", function() {
   });
 
   describe('getChampions()', function() {
-    before(function() {
-      nock('https://euw.api.pvp.net')
-        .get('/championmastery/location/EUW1/player/70448430/champions')
-        .query(true)
-        .reply(200, require('../mocks/summoner-champions.json'));
-    });
-
     it("should return top champions for summoner", function(done) {
+      done = recorder.useNock(this, done);
+
       summonerData.getChampions(70448430, 'euw', function(err, data) {
         if(err) {
           return done(err);
@@ -84,15 +71,8 @@ describe("Summoner data", function() {
   });
 
   describe('getCurrentRanks()', function() {
-    before(function() {
-      nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v2.5/league/by-summoner/19083089,19917877/entry')
-        .query(true)
-        .reply(200, require('../mocks/league-entry.json'));
-
-    });
-
     it("should return current rank for summoners", function(done) {
+      done = recorder.useNock(this, done);
       summonerData.getCurrentRanks([19083089, 19917877], 'euw', function(err, data) {
         if(err) {
           return done(err);
@@ -100,9 +80,9 @@ describe("Summoner data", function() {
 
         assert.ok(data[19083089]);
         assert.ok(data[19917877]);
-        assert.equal(data[19083089][0].tier, 'GOLD');
-        assert.equal(data[19083089][0].entries[0].division, 'I');
-        assert.equal(data[19083089][0].tier, 'GOLD');
+        assert.equal(data[19083089][0].tier, 'PLATINUM');
+        assert.equal(data[19083089][0].entries[0].division, 'IV');
+        assert.equal(data[19083089][0].tier, 'PLATINUM');
         done();
       });
     });

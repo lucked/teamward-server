@@ -7,7 +7,7 @@ var TEST_BASE_FOLDER = __dirname + "/mocks";
 
 function getMockFilePath(mochaContext) {
   var testName = mochaContext.test.parent.title + " " + mochaContext.test.title;
-  testName = testName.replace(/ |\//g, "_").toLowerCase();
+  testName = testName.replace(/[^a-z]/gi, "_").toLowerCase();
 
   return TEST_BASE_FOLDER + "/" + testName + ".json";
 }
@@ -21,7 +21,7 @@ function getMockFilePath(mochaContext) {
  * You'll get a function returned, once your test is over just call this function to save all the mocks to disk (hint: overwrite the done function from mocha).
  * You can now replace the call to recordTest with a call to useNock, and magic will happen (HTTP requests will be read through the disk)
  */
-module.exports.recordNock = function(mochaContext, done) {
+module.exports.setupNock = function(mochaContext, done) {
   require("../../lib/riot-api/cache.js").disableCaching = true;
 
   var records = [];
