@@ -42,7 +42,7 @@ describe("Main server", function() {
       done = recorder.useNock(this, done);
 
       supertest(app)
-        .get('/game/data?summoner=neamar&region=euw')
+        .get('/game/data?summoner=amoki&region=euw')
         .expect(200)
         .expect(function(res) {
           assert.ok(res.body.stub);

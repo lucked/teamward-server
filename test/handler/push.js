@@ -77,8 +77,8 @@ describe("Main server", function() {
           Token.findOne({token: "123"}, rarity.slice(2, cb));
         },
         function ensureTokenSaved(token, cb) {
-          assert.equal(token.summonerName, "neamar2");
-          assert.equal(token.summonerId, "70448430");
+          assert.equal(token.summonerName, "neamarNA");
+          assert.equal(token.summonerId, 75121889);
           assert.equal(token.region, "na");
 
           cb();

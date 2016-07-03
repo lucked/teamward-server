@@ -32,8 +32,8 @@ describe("Main server", function() {
         .get('/summoner/data?summoner=neamar&region=euw')
         .expect(200)
         .expect(function(res) {
-          assert.equal(res.body.name, 'neamar');
-          assert.equal(res.body.profileIcon, 'http://ddragon.leagueoflegends.com/cdn/6.5.1/img/profileicon/26.png');
+          assert.equal(res.body.name, 'Neamar');
+          assert.equal(res.body.profileIcon, 'http://ddragon.leagueoflegends.com/cdn/6.13.1/img/profileicon/26.png');
         })
         .end(done);
     });

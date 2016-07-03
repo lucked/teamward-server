@@ -10,13 +10,13 @@ describe("Game info", function() {
     it("should return current game information", function(done) {
       done = recorder.useNock(this, done);
 
-      gameInfo.getCurrentGame(70448430, 'euw', function(err, data) {
+      gameInfo.getCurrentGame(20481613, 'euw', function(err, data) {
         if(err) {
           return done(err);
         }
 
-        assert.equal(data.gameId, 2564363999);
-        assert.equal(data.mapId, 11);
+        assert.equal(data.gameId, 2740288360);
+        assert.equal(data.mapId, 12);
         assert.equal(data.participants.length, 10);
         done();
       });

@@ -49,15 +49,15 @@ module.exports.setupNock = function(mochaContext, done) {
     }
   });
 
-  return function writeMocks() {
+  return function writeMocks(err) {
     fs.writeFileSync(testPath, JSON.stringify(records, null, 2));
-    done();
+    done(err);
   };
 };
 
 
 module.exports.useNock = function(mochaContext, done) {
-  nock.disableNetConnect();
+  // nock.disableNetConnect();
   var testPath = getMockFilePath(mochaContext);
 
   var nocks = require(testPath);
@@ -68,8 +68,8 @@ module.exports.useNock = function(mochaContext, done) {
       .reply(n.status, n.response, n.headers);
   });
 
-  return function() {
+  return function(err) {
     nock.enableNetConnect();
-    done();
+    done(err);
   };
 };

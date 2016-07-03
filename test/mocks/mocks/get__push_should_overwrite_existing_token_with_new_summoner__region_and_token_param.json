@@ -2,19 +2,23 @@
   {
     "scope": "https://na.api.pvp.net:443",
     "method": "get",
-    "path": "/api/lol/na/v1.4/summoner/by-name/neamar2",
+    "path": "/api/lol/na/v1.4/summoner/by-name/neamarNA",
     "body": "",
-    "status": 404,
-    "response": {
-      "status": {
-        "message": "Not Found",
-        "status_code": 404
-      }
-    },
+    "status": 200,
+    "response": [
+      "1f8b08000000000000002dccb10a83301405d07fb97386dca06d9aadd04510ffe1d1be42c0bc94585dc47faf43f7c3d9612a459a09d28efc42baf60c8cf1e6605214e90fa63b1c3eadbef3acc3b3da7052929dc3b296524ddba89bce48810e4db7bce46a0ff99e03bb0b63e8e983f7fe387e0a7f2c1e73000000"
+    ],
     "headers": {
+      "access-control-allow-headers": "Content-Type",
+      "access-control-allow-methods": "GET, POST, DELETE, PUT",
+      "access-control-allow-origin": "*",
+      "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "x-rate-limit-count": "1:10,1:600",
-      "content-length": "66",
+      "date": "Sun, 03 Jul 2016 14:35:52 GMT",
+      "vary": "Accept-Encoding, User-Agent",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgAVkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMDFE+FxQJFgBuHBZMDFwOXQcWahgDH05WUl0BPU0dExtWSgEaA0xWU1MHVw5UCAEYHwJJGwUGWQZSB1IOU1ACW1IGVABAag==",
+      "x-rate-limit-count": "1:10,3:600",
+      "content-length": "122",
       "connection": "Close"
     }
   }
