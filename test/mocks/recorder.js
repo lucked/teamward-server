@@ -57,6 +57,8 @@ module.exports.setupNock = function(mochaContext, done) {
 
 
 module.exports.useNock = function(mochaContext, done) {
+  // Disabled for now, see
+  // https://github.com/node-nock/nock/issues/211
   // nock.disableNetConnect();
   var testPath = getMockFilePath(mochaContext);
 
