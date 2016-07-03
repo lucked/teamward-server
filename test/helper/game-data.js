@@ -8,6 +8,7 @@ var gameData = require('../../lib/helper/game-data');
 describe("Game data", function() {
 
   it("should return current game data", function(done) {
+    this.timeout(40000);
     done = recorder.useNock(this, done);
     var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
     gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
@@ -25,6 +26,7 @@ describe("Game data", function() {
       assert.equal(data.teams[0].players[0].summoner.level, 30);
       assert.equal(data.teams[0].players[0].spell_d.name, 'Flash');
       assert.equal(data.teams[0].players[1].current_season_rank.tier, 'PLATINUM');
+
       done();
     });
   });
