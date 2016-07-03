@@ -1,24 +1,14 @@
 "use strict";
 
-var nock = require('nock');
 var assert = require('assert');
 
 var app = require('../../../app');
+var recorder = require('../../mocks/recorder.js');
+
 var supertest = require('supertest');
 
 describe("Main server", function() {
   describe("GET /summoner/data", function() {
-    before(function() {
-      nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v1.4/summoner/by-name/neamar')
-        .query(true)
-        .reply(200, require('../../mocks/summoner-by-name.json'));
-
-      nock('http://ddragon.leagueoflegends.com')
-        .get('/realms/euw.json')
-        .reply(200, require('../../mocks/realms.json'));
-    });
-
     it("should require summoner name", function(done) {
       supertest(app)
         .get('/summoner/data')
@@ -36,6 +26,8 @@ describe("Main server", function() {
     });
 
     it("should succeed with summoner and region param", function(done) {
+      done = recorder.setupNock(this, done);
+
       supertest(app)
         .get('/summoner/data?summoner=neamar&region=euw')
         .expect(200)

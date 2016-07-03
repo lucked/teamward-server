@@ -8,15 +8,12 @@ var gameData = require('../../lib/helper/game-data');
 describe("Game data", function() {
 
   it("should return current game data", function(done) {
-    var rec = recorder.setupNock(this);
+    done = recorder.setupNock(this, done);
     var fakeGameData = require('../mocks/get-spectator-game-info.json');
     gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
       if(err) {
         return done(err);
       }
-      rec();
-
-      require('fs').writeFileSync('/tmp/game.json', JSON.stringify(data));
 
       assert.equal(data.map_id, 11);
       assert.equal(data.teams.length, 2);
