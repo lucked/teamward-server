@@ -50,5 +50,27 @@ describe("Main server", function() {
         })
         .end(done);
     });
+
+    it("should fail for unknown summoners", function(done) {
+      done = recorder.useNock(this, done);
+
+      supertest(app)
+        .get('/game/data?summoner=neamardoesnotexists&region=euw')
+        .expect(404)
+        .expect(/summoner does not exist/i)
+        .end(done);
+    });
+
+    it("should fail for summoners not in game", function(done) {
+      done = recorder.useNock(this, done);
+
+      supertest(app)
+        .get('/game/data?summoner=neamar&region=euw')
+        .expect(404)
+        .expect(/summoner not in game/i)
+        .end(done);
+    });
+
+
   });
 });

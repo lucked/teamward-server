@@ -31,6 +31,5 @@ describe("Game data", function() {
     });
   });
 
-  it.skip("should fail for unknown summoners");
   it.skip("should fail for summoners not in game");
 });

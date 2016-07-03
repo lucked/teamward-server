@@ -1,0 +1,21 @@
+[
+  {
+    "scope": "https://euw.api.pvp.net:443",
+    "method": "get",
+    "path": "/api/lol/euw/v1.4/summoner/by-name/neamardoesnotexists",
+    "body": "",
+    "status": 404,
+    "response": {
+      "status": {
+        "message": "Not Found",
+        "status_code": 404
+      }
+    },
+    "headers": {
+      "content-type": "application/json;charset=utf-8",
+      "x-rate-limit-count": "1:10,8:600",
+      "content-length": "66",
+      "connection": "Close"
+    }
+  }
+]
