@@ -12,7 +12,15 @@ function getMockFilePath(mochaContext) {
   return TEST_BASE_FOLDER + "/" + testName + ".json";
 }
 
-
+/**
+ * HOW TO USE?
+ *
+ * This function is to be used the first time you write a test and you want to persist the HTTP results.
+ *
+ * In the beginning of your test, call this function with "this".
+ * You'll get a function returned, once your test is over just call this function to save all the mocks to disk.
+ * You can now replace the call to recordTest with a call to setupNock, and magic will happen (HTTP requests will be read through the disk)
+ */
 module.exports.recordTest = function(mochaContext) {
   require("../../lib/riot-api/cache.js").disableCaching = true;
 
