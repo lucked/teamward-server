@@ -1,5 +1,3 @@
-require('newrelic');
-
 require('./server.js');
 
 if(require('cluster').isMaster) {

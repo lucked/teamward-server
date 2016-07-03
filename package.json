@@ -28,7 +28,6 @@
     "gcm": "^1.0.1",
     "heroku-self-ping": "^1.1.2",
     "mongoose": "^4.4.7",
-    "newrelic": "^1.28.1",
     "opbeat": "^3.6.6",
     "rarity": "^2.1.1",
     "supertest": "^1.2.0",
