@@ -2,6 +2,7 @@
 
 var assert = require("assert");
 var nock = require("nock");
+var async = require("async");
 
 var request = require('../../lib/riot-api/request.js');
 
@@ -83,5 +84,53 @@ describe("Riot queue requester", function() {
       assert.equal(res.ok, true);
       done();
     });
+  });
+
+  it("should cache results when cacheable=true", function(done) {
+    nock('https://euw.api.pvp.net')
+      .get('/cacheable')
+      .query(true)
+      .reply(200, {ok: 'first time'});
+
+    nock('https://euw.api.pvp.net')
+      .get('/cacheable')
+      .query(true)
+      .reply(200, {ok: 'second time'});
+
+    async.waterfall([
+      function(cb) {
+        // Should fetch resource the first time
+        request('EUW', '/cacheable', true, function(err, res) {
+          if(err) {
+            return cb(err);
+          }
+
+          assert.equal(res.ok, 'first time');
+          cb();
+        });
+      },
+      function(cb) {
+        // Should reuse cached value and not call the second nock request
+        request('EUW', '/cacheable', true, function(err, res) {
+          if(err) {
+            return cb(err);
+          }
+
+          assert.equal(res.ok, 'first time');
+          cb();
+        });
+      },
+      function(cb) {
+        // Witch cacheable=false however, should do a new call
+        request('EUW', '/cacheable', false, function(err, res) {
+          if(err) {
+            return cb(err);
+          }
+
+          assert.equal(res.ok, 'second time');
+          cb();
+        });
+      }
+    ], done);
   });
 });

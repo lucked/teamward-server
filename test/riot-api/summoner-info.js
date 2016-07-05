@@ -1,6 +1,5 @@
 "use strict";
 
-var nock = require('nock');
 var assert = require('assert');
 var summonerData = require('../../lib/riot-api/summoner-info');
 var recorder = require('../mocks/recorder');
