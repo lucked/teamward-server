@@ -31,5 +31,24 @@ describe("Game data", function() {
     });
   });
 
-  it.skip("should fail for summoners not in game");
+  it("should guess premades data", function(done) {
+    this.timeout(40000);
+    done = recorder.useNock(this, done);
+
+    var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info-premade.json');
+    gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
+      if(err) {
+        return done(err);
+      }
+
+      assert.equal(data.map_id, 11);
+      assert.equal(data.teams.length, 2);
+      assert.equal(data.teams[0].team_id, 100);
+      assert.equal(data.teams[0].premades.length, 5);
+      assert.equal(data.teams[1].premades.length, 4);
+      assert.equal(data.teams[1].premades[0].length, 2);
+
+      done();
+    });
+  });
 });
