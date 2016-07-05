@@ -20,22 +20,6 @@ describe("Summoner data", function() {
         done();
       });
     });
-
-    it("should fail when API is down", function(done) {
-      nock('https://euw.api.pvp.net')
-        .get('/api/lol/euw/v1.4/summoner/by-name/neamarDoesNotExists')
-        .query(true)
-        .reply(500, require('../mocks/mocks/custom_summoner-by-name-500.json'));
-
-      summonerData.getSummonerData('neamarDoesNotExists', 'euw', function(err) {
-        if(!err) {
-          return done(new Error("Expected an error to occur."));
-        }
-
-        assert.equal(err.statusCode, 500);
-        done();
-      });
-    });
   });
 
   describe('getSummonersData()', function() {
