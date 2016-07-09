@@ -22,8 +22,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "auto-load": "^2.1.0",
-    "bson": "^0.2.21",
-    "bsonize": "^1.0.0",
+    "mongodump-reader": "1.0.1",
     "debug": "^2.2.0",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
