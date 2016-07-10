@@ -13,7 +13,23 @@ describe("Main server", function() {
     before(function() {
       gameData._buildExternalGameData = gameData.buildExternalGameData;
       gameData.buildExternalGameData = sinon.spy(function(gameDAta, region, cb) {
-        cb(null, {stub: true});
+        cb(null, {
+          stub: true,
+          teams: [
+            {
+              players: [
+                {
+                  summoner: {
+                    id: 20481613
+                  }
+                }
+              ]
+            },
+            {
+              players: []
+            }
+          ]
+        });
       });
     });
 
@@ -46,6 +62,8 @@ describe("Main server", function() {
         .expect(200)
         .expect(function(res) {
           assert.ok(res.body.stub);
+          assert.ok(res.body.teams[0].own_team);
+          assert.equal(res.body.teams[1].own_team, false);
           assert.ok(gameData.buildExternalGameData.calledOnce);
         })
         .end(done);

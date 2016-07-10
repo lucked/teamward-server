@@ -21,8 +21,6 @@ describe("Ddragon info", function() {
     });
 
     it("should cache champion information", function(done) {
-      done = recorder.useNock(this, done);
-
       nock('http://ddragon.leagueoflegends.com')
         .get('/realms/euw.json')
         .reply(404)
@@ -40,6 +38,17 @@ describe("Ddragon info", function() {
       });
     });
 
+    it("should return champion information from champion name too", function(done) {
+      ddragonInfo.getChampionData('euw', 'Illaoi', function(err, data) {
+        if(err) {
+          return done(err);
+        }
+
+        assert.equal(data.id, 'Illaoi');
+        assert.equal(data.key, 420);
+        done();
+      });
+    });
   });
 
   describe("Summoner spell info", function() {
