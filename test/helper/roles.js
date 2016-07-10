@@ -1,12 +1,94 @@
 "use strict";
 
+var mongoose = require("mongoose");
 var assert = require('assert');
-
+var async = require("async");
 var rolesHelper = require('../../lib/helper/roles');
 
 describe("Role helper", function() {
+  var Champion = mongoose.model('Champion');
   describe("guessRoles()", function() {
+    var buildFakePlayer = function(championId) {
+      return {
+        champion: {
+          id: championId
+        }
+      };
+    };
 
+    before(function(done) {
+      Champion.remove({}, done);
+    });
+
+    before(function(done) {
+      var champions = [
+        new Champion(),
+        new Champion(),
+        new Champion(),
+        new Champion(),
+        new Champion(),
+      ];
+
+      champions[0]._id = 0;
+      champions[0].name = 'Illaoi';
+      champions[0].roles = ['TOP'];
+
+      champions[1]._id = 1;
+      champions[1].name = 'Xerath';
+      champions[1].roles = ['MID'];
+
+      champions[2]._id = 2;
+      champions[2].name = 'Lulu';
+      champions[2].roles = ['SUPPORT'];
+
+      champions[3]._id = 3;
+      champions[3].name = 'Sejuani';
+      champions[3].roles = ['JUNGLE'];
+
+      champions[4]._id = 4;
+      champions[4].name = 'Ashe';
+      champions[4].roles = ['BOT'];
+
+      async.each(champions, function(champion, cb) {
+        champion.save(cb);
+      }, done);
+    });
+
+    it("should error on team without exactly 5 players", function(done) {
+      var team = [
+        buildFakePlayer(0)
+      ];
+
+      rolesHelper.guessRoles(team, function(err) {
+        if(!err) {
+          return done(new Error("Expected an error!"));
+        }
+
+        assert.ok(err.toString().indexOf("Rift") !== -1);
+        done();
+      });
+    });
+
+
+    it("should append role data to the team object", function(done) {
+      async.waterfall([
+        function guess(cb) {
+          var team = [
+            buildFakePlayer(0),
+            buildFakePlayer(1),
+            buildFakePlayer(2),
+            buildFakePlayer(3),
+            buildFakePlayer(4),
+          ];
+
+          rolesHelper.guessRoles(team, cb);
+        },
+        function(team, cb) {
+          assert.equal(team[0].champion.role, 'TOP');
+          cb();
+        }
+      ], done);
+    });
   });
 
   describe("computeRoles()", function() {

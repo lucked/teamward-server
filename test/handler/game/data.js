@@ -21,6 +21,9 @@ describe("Main server", function() {
                 {
                   summoner: {
                     id: 20481613
+                  },
+                  champion: {
+                    id: 0
                   }
                 }
               ]
