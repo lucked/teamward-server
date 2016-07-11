@@ -20,6 +20,9 @@ if(!process.env.GCM_API_KEY) {
 require('../app');
 
 // Start worker
-require('../lib/worker/push-notifier')(opbeat);
+if(!process.env.DISABLE_WORKER_PUSH_NOTIFIER) {
+  require('../lib/worker/push-notifier')(opbeat);
+}
+
 require('../lib/worker/champion-stats')(opbeat);
 // require('../lib/worker/game-crawler')(opbeat);
