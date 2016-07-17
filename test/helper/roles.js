@@ -27,6 +27,7 @@ describe("Role helper", function() {
         new Champion(),
         new Champion(),
         new Champion(),
+        new Champion(),
       ];
 
       champions[0]._id = 0;
@@ -49,6 +50,10 @@ describe("Role helper", function() {
       champions[4].name = 'Ashe';
       champions[4].roles = ['BOT'];
 
+      champions[5]._id = 5;
+      champions[5].name = 'Malphite';
+      champions[5].roles = ['TOP'];
+
       async.each(champions, function(champion, cb) {
         champion.save(cb);
       }, done);
@@ -69,7 +74,6 @@ describe("Role helper", function() {
       });
     });
 
-
     it("should append role data to the team object", function(done) {
       async.waterfall([
         function guess(cb) {
@@ -85,6 +89,31 @@ describe("Role helper", function() {
         },
         function(team, cb) {
           assert.equal(team[0].champion.role, 'TOP');
+          cb();
+        }
+      ], done);
+    });
+
+    it("should use Smite to define jungler", function(done) {
+      async.waterfall([
+        function guess(cb) {
+          var team = [
+            buildFakePlayer(0),
+            buildFakePlayer(1),
+            buildFakePlayer(2),
+            buildFakePlayer(5), // 5 is malphite, TOP, but we'll give him Smite.
+            buildFakePlayer(4),
+          ];
+
+          team[3].spell_d = {
+            name: "Smite"
+          };
+
+          rolesHelper.guessRoles(team, cb);
+        },
+        function(team, cb) {
+          assert.equal(team[0].champion.role, 'TOP');
+          assert.equal(team[3].champion.role, 'JUNGLE');
           cb();
         }
       ], done);
