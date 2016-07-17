@@ -133,9 +133,9 @@ describe("Matchups helper", function() {
           var championData = champions[0];
           var expectedWinRate = championData[championData.roles[0].toLowerCase() + "Matchups"][0].winRate;
 
-          assert.equal(team1[0].champion.matchup.winRate, expectedWinRate);
+          assert.equal(team1[0].champion.matchup.win_rate, expectedWinRate);
 
-          assert.equal(team2[0].champion.matchup.winRate, 100 - expectedWinRate);
+          assert.equal(team2[0].champion.matchup.win_rate, 100 - expectedWinRate);
           cb();
         }
       ], done);
