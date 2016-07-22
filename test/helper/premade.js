@@ -4,7 +4,7 @@ var assert = require('assert');
 var premadeHelper = require('../../lib/helper/premade');
 
 describe("Premade helper", function() {
-  describe.only("getPremade()", function() {
+  describe("getPremade()", function() {
     var buildFakePlayer = function(teamId, knownPlayers) {
       return {
         teamId: teamId,
@@ -96,6 +96,21 @@ describe("Premade helper", function() {
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 2);
       assert.deepEqual(premade['100'][0], ['1', '3', '2']);
+      assert.deepEqual(premade['100'][1], ['4', '5']);
+    });
+
+    it("should group non-cyclic non-sorted non-reeentrant use cases", function() {
+      var premadeData = {
+        1: buildFakePlayer(100, [2]),
+        2: buildFakePlayer(100, []),
+        3: buildFakePlayer(100, [1]),
+        4: buildFakePlayer(100, [5]),
+        5: buildFakePlayer(100, [4]),
+      };
+
+      var premade = premadeHelper.getPremade(premadeData);
+      assert.equal(premade['100'].length, 2);
+      assert.deepEqual(premade['100'][0], ['1', '2', '3']);
       assert.deepEqual(premade['100'][1], ['4', '5']);
     });
   });
