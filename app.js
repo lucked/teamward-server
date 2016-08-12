@@ -12,6 +12,7 @@ var middlewares = require('./lib').middleware;
 app.get('/download', handlers.download.index.get);
 app.get('/download/riot.txt', handlers.download.riot.get);
 app.get('/summoner/data', middlewares.requireSummonerRegion, handlers.summoner.data.get);
+app.get('/summoner/counter', middlewares.requireSummonerRegion, handlers.summoner.counter.get);
 app.get('/game/data', middlewares.requireSummonerRegion, handlers.game.data.get);
 app.get('/push', middlewares.requireSummonerRegion, handlers.push.get);
 mongoose.connect(config.mongoUrl);
