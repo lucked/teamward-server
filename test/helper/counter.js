@@ -3,7 +3,7 @@ var assert = require("assert");
 
 var counterHelper = require("../../lib/helper/counter.js");
 
-describe.only("Counter helper", function() {
+describe("Counter helper", function() {
   function buildAPIChampion(id) {
     return {
       championId: id,
