@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var app = require('../../../app');
-var recorder = require('../../mocks/recorder.js');
+// var recorder = require('../../mocks/recorder.js');
 
 var supertest = require('supertest');
 
