@@ -1,0 +1,45 @@
+[
+  {
+    "scope": "https://euw.api.pvp.net:443",
+    "method": "get",
+    "path": "/api/lol/euw/v1.4/summoner/by-name/riotneamar",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "25cc310ec2300c40d1ab20cf199c621a9499a51262e006513192a5c6466ee952f5ee04757fff6fe0628b72a9c5216f202fc80989ae74c6005a2a43866723a7c761027cdcde32f1309a0e4d7798fa00f3b75653f63baf3c41fec7ceabcc627a2b4b9b444a1129f6970e11f7fd07fbc0c70a78000000"
+    ],
+    "headers": {
+      "access-control-allow-headers": "Content-Type",
+      "access-control-allow-methods": "GET, POST, DELETE, PUT",
+      "access-control-allow-origin": "*",
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "date": "Sat, 13 Aug 2016 10:25:28 GMT",
+      "vary": "Accept-Encoding, User-Agent",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IBUQBaDA8YHwJJG1MDVARRVAFUBwcGDgVSXQdAG1dWChdUaw==",
+      "x-rate-limit-count": "11:10,140:600",
+      "transfer-encoding": "chunked",
+      "connection": "Close"
+    }
+  },
+  {
+    "scope": "https://euw.api.pvp.net:443",
+    "method": "get",
+    "path": "/championmastery/location/EUW1/player/70448430/champions",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "bd99cd6e53410c85df25eb2ec6bfe3e91e2124849080156211958b8808296a020221de9d495045a98dc69451b6a37b9dfbd5f6f1f1f4f5f7d5a7edfadb72f3e4edeab21666632a17ababf7eb8f9f36d7bbe329e39d83a7cb9765db9ffc7df2fc7ab33bec5797ad82f6e3ed7a7f78de23bedc7c5c5697c0da488d544b29f7df79b1d95d2d4ffbf3b74145d4057eb53b6cb6cf96afb70f9da22cfbc3e39bf5eeb0f4cf3bdc7c5e2e5687eb0fcb6eff687db33b9e951f17632e28e0b8d47349858a9eab165334960417891c234ce0820c173587251e8b8091622c53c860353b063857b6f0ee8ffd1d0b0d90832ab4d623564b60a91c039c0b8b6a8eaa600b920585a17f6f868ab19d3159c2292c41d22859bdad2a67b048c9b5ec10ebdd7abb7f6811a6b0884b5083d23bab56e3041658f9f71afc0f2cb21417348a14be6aef2c4c29219d53df3507559b855000a8944956b3337696d70b5729c74f429548dcab36834c05aaaafb63dda7422299972ddf5a1158158eb2d50bb3502b09306e3c4c1717c17919235f876e6eae2e4d2818c75ab92b21657a0b4f014660bf0cd61cd9681eccd99cfe9b62a17d6a424d2103566de89e80c1a665cccfae008ba0851da6ad34cc1422501b779895791da6deee065cd838e0121421811417f0908b8a38ae87d721144991558aa672edb2c19c11fa46c3a14ca83a0f8cbd26465c6a8124f6741500cb9828b3a122128153c4877391b7f21117b6124a7deb7598110e6eee11c7d52df4b406138f051eabfb8d100bd1106ba6c1ea986b2255f5cd15513143402545cc28251ba700836c499ba91a5ee74330083caff48455b1960283a1e925a399605e362230d0d870d02f8798107a1d1a0e25e7371e6ea4d8df43055c5c03353cda8d3e9933fbffe9fd417711cef387e0af6b022a8afc7c6fafbea7a4da8bc6761ed8dbf9ffa842f27623e0c21ac8062b77d5b04cb64eef0fb80427ca06a744feb451fb0b80da6523251a7f6ce47fc3d28923197258185cd788415f165392717a7f84557962b6fcc5468405111648219454114202cb666205db7224f1a131e4a6dd4265b8606c0c41671a43f11b65e8a08289dc1503454beac2a60e0732284e9cc835e7346a308f454d453863774fef0fb126eeff909ac7a0c1cdb57463485d3832583abcb8ee4604e661612e5b122d93dc3765c5d415af0c9749509eb84cf63531c715552161abaa29cd904415f2cc2a0cfe3d19faf8c8c653a5d26a6aebe28468485634defc04cef85660781d0000"
+    ],
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "vary": "Accept-Encoding",
+      "x-rate-limit-count": "2:10,142:600",
+      "transfer-encoding": "chunked",
+      "connection": "Close"
+    }
+  }
+]

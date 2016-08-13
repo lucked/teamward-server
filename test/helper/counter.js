@@ -66,14 +66,14 @@ describe("Counter helper", function() {
       assert.equal(res[0].champion.name, "graves");
       assert.equal(res[0].counter.id, "illaoi");
       assert.equal(res[0].winRate, 55);
-      assert.equal(res[1].champion.id, "teemo");
-      assert.equal(res[1].counter.id, "illaoi");
+      assert.equal(res[1].champion.id, "illaoi");
+      assert.equal(res[1].counter, null);
+      assert.equal(res[1].winRate, null);
+      assert.equal(res[2].champion.id, "teemo");
+      assert.equal(res[2].counter.id, "illaoi");
       // Worst counter ever :p
-      assert.equal(res[1].winRate, 30);
-      assert.equal(res[2].champion.id, "illaoi");
+      assert.equal(res[2].winRate, 30);
       // No counter for this one, make sure it's still null
-      assert.equal(res[2].counter, null);
-      assert.equal(res[2].winRate, null);
 
       done();
     });

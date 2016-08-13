@@ -1,13 +1,36 @@
 "use strict";
 
 var assert = require('assert');
+var mongoose = require("mongoose");
 
 var app = require('../../../app');
-// var recorder = require('../../mocks/recorder.js');
+var recorder = require('../../mocks/recorder.js');
 
 var supertest = require('supertest');
 
 describe("Main server", function() {
+  var Champion = mongoose.model("Champion");
+
+  before(function(done) {
+    Champion.remove({}, done);
+  });
+
+  before(function(done) {
+    var champion = new Champion();
+    champion.roles = ['TOP'];
+    champion._id = 39;
+    champion.name = "Irelia";
+    champion.topMatchups = [
+      {
+        winRate: 44,
+        id: 420,
+        name: 'Illaoi'
+      }
+    ];
+
+    champion.save(done);
+  });
+
   describe("GET /summoner/counter", function() {
     it("should require summoner name", function(done) {
       supertest(app)
@@ -66,14 +89,15 @@ describe("Main server", function() {
     });
 
     it("should succeed with all params", function(done) {
-      // done = recorder.useNock(this, done);
+      done = recorder.useNock(this, done);
 
       supertest(app)
         .get('/summoner/counter?summoner=riotneamar&region=euw&role=TOP&level=5')
         .expect(200)
         .expect(function(res) {
-          assert.equal(res.body.name, 'Neamar');
-          assert.equal(res.body.profileIcon, 'http://ddragon.leagueoflegends.com/cdn/6.13.1/img/profileicon/26.png');
+          assert.equal(res.body.counters[0].champion.id, 39);
+          assert.equal(res.body.counters[0].winRate, 56);
+          assert.equal(res.body.counters[0].counter.id, 420);
         })
         .end(done);
     });
