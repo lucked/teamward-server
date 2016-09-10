@@ -96,8 +96,8 @@ describe("Main server", function() {
         .expect(200)
         .expect(function(res) {
           assert.equal(res.body.counters[0].champion.id, 39);
-          assert.equal(res.body.counters[0].winRate, 56);
-          assert.equal(res.body.counters[0].counter.id, 420);
+          assert.equal(res.body.counters[0].counters[0].winRate, 56);
+          assert.equal(res.body.counters[0].counters[0].id, 420);
         })
         .end(done);
     });

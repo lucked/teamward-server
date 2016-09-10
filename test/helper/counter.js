@@ -64,22 +64,23 @@ describe("Counter helper", function() {
       assert.equal(res.length, 3);
       assert.equal(res[0].champion.id, "graves");
       assert.equal(res[0].champion.name, "graves");
-      assert.equal(res[0].counter.id, "illaoi");
-      assert.equal(res[0].winRate, 55);
+      assert.equal(res[0].counters.length, 1);
+      assert.equal(res[0].counters[0].id, "illaoi");
+      assert.equal(res[0].counters[0].winRate, 55);
       assert.equal(res[1].champion.id, "illaoi");
-      assert.equal(res[1].counter, null);
-      assert.equal(res[1].winRate, null);
+      // No counter for this one, make sure it's empty
+      assert.equal(res[1].counters.length, 0);
       assert.equal(res[2].champion.id, "teemo");
-      assert.equal(res[2].counter.id, "illaoi");
+      assert.equal(res[2].counters.length, 1);
+      assert.equal(res[2].counters[0].id, "illaoi");
       // Worst counter ever :p
-      assert.equal(res[2].winRate, 30);
-      // No counter for this one, make sure it's still null
+      assert.equal(res[2].counters[0].winRate, 30);
 
       done();
     });
   });
 
-  it("should find the best counter from the list", function(done) {
+  it("should find the counters from the list", function(done) {
     var masteredChampions = [
       buildAPIChampion("illaoi"),
       buildAPIChampion("singed"),
@@ -106,14 +107,19 @@ describe("Counter helper", function() {
       assert.equal(res.length, 3);
       assert.equal(res[0].champion.id, "graves");
       assert.equal(res[0].champion.name, "graves");
-      assert.equal(res[0].counter.id, "illaoi");
-      assert.equal(res[0].winRate, 55);
+      assert.equal(res[0].counters.length, 2);
+      assert.equal(res[0].counters[0].id, "illaoi");
+      assert.equal(res[0].counters[0].winRate, 55);
+      assert.equal(res[0].counters[1].id, "singed");
+      assert.equal(res[0].counters[1].winRate, 45);
       assert.equal(res[1].champion.id, "illaoi");
-      assert.equal(res[1].counter.id, "singed");
-      assert.equal(res[1].winRate, 50);
+      assert.equal(res[1].counters.length, 1);
+      assert.equal(res[1].counters[0].id, "singed");
+      assert.equal(res[1].counters[0].winRate, 50);
       assert.equal(res[2].champion.id, "singed");
-      assert.equal(res[2].counter.id, "illaoi");
-      assert.equal(res[2].winRate, 50);
+      assert.equal(res[2].counters.length, 1);
+      assert.equal(res[2].counters[0].id, "illaoi");
+      assert.equal(res[2].counters[0].winRate, 50);
 
       done();
     });
