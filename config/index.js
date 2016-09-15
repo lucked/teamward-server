@@ -4,6 +4,12 @@
 var dotenv = require('dotenv');
 dotenv.load();
 
+require('dnscache')({
+  "enable": true,
+  "ttl": 300,
+  "cachesize": 1000
+});
+
 if(!process.env.RIOT_API_KEY) {
   throw new Error("Please specify RIOT_API_KEY with a valid Riot key.");
 }
