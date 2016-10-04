@@ -1,5 +1,8 @@
 require('newrelic');
 
+var dotenv = require('dotenv');
+dotenv.load();
+
 require('./server.js');
 
 if(require('cluster').isMaster) {

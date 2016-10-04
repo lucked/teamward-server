@@ -42,6 +42,16 @@ Most of the code is in the `lib/` folder.
 
 ## Using locally
 You'll need node.js.
-Run `npm install`, and `npm test` to make sure everything is correctly setup.
+Run `npm install`.
+
+Create a `.env` file at project root using this template:
+
+```bash
+RIOT_API_KEY="your riot key from developer.riotgames.com"
+DEBUG="teamward:*"
+GCM_API_KEY="your gcm api key, or a fake value if you don't plan to develop on GCM"
+```
+
+Run `npm test` to make sure everything is correctly setup.
 
 To test locally, simply run `npm start`. You may want to use nodemon instead to hot-reload you changes.
