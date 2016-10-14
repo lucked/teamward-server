@@ -88,6 +88,16 @@ describe("Main server", function() {
         .end(done);
     });
 
+    it("should fail for unknown summoner", function(done) {
+      done = recorder.useNock(this, done);
+
+      supertest(app)
+        .get('/summoner/counter?summoner=404summ&region=euw&role=TOP&level=1')
+        .expect(404)
+        .expect(/summoner does not exist/i)
+        .end(done);
+    });
+
     it("should succeed with all params", function(done) {
       done = recorder.useNock(this, done);
 
