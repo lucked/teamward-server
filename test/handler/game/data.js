@@ -15,6 +15,7 @@ describe("Main server", function() {
       gameData.buildExternalGameData = sinon.spy(function(gameDAta, region, cb) {
         cb(null, {
           stub: true,
+          game_id: 123,
           teams: [
             {
               players: [

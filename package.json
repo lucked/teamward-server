@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Neamar/teamward-server#readme",
   "dependencies": {
-    "async": "^1.5.2",
+    "async": "^2.1.2",
     "auto-load": "^2.1.0",
     "debug": "^2.2.0",
     "dnscache": "0.0.4",
