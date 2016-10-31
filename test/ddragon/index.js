@@ -55,6 +55,8 @@ describe("Ddragon info", function() {
     });
 
     it("should return champion information from champion name too", function(done) {
+      done = recorder.useNock(this, done);
+
       ddragonInfo.getChampionData('euw', 'Illaoi', function(err, data) {
         if(err) {
           return done(err);
