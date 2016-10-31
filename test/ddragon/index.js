@@ -35,7 +35,7 @@ describe("Ddragon info", function() {
           });
         },
         function secondCall(cb) {
-          nock('http://ddragon.leagueoflegends.com')
+          nock('https://ddragon.leagueoflegends.com')
             .get('/realms/euw.json')
             .reply(404)
             .get('/cdn/6.5.1/data/en_US/champion.json')

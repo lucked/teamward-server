@@ -1,6 +1,6 @@
 [
   {
-    "scope": "http://ddragon.leagueoflegends.com:80",
+    "scope": "https://ddragon.leagueoflegends.com:443",
     "method": "GET",
     "path": "/realms/euw.json",
     "body": "",
@@ -18,7 +18,7 @@
       },
       "v": "6.21.1",
       "l": "en_GB",
-      "cdn": "http://ddragon.leagueoflegends.com/cdn",
+      "cdn": "https://ddragon.leagueoflegends.com/cdn",
       "dd": "6.21.1",
       "lg": "6.21.1",
       "css": "6.21.1",
@@ -45,7 +45,7 @@
     }
   },
   {
-    "scope": "http://ddragon.leagueoflegends.com:80",
+    "scope": "https://ddragon.leagueoflegends.com:443",
     "method": "GET",
     "path": "/cdn/6.21.1/data/en_US/champion.json",
     "body": "",
