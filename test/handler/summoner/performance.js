@@ -52,14 +52,13 @@ describe("Main server", function() {
         .end(done);
     });
 
-    it.skip("should succeed with all params", function(done) {
+    it("should succeed with all params", function(done) {
       done = recorder.useNock(this, done);
 
       supertest(app)
         .get('/summoner/performance?summoner=riotneamar&region=euw&champion=Kled')
         // .expect(200)
         .expect(function(res) {
-          console.log(res.body)
           assert.equal(res.body.matches.length, 7);
           assert.equal(res.body.matches[0].victory, true);
           assert.equal(res.body.matches[0].ward.id, 3340);

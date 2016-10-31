@@ -69,7 +69,8 @@ module.exports.useNock = function(mochaContext, done) {
   var nocks = require(testPath);
 
   nocks.forEach(function(n) {
-    nock(n.scope)[n.method](n.path)
+    console.log(n.scope, n.method, n.path);
+    nock(n.scope)[n.method.toLowerCase()](n.path)
       .query(true)
       .reply(n.status, n.response, n.headers);
   });
