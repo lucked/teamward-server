@@ -1,6 +1,7 @@
 'use strict';
 
 var nock = require('nock');
+var async = require("async");
 var assert = require('assert');
 var ddragonInfo = require('../../lib/ddragon');
 var recorder = require('../mocks/recorder.js');
@@ -21,21 +22,36 @@ describe("Ddragon info", function() {
     });
 
     it("should cache champion information", function(done) {
-      nock('http://ddragon.leagueoflegends.com')
-        .get('/realms/euw.json')
-        .reply(404)
-        .get('/cdn/6.5.1/data/en_US/champion.json')
-        .reply(404);
+      done = recorder.useNock(this, done);
+      async.series([
+        function firstCall(cb) {
+          ddragonInfo.getChampionData('euw', 420, function(err, data) {
+            if(err) {
+              return done(err);
+            }
 
-      ddragonInfo.getChampionData('euw', 420, function(err, data) {
-        if(err) {
-          return done(err);
+            assert.equal(data.id, 'Illaoi');
+            cb();
+          });
+        },
+        function secondCall(cb) {
+          nock('http://ddragon.leagueoflegends.com')
+            .get('/realms/euw.json')
+            .reply(404)
+            .get('/cdn/6.5.1/data/en_US/champion.json')
+            .reply(404);
+
+          ddragonInfo.getChampionData('euw', 420, function(err, data) {
+            if(err) {
+              return done(err);
+            }
+
+            assert.equal(data.id, 'Illaoi');
+
+            cb();
+          });
         }
-
-        assert.equal(data.id, 'Illaoi');
-
-        done();
-      });
+      ], done);
     });
 
     it("should return champion information from champion name too", function(done) {

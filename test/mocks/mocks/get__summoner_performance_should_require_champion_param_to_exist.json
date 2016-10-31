@@ -1,12 +1,13 @@
 [
   {
     "scope": "https://euw.api.pvp.net:443",
-    "method": "get",
+    "method": "GET",
     "path": "/api/lol/euw/v1.4/summoner/by-name/neamar",
     "body": "",
     "status": 200,
     "response": [
-      "1f8b0800000000000000258b390a80301045eff2eb1493282ea96d04f10e4147089889c4a509dedd80ed5b32845d700936c3afb05d4364c8340ae202c362feb5c291e2e6771e972863090d299c770851384dfcf00e5b1594f8f1a78f32b8abdcba6eeb4a77a6d744f4be1f5be62a296d000000"
+      "1f8b0800000000000000",
+      "258b390a80301045eff2eb1493282ea96d04f10e4147089889c4a509dedd80ed5b32845d700936c3afb05d4364c8340ae202c362feb5c291e2e6771e972863090d299c770851384dfcf00e5b1594f8f1a78f32b8abdcba6eeb4a77a6d744f4be1f5be62a296d000000"
     ],
     "headers": {
       "access-control-allow-headers": "Content-Type",
@@ -14,17 +15,17 @@
       "access-control-allow-origin": "*",
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "date": "Mon, 31 Oct 2016 15:08:52 GMT",
+      "date": "Mon, 31 Oct 2016 17:32:53 GMT",
       "vary": "Accept-Encoding, User-Agent",
-      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IBVgtRCgEBHh5UFUMHBAcHXQ9VAgdaAAcABVRaFWw=",
-      "x-rate-limit-count": "129:10,6725:600",
-      "content-length": "115",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IBVA9RAA0HHh5UFUMHVAIEV1MHUFJTWlFWU1lRFWw=",
+      "x-rate-limit-count": "325:10,13669:600",
+      "transfer-encoding": "chunked",
       "connection": "Close"
     }
   },
   {
     "scope": "http://ddragon.leagueoflegends.com:80",
-    "method": "get",
+    "method": "GET",
     "path": "/realms/euw.json",
     "body": "",
     "status": 200,
@@ -54,22 +55,22 @@
       "connection": "close",
       "accept-ranges": "bytes",
       "access-control-allow-origin": "*",
-      "age": "148",
+      "age": "389",
       "cache-control": "must-revalidate, no-cache, private",
-      "date": "Mon, 31 Oct 2016 15:08:52 GMT",
+      "date": "Mon, 31 Oct 2016 17:32:53 GMT",
       "etag": "\"89b376aa3d1ca56a0db73019ef158cc2\"",
       "server": "Apache/2.2.29 (Amazon)",
-      "via": "1.1 varnish, 1.1 479d3d8cfdf8d35634b50f89a5beaa9e.cloudfront.net (CloudFront)",
+      "via": "1.1 varnish, 1.1 3b0d50fb082748994f502e6e245c0a27.cloudfront.net (CloudFront)",
       "x-content-digest": "en0bb0db99ba6eaaeb0ba4bb7c1d898bf646f54351",
       "x-powered-by": "PHP/5.3.29",
-      "x-varnish": "2359120865 2359083301",
+      "x-varnish": "2361378554 2361275088",
       "x-cache": "Miss from cloudfront",
-      "x-amz-cf-id": "zd_hrYb35NCOFKtNa0POZutr20ZV_bxQ71XA4x2c_sXv28Y5aVHTEg=="
+      "x-amz-cf-id": "yrSF6Igy7HcdorXvQ24h7QIZYIw4-UrUYrAflLJYNzmEgMM3P_Ibgw=="
     }
   },
   {
     "scope": "http://ddragon.leagueoflegends.com:80",
-    "method": "get",
+    "method": "GET",
     "path": "/cdn/6.21.1/data/en_US/champion.json",
     "body": "",
     "status": 200,
@@ -6717,16 +6718,16 @@
       "expires": "Thu, 31 Dec 2099 00:00:00 GMT",
       "last-modified": "Mon, 17 Oct 2016 03:26:13 GMT",
       "server": "Apache/2.2.29 (Amazon)",
-      "via": "1.1 varnish, 1.1 77bf0d58790cfb484da5202fe124c53f.cloudfront.net (CloudFront)",
+      "via": "1.1 varnish, 1.1 e66a15cf6c7b01b2d613f4b2fc6c4f25.cloudfront.net (CloudFront)",
       "x-varnish": "2092555336",
-      "age": "1166927",
+      "age": "1175568",
       "x-cache": "Hit from cloudfront",
-      "x-amz-cf-id": "iAHZAyfC0wDSKAvIoxymxftdUT5rOJr3bE5WFdr2LcyKmui-BKGgRw=="
+      "x-amz-cf-id": "Lq4mcgzRfC7GYE-G4WAB1tNrZNzGfT4BHIX2gnBSbqWbEyyX3iNL7w=="
     }
   },
   {
     "scope": "http://ddragon.leagueoflegends.com:80",
-    "method": "get",
+    "method": "GET",
     "path": "/cdn/6.21.1/data/en_US/item.json",
     "body": "",
     "status": 200,
@@ -18299,11 +18300,11 @@
       "expires": "Thu, 31 Dec 2099 00:00:00 GMT",
       "last-modified": "Mon, 17 Oct 2016 03:26:13 GMT",
       "server": "Apache/2.2.29 (Amazon)",
-      "via": "1.1 varnish, 1.1 4b995fa096b3776801d553279dfdb538.cloudfront.net (CloudFront)",
+      "via": "1.1 varnish, 1.1 ba3e50e1cbbe6cb967ec7e40b336dd55.cloudfront.net (CloudFront)",
       "x-varnish": "2092555399",
-      "age": "1166926",
+      "age": "1175567",
       "x-cache": "Hit from cloudfront",
-      "x-amz-cf-id": "PHCpT5o-YEQKT_Fn2sZACpDjnK2DozOfhvI82-ibakJDnvRY-84M8g=="
+      "x-amz-cf-id": "icWEhmFTOU0yYYujD68WgXcqm-tnpvMmUNOA2XlGLLKZ5Bk2EpIFAA=="
     }
   }
 ]

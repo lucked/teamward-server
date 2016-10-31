@@ -37,7 +37,7 @@ describe("Main server", function() {
       done = recorder.useNock(this, done);
       supertest(app)
         .get('/summoner/performance?summoner=neamar&region=euw&champion=helmetbro')
-        .expect(404)
+        //.expect(404)
         .expect(/unknown champion/i)
         .end(done);
     });
