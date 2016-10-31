@@ -45,13 +45,17 @@ module.exports.setupNock = function(mochaContext, done) {
 
       // Strip API key
       d.path = d.path.replace(/(\?|\&)api_key=.+$/g, '');
+      console.log("Recording " + d.path);
       records.push(d);
     }
   });
 
   return function writeMocks(err) {
-    fs.writeFileSync(testPath, JSON.stringify(records, null, 2));
-    done(err);
+    // Delay call to done, to ensure we catch all ongoing requests.
+    setTimeout(function() {
+      fs.writeFileSync(testPath, JSON.stringify(records, null, 2));
+      done(err);
+    }, 500);
   };
 };
 
