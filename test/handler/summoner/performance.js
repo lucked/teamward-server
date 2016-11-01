@@ -11,7 +11,6 @@ describe("Main server", function() {
   describe("GET /summoner/performance", function() {
     it("should require summoner name", function(done) {
       supertest(app)
-      supertest(app)
         .get('/summoner/performance')
         .expect(409)
         .expect(/summoner param/i)
