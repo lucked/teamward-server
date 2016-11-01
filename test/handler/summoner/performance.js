@@ -57,7 +57,7 @@ describe("Main server", function() {
 
       supertest(app)
         .get('/summoner/performance?summoner=riotneamar&region=euw&champion=Kled')
-        // .expect(200)
+        .expect(200)
         .expect(function(res) {
           assert.equal(res.body.matches.length, 7);
           assert.equal(res.body.matches[0].victory, true);

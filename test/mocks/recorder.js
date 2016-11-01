@@ -47,7 +47,6 @@ module.exports.setupNock = function(mochaContext, done) {
 
       // Strip API key
       d.path = d.path.replace(/(\?|\&)api_key=.+$/g, '');
-      console.log("Recording " + d.path);
       records.push(d);
     }
   });
