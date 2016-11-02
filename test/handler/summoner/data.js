@@ -33,7 +33,7 @@ describe("Main server", function() {
         .expect(200)
         .expect(function(res) {
           assert.equal(res.body.name, 'Neamar');
-          assert.equal(res.body.profileIcon, 'http://ddragon.leagueoflegends.com/cdn/6.13.1/img/profileicon/26.png');
+          assert.equal(res.body.profileIcon, 'https://ddragon.leagueoflegends.com/cdn/6.13.1/img/profileicon/26.png');
         })
         .end(done);
     });

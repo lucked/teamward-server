@@ -1,6 +1,7 @@
 "use strict";
 var nock = require('nock');
 var fs = require("fs");
+var log = require("debug")("teamward:test:recorder");
 
 var TEST_BASE_FOLDER = __dirname + "/mocks";
 
@@ -35,6 +36,7 @@ module.exports.setupNock = function(mochaContext, done) {
     output_objects: true,
     use_separator: false,
     logging: function(d) {
+      log("Recorded " + d.scope + d.path);
       if(d.status === 429) {
         return;
       }
@@ -50,8 +52,11 @@ module.exports.setupNock = function(mochaContext, done) {
   });
 
   return function writeMocks(err) {
-    fs.writeFileSync(testPath, JSON.stringify(records, null, 2));
-    done(err);
+    // Delay call to done, to ensure we catch all ongoing requests.
+    setTimeout(function() {
+      fs.writeFileSync(testPath, JSON.stringify(records, null, 2));
+      done(err);
+    }, 500);
   };
 };
 
@@ -65,13 +70,14 @@ module.exports.useNock = function(mochaContext, done) {
   var nocks = require(testPath);
 
   nocks.forEach(function(n) {
-    nock(n.scope)[n.method](n.path)
+    log("Replaying " + n.method + " " + n.scope + n.path);
+    nock(n.scope)[n.method.toLowerCase()](n.path)
       .query(true)
       .reply(n.status, n.response, n.headers);
   });
 
   return function(err) {
-    nock.enableNetConnect();
+    // nock.enableNetConnect();
     done(err);
   };
 };

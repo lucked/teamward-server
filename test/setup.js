@@ -2,10 +2,13 @@
 var mongoose = require("mongoose");
 var nock = require("nock");
 
-before(function(done) {
+var ddragon = require("../lib/ddragon");
+
+before(function cleanHttpCaches(done) {
   mongoose.model('HttpCache').remove({}, done);
 });
 
-beforeEach(function() {
+beforeEach(function cleanNick() {
+  ddragon._cache = {};
   nock.cleanAll();
 });
