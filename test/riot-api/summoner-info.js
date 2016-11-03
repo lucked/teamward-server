@@ -69,5 +69,17 @@ describe("Summoner data", function() {
         done();
       });
     });
+
+    it("should return empty data for unranked summoners", function(done) {
+      done = recorder.useNock(this, done);
+      summonerData.getCurrentRanks([44490420], 'euw', function(err, data) {
+        if(err) {
+          return done(err);
+        }
+
+        assert.equal(Object.keys(data).length, 0);
+        done();
+      });
+    });
   });
 });
