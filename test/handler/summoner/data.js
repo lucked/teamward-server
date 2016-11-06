@@ -25,6 +25,16 @@ describe("Main server", function() {
         .end(done);
     });
 
+    it("should fail for unknown summoner", function(done) {
+      done = recorder.useNock(this, done);
+
+      supertest(app)
+        .get('/summoner/data?summoner=404summ&region=euw')
+        .expect(404)
+        .expect(/summoner does not exist/i)
+        .end(done);
+    });
+
     it("should succeed with summoner and region param", function(done) {
       done = recorder.useNock(this, done);
 
