@@ -2,7 +2,7 @@
 
 // Load environment variables from .env file
 var dotenv = require('dotenv');
-dotenv.load();
+dotenv.config({silent: true});
 
 require('dnscache')({
   "enable": true,
