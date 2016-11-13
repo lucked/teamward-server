@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 4.4.0
+    version: 6.3.1
   hosts:
     # Every test should be fully mocked, or fail.
     # This remove network conenctivity to the domains used for communicating with the API
