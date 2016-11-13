@@ -8,7 +8,7 @@ before(function cleanHttpCaches(done) {
   mongoose.model('HttpCache').remove({}, done);
 });
 
-beforeEach(function cleanNick() {
+beforeEach(function cleanNock() {
   ddragon._cache = {};
   nock.cleanAll();
 });
