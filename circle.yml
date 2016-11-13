@@ -15,5 +15,9 @@ test:
   pre:
     - npm run-script lint
     - npm run-script style
-  post:
-    - RIOT_API_KEY_IS_PRODUCTION=1 npm test
+  override:
+    - npm test
+      environment:
+        MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/test-results.xml
+        MOCHA_REPORTER: $CIRCLE_TEST_REPORTS/junit/test-results.xml
+    - RIOT_API_KEY_IS_PRODUCTION=1 npm test # Run the tests with a high concurrency toon, should have no impact
