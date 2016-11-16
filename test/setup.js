@@ -14,8 +14,7 @@ beforeEach(function cleanLocalCache() {
   cache.lruCache.reset();
 });
 
-beforeEach(function cleanNick() {
+beforeEach(function cleanNock() {
   ddragon._cache = {};
   nock.cleanAll();
 });
-

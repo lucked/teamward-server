@@ -1,7 +1,7 @@
 require('newrelic');
 
 var dotenv = require('dotenv');
-dotenv.load();
+dotenv.config({silent: true});
 
 require('./server.js');
 
