@@ -36,6 +36,7 @@
     "opbeat": "^3.6.6",
     "rarity": "^2.1.1",
     "request": "^2.73.0",
+    "riot-lol-api": "^1.1.3",
     "supertest": "^2.0.1",
     "throng": "^4.0.0"
   },
