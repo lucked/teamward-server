@@ -23,8 +23,6 @@ function getMockFilePath(mochaContext) {
  * You can now replace the call to recordTest with a call to useNock, and magic will happen (HTTP requests will be read through the disk)
  */
 module.exports.setupNock = function(mochaContext, done) {
-  require("../../lib/riot-api/cache.js").disableCaching = true;
-
   var records = [];
   var testPath = getMockFilePath(mochaContext);
 
