@@ -58,7 +58,9 @@ describe("Network cache", function() {
       function purge(cb) {
         cache.purge(cb);
       },
-      function ensureRemoved(cb) {
+      function ensureRemoved(purged, total, cb) {
+        assert.equal(purged, 1);
+        assert.equal(total, 2);
         // Should be removed
         assert.throws(function() {
           fs.readFileSync(cache.getCachePath('euw', '/old'));
