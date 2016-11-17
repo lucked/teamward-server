@@ -100,7 +100,7 @@ describe("Riot queue requester", function() {
     async.waterfall([
       function(cb) {
         // Should fetch resource the first time
-        request('EUW', '/cacheable', 1000, function(err, res) {
+        request('EUW', '/cacheable', 10000, function(err, res) {
           if(err) {
             return cb(err);
           }
@@ -110,8 +110,11 @@ describe("Riot queue requester", function() {
         });
       },
       function(cb) {
+        setTimeout(cb, 15);
+      },
+      function(cb) {
         // Should reuse cached value and not call the second nock request
-        request('EUW', '/cacheable', 1000, function(err, res) {
+        request('EUW', '/cacheable', 10000, function(err, res) {
           if(err) {
             return cb(err);
           }
