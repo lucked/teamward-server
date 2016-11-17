@@ -7,7 +7,7 @@ var cache = require('../lib/riot-api/cache');
 
 beforeEach(function cleanCaches() {
   // API cache
-  cache.cachePrefix = new Date().getTime();
+  cache.cachePrefix = "tw-tests-" + new Date().getTime();
 
   // DDragon cache
   ddragon._cache = {};
