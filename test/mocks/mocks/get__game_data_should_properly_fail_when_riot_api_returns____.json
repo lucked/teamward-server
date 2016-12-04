@@ -1,0 +1,51 @@
+[
+  {
+    "scope": "https://na.api.pvp.net:443",
+    "method": "GET",
+    "path": "/api/lol/na/v1.4/summoner/by-name/TinCanned",
+    "body": "",
+    "status": 502,
+    "response": [
+      "1f8b0800000000000000258c3b0ac3301005eff26a15bb44c4426dd2185ce602c25ec382b50af2a731bebb056e5e3133bc139bda98cc64423ca16d0377ec1d2c6541c44fedf368877f2db32ed28fc5fa16323339ac7bcec5a40e72c882f86aa8caa1ab16fba6ad5db00f14bc7f0726a2ebba017e44ea5172000000"
+    ],
+    "headers": {
+      "access-control-allow-headers": "Content-Type",
+      "access-control-allow-methods": "GET, POST, DELETE, PUT",
+      "access-control-allow-origin": "*",
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "date": "Sun, 04 Dec 2016 09:56:30 GMT",
+      "vary": "Accept-Encoding, User-Agent",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgAVkYdFGQHBDcQUQxLA1tMXV1dORYzVBJHNQFUZAQUFVFQVThOA0dYa0kIXlpvTR0RB1cLVwxFZBtEAksNPR4SRg8JWVkEFD8XUUlJDwNaVGtJH0JDXg8JDQdCLFkPXUtJEhsifDUYQx9SSgYbUUhTCAIGUFlXDggbS1UdFAQEUgFQBVIMWgwADVQAXQ9DHQdSDhdTag==",
+      "x-rate-limit-count": "16:10,2169:600",
+      "content-length": "123",
+      "connection": "Close"
+    }
+  },
+  {
+    "scope": "https://na.api.pvp.net:443",
+    "method": "GET",
+    "path": "/observer-mode/rest/consumer/getSpectatorGameInfo/NA1/81714",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "cd985d6fda301486ffca946b2ee28fd849ef18ab3ac6a8f6415575139a5c3010353851e24c6315ff7d4ec2d640f0814253ed323e39b6653f7ecf6b3f3a73b194fda9738109233e45010b3ace52244513c29d323c8ca7d2b970ba5fba43a76a19ad92a265d81df5de5fbefb71d51d5e6e229f7399cb5eac66e1bce882791d2711a90e27612294ce9c8bef8f8e966259f6efba1d274b6414a1e2936c3e70f1413bce6421964918ab6a2acc7494c6b33092fd49d5e651d396e5cb65ac647a6dc63633fa14665a648bd8cce63ed6cec54c44997cfaabec2ae03e439e1920cd95ac6634897365fe0eaab6b2734cbd75e75f04d523bc1ef1eb91c0ad45eabd11c46b11528f106f3d2e963cd3320d37f349857a30b1bfcdab72291142451f550cedc430798aede6116acfa3c89ee701e3316acd23c03c09c6f63c02e451b21e17511b3b18800733bf010f460d763243e9834c09c08e391fe6807072881d4e6c1cb8d608c1364218399a1060a7819547c0cac38400e38184e0130901f2ce218462b741883952b8c14824e7524db348ac64ea3180144c38278c1e2485320b0f809660d7468ac75ad792534981b4c4bee318200563fb781898273e400aad83c277402998d80185f3a0c1493f5722fd05f041fc80b82576cf5092fa5e633fa845d8163936a6802ae4f117d1188000b00ad9896b472b803c0fc863e754a1263966d91be45cc9dfa683700e6a4bc07cdff74eae4227f994a309c180b660405be0330b9c75405b30a02db04f0188047d0ade26043f8310469b4588bab481c807f120dff4d537a1244489ebe380907d94f0e37c6eb5ae7b2356b2785d7bf096f3a98fc3adcce11d6fbc7f0665b56fd913417ad546c502f2a0f100bdc20c81346e55ba02cd3a8d4dcf6c8c41d335f772912f741442240624a084e333f48a5bf58abd805e413b76aa5eb5a13b6d543458af4042d09e92868cb169deca632d743c146a225388135adc828ef0cc361aa0ba66e584b57fff863c33c0d72b7379a88e429c20e8f186913d98f0665d8bc2a5313f998610f1dc803076fa057cdb36bfae39fe9f2ee0aff044034ac98e37464d4210721b848c42d5134ac92980888f387adee3ded97c90e3f98024e4d4cb531bd7ee762cfcb858a7f83e93e94f999a757a74a49aa4ab441b0e06726576f8edcd2d41fa8627d3d1bd8e92c1ed607037ebe9bbcf43b4081653df591b5222a167715a42e65c7751014349456f8354b103e3ea3dfaab16a91e85053d6ed5f251aab95e98cff51f428cded1fd160000"
+    ],
+    "headers": {
+      "accept-ranges": "bytes",
+      "age": "0",
+      "cache-control": "no-cache, max-age=180",
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "date": "Sun, 04 Dec 2016 09:56:31 GMT",
+      "expires": "Wed, 31 Dec 1969 16:00:00 PST",
+      "pragma": "No-cache",
+      "via": "1.1 varnish",
+      "x-rate-limit-count": "25:10,2178:600",
+      "x-varnish": "1985257155",
+      "transfer-encoding": "chunked",
+      "connection": "Close"
+    }
+  }
+]

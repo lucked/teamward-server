@@ -2,7 +2,7 @@
 
 var supertest = require('supertest');
 var sinon = require('sinon');
-var assert = require("assert");
+var assert = require('assert');
 
 var app = require('../../../app');
 var gameData = require('../../../lib/helper/game-data');
@@ -93,6 +93,14 @@ describe("Main server", function() {
         .end(done);
     });
 
+    it("should properly fail when riot api returns 503", function(done) {
+      done = recorder.useNock(this, done);
 
+      supertest(app)
+        .get('/game/data?summoner=TinCanned&region=na')
+        .expect(502)
+        .expect(/riot api seems to be down/i)
+        .end(done);
+    });
   });
 });
