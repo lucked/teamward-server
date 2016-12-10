@@ -1,5 +1,7 @@
 "use strict";
 
+var nock = require("nock");
+
 var recorder = require('../mocks/recorder.js');
 var assert = require('assert');
 var gameData = require('../../lib/helper/game-data');
@@ -29,6 +31,33 @@ describe("Game data", function() {
       assert.equal(data.teams[0].players[1].last_season_rank, 'PLATINUM');
 
       done();
+    });
+  });
+
+  it("should cache game data results", function(done) {
+    this.timeout(40000);
+    done = recorder.useNock(this, done);
+    var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
+    gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
+      if(err) {
+        return done(err);
+      }
+
+      assert.equal(data.map_id, 11);
+
+      // Remove all nocks
+      nock.cleanAll();
+
+      gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
+        if(err) {
+          return done(err);
+        }
+
+        assert.equal(data.map_id, 11);
+
+        done();
+      });
+
     });
   });
 
