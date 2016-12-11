@@ -35,6 +35,7 @@ describe("Game data", function() {
   });
 
   it("should cache game data results", function(done) {
+    // This test ensure that calling buildExternalGameData() more than once won't trigger any more HTTP calls to the API
     this.timeout(40000);
     done = recorder.useNock(this, done);
     var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
