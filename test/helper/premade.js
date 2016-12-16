@@ -40,6 +40,21 @@ describe("Premade helper", function() {
       assert.deepEqual(premade['100'][0], ["1", "2"]);
     });
 
+    it("should still work with incomplete premade data", function() {
+      var premadeData = {
+        // 30 is not defined in the premadeData
+        1: buildFakePlayer(100, [30]),
+        2: buildFakePlayer(100, []),
+        3: buildFakePlayer(100, []),
+        4: buildFakePlayer(100, []),
+        5: buildFakePlayer(100, []),
+      };
+
+      var premade = premadeHelper.getPremade(premadeData);
+      assert.equal(premade['100'].length, 5);
+      assert.deepEqual(premade['100'][0], ["1", "30"]);
+    });
+
     it("should group simple use cases of premade 5", function() {
       var premadeData = {
         1: buildFakePlayer(100, [1, 2, 3, 4, 5]),
