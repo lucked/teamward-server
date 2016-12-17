@@ -27,6 +27,7 @@ describe("Game data", function() {
       assert.equal(data.teams[0].players[0].summoner.name, 'Neamar');
       assert.equal(data.teams[0].players[0].summoner.level, 30);
       assert.equal(data.teams[0].players[0].spell_d.name, 'Flash');
+      assert.equal(data.teams[0].players[0].spell_d.id, 'SummonerFlash');
       assert.equal(data.teams[0].players[1].current_season_rank.tier, 'GOLD');
       assert.equal(data.teams[0].players[2].last_season_rank, 'GOLD');
 
