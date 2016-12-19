@@ -23,7 +23,6 @@ module.exports = {
   apiKey: process.env.RIOT_API_KEY,
   verifyKey: process.env.RIOT_VERIFY_KEY || "N/C",
   mongoUrl: process.env.MONGO_URL || ("mongodb://localhost/" + currentEnv),
-  tempPath: process.env.TEMP_PATH || '/tmp',
   pushNotifierQueueConcurrency: process.env.PUSH_NOTIFIER_QUEUE_CONCURRENCY || 10,
   pushNotifierQueueMaxSize: process.env.PUSH_NOTIFIER_QUEUE_MAX_SIZE || 50
 };
