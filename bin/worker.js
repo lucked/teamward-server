@@ -1,4 +1,9 @@
 "use strict";
+require('newrelic');
+
+var dotenv = require('dotenv');
+dotenv.config({silent: true});
+
 
 var opbeat;
 if(process.env.OPBEAT_APP_ID) {

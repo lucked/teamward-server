@@ -1,4 +1,8 @@
 "use strict";
+require('newrelic');
+
+var dotenv = require('dotenv');
+dotenv.config({silent: true});
 
 require('heroku-self-ping')(process.env.APP_URL);
 
