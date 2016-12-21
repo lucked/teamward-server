@@ -1,31 +1,27 @@
 "use strict";
 require('newrelic');
+var log = require('debug')('teamward:bin:server');
 
-var dotenv = require('dotenv');
-dotenv.config({silent: true});
+var common = require('./_common.js');
 
 require('heroku-self-ping')(process.env.APP_URL);
 
-var opbeat;
-if(process.env.OPBEAT_APP_ID) {
-  opbeat = require('opbeat').start({
-    appId: process.env.OPBEAT_APP_ID,
-    organizationId: process.env.OPBEAT_ORGANIZATION_ID,
-    secretToken: process.env.OPBEAT_SECRET_TOKEN
-  });
-}
 var throng = require('throng');
 
 var start = function() {
   var app = require('../app');
 
-  if(opbeat) {
-    app.use(opbeat.middleware.express());
+  if(common.opbeat) {
+    app.use(common.opbeat.middleware.express());
   }
 
-  app.listen(process.env.PORT || 3000, function() {
-    console.log('App listening on port 3000!');
+  var port = process.env.PORT || 3000;
+  app.listen(port, function() {
+    log('App listening on port ' + port + '!');
   });
 };
 
-throng(process.env.WEB_CONCURRENCY || 1, start);
+var concurrency = process.env.WEB_CONCURRENCY || 1;
+
+log("Initializing app with concurrency=" + concurrency);
+throng(concurrency, start);

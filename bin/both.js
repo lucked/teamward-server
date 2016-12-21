@@ -1,11 +1,10 @@
 require('newrelic');
-
-var dotenv = require('dotenv');
-dotenv.config({silent: true});
+require('./_common.js');
 
 require('./server.js');
 
 if(require('cluster').isMaster) {
-  // Ensure the worker is only started once.
-  require('./worker.js');
+  // Ensure the workers are only started once.
+  // (server.js clusterize the app, spawning new process that would create a new worker too)
+  require('./workers.js');
 }

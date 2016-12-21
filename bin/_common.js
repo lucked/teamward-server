@@ -1,5 +1,4 @@
 "use strict";
-require('newrelic');
 
 var dotenv = require('dotenv');
 dotenv.config({silent: true});
@@ -22,12 +21,6 @@ if(!process.env.GCM_API_KEY) {
   throw new Error("Missing required environment variable GCM_API_KEY");
 }
 
-require('../app');
-
-// Start worker
-if(!process.env.DISABLE_WORKER_PUSH_NOTIFIER) {
-  require('../lib/worker/push-notifier')(opbeat);
-}
-
-require('../lib/worker/champion-stats')(opbeat);
-// require('../lib/worker/game-crawler')(opbeat);
+module.exports = {
+  opbeat: opbeat
+};
