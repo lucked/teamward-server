@@ -2,7 +2,7 @@
 require('newrelic');
 var log = require('debug')('teamward:bin:server');
 
-var common = require('./_common.js');
+var common = require('./_common');
 
 require('heroku-self-ping')(process.env.APP_URL);
 

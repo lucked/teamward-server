@@ -1,6 +1,6 @@
 "use strict";
 require('newrelic');
-var common = require('./_common.js');
+var common = require('./_common');
 
 require('../app');
 
