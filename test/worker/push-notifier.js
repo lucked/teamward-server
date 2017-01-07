@@ -184,4 +184,47 @@ describe("Worker: pushNotifier", function() {
     });
   });
 
+  it("should remove token when not registered on GCM anymore", function(done) {
+    var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
+
+    async.waterfall([
+      saveDummyToken,
+      function(token, count, cb) {
+        nock('https://euw.api.pvp.net')
+          .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
+          .query(true)
+          .reply(200, fakeGameData);
+
+        sinon.stub(gameData, 'buildExternalGameData', function() {});
+        sinon.stub(pushNotifier.gcm, 'send', function(message, cb) {
+          process.nextTick(function() {
+            cb(new Error("NotRegistered error"));
+          });
+        });
+
+        pushNotifier({testing: true}, rarity.carry([token], cb));
+      },
+      function(token, tokenCounter, tokenNotifiedCounter, cb) {
+        assert.equal(tokenCounter, 1);
+        assert.equal(tokenNotifiedCounter, 0);
+        sinon.assert.calledOnce(pushNotifier.gcm.send);
+
+        cb(null, token);
+      },
+      function reloadToken(token, cb) {
+        Token.findById(token._id, cb);
+      },
+      function ensureTokenHasBeenRemoved(token, cb) {
+        assert.equal(token, null);
+
+        cb();
+      }
+    ], function(err) {
+      // Always restore functionality
+      gameData.buildExternalGameData.restore();
+      pushNotifier.gcm.send.restore();
+
+      done(err);
+    });
+  });
 });
