@@ -26,5 +26,4 @@ module.exports = {
   mongoUrl: process.env.MONGO_URL || ("mongodb://localhost/" + currentEnv),
   pushNotifierQueueConcurrency: process.env.PUSH_NOTIFIER_QUEUE_CONCURRENCY || 10,
   pushNotifierQueueMaxSize: process.env.PUSH_NOTIFIER_QUEUE_MAX_SIZE || 50,
-  exitAfterScript: process.env.EXIT_AFTER_SCRIPT || false,
 };
