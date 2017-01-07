@@ -41,7 +41,7 @@ Most of the code is in the `lib/` folder.
 * `lib/worker` contains a list of useful worker. They can be started with `node bin/worker.js`. You may want to run `node bin/both.js` to start the server and all the workers at the same time.
 
 ## Using locally
-You'll need node.js.
+You'll need node.js and mongodb.
 Run `npm install`.
 
 Create a `.env` file at project root using this template:
@@ -55,3 +55,12 @@ GCM_API_KEY="your gcm api key, or a fake value if you don't plan to develop on G
 Run `npm test` to make sure everything is correctly setup.
 
 To test locally, simply run `npm start`. You may want to use nodemon instead to hot-reload you changes.
+
+## Deploying
+The app can easily be deployed in many services -- start the app with `PORT=yourport npm start` and you're good to go.
+
+More environment variables are available, see `config/index.js` for details.
+
+By default, the app is set up to use NewRelic for monitoring, HostedGraphite for metric tracking and Opbeat for error reporting. If you don'"t specify the keys in your environement however, the services just won't be used. If you want to use your own services, have a look in `lib/error-logger.js` and `lib/metric-tracker.js` which provide an high level interface easily reconfigurable.
+
+Don't forget to wire up the workers too: in addition to npm start, you'll probably want to always run `node bin/worker-push-notifier.js` to send notifications to your users, and run every day `node bin/worker-champion-stats` to ensure matchups stats are up to date.
