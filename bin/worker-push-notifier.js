@@ -1,10 +1,10 @@
 "use strict";
 require('newrelic');
-var common = require('./_common');
 
+require('./_common');
 require('../app');
 
 // Start worker
 if(!process.env.DISABLE_WORKER_PUSH_NOTIFIER) {
-  require('../lib/worker/push-notifier')(common.opbeat);
+  require('../lib/worker/push-notifier')({loop: true});
 }

@@ -12,6 +12,7 @@ require('dnscache')({
 
 require('mongoose').Promise = global.Promise;
 
+/* istanbul ignore next */
 if(!process.env.RIOT_API_KEY) {
   throw new Error("Please specify RIOT_API_KEY with a valid Riot key.");
 }

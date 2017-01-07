@@ -11,6 +11,10 @@ var app = require('../../app');
 
 describe("Main server", function() {
   describe("GET /push", function() {
+    beforeEach(function clearDB(done) {
+      mongoose.model('Token').remove({}, done);
+    });
+
     var Token = mongoose.model('Token');
 
     // Empty token collection before getting started
@@ -80,6 +84,26 @@ describe("Main server", function() {
           assert.equal(token.summonerName, "neamarNA");
           assert.equal(token.summonerId, 75121889);
           assert.equal(token.region, "na");
+
+          cb();
+        }
+        ], done);
+    });
+
+    it("should return an error when summoner does not exists", function(done) {
+      done = recorder.useNock(this, done);
+      async.waterfall([
+        function sendRequest(cb) {
+          supertest(app)
+            .get('/push?summoner=Riot Neamar 404&region=euw&token=123')
+            .expect(404)
+            .end(rarity.slice(1, cb));
+        },
+        function checkToken(cb) {
+          Token.findOne({token: "123"}, rarity.slice(2, cb));
+        },
+        function ensureTokenSaved(token, cb) {
+          assert.equal(token, null);
 
           cb();
         }
