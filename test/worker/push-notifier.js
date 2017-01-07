@@ -143,4 +143,53 @@ describe("Worker: pushNotifier", function() {
       done(err);
     });
   });
+
+  it("should send a notification when player is out of game", function(done) {
+    var token = getDummyToken();
+    token.inGame = true;
+    token.lastKnownGameId = 123456;
+
+    async.waterfall([
+      async.apply(saveDummyToken, token),
+      function(token, count, cb) {
+        nock('https://euw.api.pvp.net')
+          .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
+          .query(true)
+          .reply(404, {ok: false});
+
+        sinon.stub(pushNotifier.gcm, 'send', function(message, cb) {
+          assert.equal(message.registration_id, token.token);
+          assert.equal(message['data.removeGameId'], 123456);
+
+          process.nextTick(function() {
+            cb(null, "fakemessageid");
+          });
+        });
+
+        pushNotifier({testing: true}, rarity.carry([token], cb));
+      },
+      function(token, tokenCounter, tokenNotifiedCounter, cb) {
+        assert.equal(tokenCounter, 1);
+        assert.equal(tokenNotifiedCounter, 0);
+        sinon.assert.calledOnce(pushNotifier.gcm.send);
+
+        cb(null, token);
+      },
+      function reloadToken(token, cb) {
+        Token.findById(token._id, cb);
+      },
+      function ensureTokenHasBeenUpdated(token, cb) {
+        assert.equal(token.inGame, false);
+        assert.equal(token.lastKnownGameId, 123456);
+
+        cb();
+      }
+    ], function(err) {
+      // Always restore functionality
+      pushNotifier.gcm.send.restore();
+
+      done(err);
+    });
+  });
+
 });
