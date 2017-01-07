@@ -36,15 +36,10 @@ describe("Worker: pushNotifier", function() {
     t.save(cb);
   };
 
-  var stubGcmSender = function(token, fakeGameData) {
-    return function(message, cb) {
-      assert.equal(message.registration_id, token.token);
-      assert.equal(message['data.gameId'], fakeGameData.gameId);
-
-      process.nextTick(function() {
-        cb(null, "fakemessageid");
-      });
-    };
+  var stubGcmSender = function(message, cb) {
+    process.nextTick(function() {
+      cb(null, "fakemessageid");
+    });
   };
 
   it("should do nothing when player is not in game", function(done) {
@@ -78,7 +73,7 @@ describe("Worker: pushNotifier", function() {
           .reply(200, fakeGameData);
 
         sinon.stub(gameData, 'buildExternalGameData', function() {});
-        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender(token, fakeGameData));
+        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender);
 
         pushNotifier({testing: true}, rarity.carry([token], cb));
       },
@@ -87,6 +82,8 @@ describe("Worker: pushNotifier", function() {
         assert.equal(tokenNotifiedCounter, 1);
         sinon.assert.calledOnce(gameData.buildExternalGameData);
         sinon.assert.calledOnce(pushNotifier.gcm.send);
+        assert.equal(pushNotifier.gcm.send.firstCall.args[0].registration_id, token.token);
+        assert.equal(pushNotifier.gcm.send.firstCall.args[0]['data.gameId'], fakeGameData.gameId);
 
         cb(null, token);
       },
@@ -123,7 +120,7 @@ describe("Worker: pushNotifier", function() {
           .reply(200, fakeGameData);
 
         sinon.stub(gameData, 'buildExternalGameData', function() {});
-        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender(token, fakeGameData));
+        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender);
 
         pushNotifier({testing: true}, cb);
       },
@@ -157,14 +154,7 @@ describe("Worker: pushNotifier", function() {
           .query(true)
           .reply(404, {ok: false});
 
-        sinon.stub(pushNotifier.gcm, 'send', function(message, cb) {
-          assert.equal(message.registration_id, token.token);
-          assert.equal(message['data.removeGameId'], 123456);
-
-          process.nextTick(function() {
-            cb(null, "fakemessageid");
-          });
-        });
+        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender);
 
         pushNotifier({testing: true}, rarity.carry([token], cb));
       },
@@ -172,15 +162,17 @@ describe("Worker: pushNotifier", function() {
         assert.equal(tokenCounter, 1);
         assert.equal(tokenNotifiedCounter, 0);
         sinon.assert.calledOnce(pushNotifier.gcm.send);
+        assert.equal(pushNotifier.gcm.send.firstCall.args[0].registration_id, token.token);
+        assert.equal(pushNotifier.gcm.send.firstCall.args[0]['data.removeGameId'], token.lastKnownGameId);
 
         cb(null, token);
       },
       function reloadToken(token, cb) {
         Token.findById(token._id, cb);
       },
-      function ensureTokenHasBeenUpdated(token, cb) {
-        assert.equal(token.inGame, false);
-        assert.equal(token.lastKnownGameId, 123456);
+      function ensureTokenHasBeenUpdated(reloadedToken, cb) {
+        assert.equal(reloadedToken.inGame, false);
+        assert.equal(reloadedToken.lastKnownGameId, token.lastKnownGameId);
 
         cb();
       }
