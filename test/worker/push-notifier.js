@@ -209,7 +209,9 @@ describe("Worker: pushNotifier", function() {
         assert.equal(tokenNotifiedCounter, 0);
         sinon.assert.calledOnce(pushNotifier.gcm.send);
 
-        cb(null, token);
+        process.nextTick(function() {
+          cb(null, token);
+        });
       },
       function reloadToken(token, cb) {
         Token.findById(token._id, cb);
