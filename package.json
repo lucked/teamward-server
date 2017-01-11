@@ -33,6 +33,7 @@
     "memorystream": "^0.3.1",
     "mongodump-reader": "1.0.1",
     "mongoose": "^4.4.7",
+    "monq": "^0.3.6",
     "newrelic": "^1.28.1",
     "opbeat": "^3.6.6",
     "rarity": "^2.1.1",
