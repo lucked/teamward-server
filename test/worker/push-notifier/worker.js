@@ -7,16 +7,26 @@ var sinon = require("sinon");
 var nock = require('nock');
 var rarity = require("rarity");
 
-var pushNotifier = require('../../lib/worker/push-notifier.js');
-var gameData = require('../../lib/helper/game-data.js');
+var pushNotifierWorker = require('../../../lib/worker/push-notifier/worker.js');
+var gameData = require('../../../lib/helper/game-data.js');
 
+var mockGameData = require('../../mocks/mocks/custom_get-spectator-game-info.json');
 
 var Token = mongoose.model('Token');
 
-describe("Worker: pushNotifier", function() {
+describe("pushNotifier worker", function() {
   beforeEach(function clearDB(done) {
     mongoose.model('Token').remove({}, done);
   });
+
+  beforeEach(function() {
+    this.sandbox = sinon.sandbox.create();
+  });
+
+  afterEach(function() {
+    this.sandbox.restore();
+  });
+
 
   var getDummyToken = function() {
     var token = new Token();
@@ -51,11 +61,10 @@ describe("Worker: pushNotifier", function() {
           .query(true)
           .reply(404, {ok: false});
 
-        pushNotifier({testing: true}, cb);
+        pushNotifierWorker({token: token}, cb);
       },
-      function(tokenCounter, tokenNotifiedCounter, cb) {
-        assert.equal(tokenCounter, 1);
-        assert.equal(tokenNotifiedCounter, 0);
+      function(notified, cb) {
+        assert.equal(notified, 0);
 
         cb();
       }
@@ -63,27 +72,25 @@ describe("Worker: pushNotifier", function() {
   });
 
   it("should send a notification when player is in game", function(done) {
-    var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
+    this.sandbox.stub(gameData, 'buildExternalGameData', function() {});
+    this.sandbox.stub(pushNotifierWorker.gcm, 'send', stubGcmSender);
+
     async.waterfall([
       saveDummyToken,
       function(token, count, cb) {
         nock('https://euw.api.pvp.net')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
-          .reply(200, fakeGameData);
+          .reply(200, mockGameData);
 
-        sinon.stub(gameData, 'buildExternalGameData', function() {});
-        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender);
-
-        pushNotifier({testing: true}, rarity.carry([token], cb));
+        pushNotifierWorker({token: token}, rarity.carry([token], cb));
       },
-      function(token, tokenCounter, tokenNotifiedCounter, cb) {
-        assert.equal(tokenCounter, 1);
-        assert.equal(tokenNotifiedCounter, 1);
+      function(token, notified, cb) {
+        assert.equal(notified, 1);
         sinon.assert.calledOnce(gameData.buildExternalGameData);
-        sinon.assert.calledOnce(pushNotifier.gcm.send);
-        assert.equal(pushNotifier.gcm.send.firstCall.args[0].registration_id, token.token);
-        assert.equal(pushNotifier.gcm.send.firstCall.args[0]['data.gameId'], fakeGameData.gameId);
+        sinon.assert.calledOnce(pushNotifierWorker.gcm.send);
+        assert.equal(pushNotifierWorker.gcm.send.firstCall.args[0].registration_id, token.token);
+        assert.equal(pushNotifierWorker.gcm.send.firstCall.args[0]['data.gameId'], mockGameData.gameId);
 
         cb(null, token);
       },
@@ -92,24 +99,20 @@ describe("Worker: pushNotifier", function() {
       },
       function ensureTokenHasBeenUpdated(token, cb) {
         assert.equal(token.inGame, true);
-        assert.equal(token.lastKnownGameId, fakeGameData.gameId);
+        assert.equal(token.lastKnownGameId, mockGameData.gameId);
 
         cb();
       }
-    ], function(err) {
-      // Always restore functionality
-      gameData.buildExternalGameData.restore();
-      pushNotifier.gcm.send.restore();
-
-      done(err);
-    });
+    ], done);
   });
 
   it("should not send a notification when player is already in game", function(done) {
-    var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
     var token = getDummyToken();
     token.inGame = true;
-    token.lastKnownGameId = fakeGameData.gameId;
+    token.lastKnownGameId = mockGameData.gameId;
+
+    this.sandbox.stub(gameData, 'buildExternalGameData', function() {});
+    this.sandbox.stub(pushNotifierWorker.gcm, 'send', stubGcmSender);
 
     async.waterfall([
       async.apply(saveDummyToken, token),
@@ -117,34 +120,26 @@ describe("Worker: pushNotifier", function() {
         nock('https://euw.api.pvp.net')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
-          .reply(200, fakeGameData);
+          .reply(200, mockGameData);
 
-        sinon.stub(gameData, 'buildExternalGameData', function() {});
-        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender);
-
-        pushNotifier({testing: true}, cb);
+        pushNotifierWorker({token: token}, cb);
       },
-      function(tokenCounter, tokenNotifiedCounter, cb) {
-        assert.equal(tokenCounter, 1);
-        assert.equal(tokenNotifiedCounter, 0);
+      function(notified, cb) {
+        assert.equal(notified, 0);
         assert.equal(gameData.buildExternalGameData.callCount, 0);
-        assert.equal(pushNotifier.gcm.send.callCount, 0);
+        assert.equal(pushNotifierWorker.gcm.send.callCount, 0);
 
         cb();
       }
-    ], function(err) {
-      // Always restore functionality
-      gameData.buildExternalGameData.restore();
-      pushNotifier.gcm.send.restore();
-
-      done(err);
-    });
+    ], done);
   });
 
   it("should send a notification when player is out of game", function(done) {
     var token = getDummyToken();
     token.inGame = true;
     token.lastKnownGameId = 123456;
+
+    this.sandbox.stub(pushNotifierWorker.gcm, 'send', stubGcmSender);
 
     async.waterfall([
       async.apply(saveDummyToken, token),
@@ -154,16 +149,13 @@ describe("Worker: pushNotifier", function() {
           .query(true)
           .reply(404, {ok: false});
 
-        sinon.stub(pushNotifier.gcm, 'send', stubGcmSender);
-
-        pushNotifier({testing: true}, rarity.carry([token], cb));
+        pushNotifierWorker({token: token}, rarity.carry([token], cb));
       },
-      function(token, tokenCounter, tokenNotifiedCounter, cb) {
-        assert.equal(tokenCounter, 1);
-        assert.equal(tokenNotifiedCounter, 0);
-        sinon.assert.calledOnce(pushNotifier.gcm.send);
-        assert.equal(pushNotifier.gcm.send.firstCall.args[0].registration_id, token.token);
-        assert.equal(pushNotifier.gcm.send.firstCall.args[0]['data.removeGameId'], token.lastKnownGameId);
+      function(token, notified, cb) {
+        assert.equal(notified, 0);
+        sinon.assert.calledOnce(pushNotifierWorker.gcm.send);
+        assert.equal(pushNotifierWorker.gcm.send.firstCall.args[0].registration_id, token.token);
+        assert.equal(pushNotifierWorker.gcm.send.firstCall.args[0]['data.removeGameId'], token.lastKnownGameId);
 
         cb(null, token);
       },
@@ -176,16 +168,16 @@ describe("Worker: pushNotifier", function() {
 
         cb();
       }
-    ], function(err) {
-      // Always restore functionality
-      pushNotifier.gcm.send.restore();
-
-      done(err);
-    });
+    ], done);
   });
 
   it("should remove token when not registered on GCM anymore", function(done) {
-    var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
+    this.sandbox.stub(gameData, 'buildExternalGameData', function() {});
+    this.sandbox.stub(pushNotifierWorker.gcm, 'send', function(message, cb) {
+      process.nextTick(function() {
+        cb(new Error("NotRegistered error"));
+      });
+    });
 
     async.waterfall([
       saveDummyToken,
@@ -193,21 +185,13 @@ describe("Worker: pushNotifier", function() {
         nock('https://euw.api.pvp.net')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
-          .reply(200, fakeGameData);
+          .reply(200, mockGameData);
 
-        sinon.stub(gameData, 'buildExternalGameData', function() {});
-        sinon.stub(pushNotifier.gcm, 'send', function(message, cb) {
-          process.nextTick(function() {
-            cb(new Error("NotRegistered error"));
-          });
-        });
-
-        pushNotifier({testing: true}, rarity.carry([token], cb));
+        pushNotifierWorker({token: token}, rarity.carry([token], cb));
       },
-      function(token, tokenCounter, tokenNotifiedCounter, cb) {
-        assert.equal(tokenCounter, 1);
-        assert.equal(tokenNotifiedCounter, 0);
-        sinon.assert.calledOnce(pushNotifier.gcm.send);
+      function(token, notified, cb) {
+        assert.equal(notified, 0);
+        sinon.assert.calledOnce(pushNotifierWorker.gcm.send);
 
         process.nextTick(function() {
           cb(null, token);
@@ -221,12 +205,6 @@ describe("Worker: pushNotifier", function() {
 
         cb();
       }
-    ], function(err) {
-      // Always restore functionality
-      gameData.buildExternalGameData.restore();
-      pushNotifier.gcm.send.restore();
-
-      done(err);
-    });
+    ], done);
   });
 });

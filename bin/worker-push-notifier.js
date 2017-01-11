@@ -6,5 +6,5 @@ require('../app');
 
 // Start worker
 if(!process.env.DISABLE_WORKER_PUSH_NOTIFIER) {
-  require('../lib/worker/push-notifier')({loop: true});
+  require('../lib/worker/push-notifier/queue')({loop: true});
 }
