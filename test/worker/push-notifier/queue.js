@@ -9,7 +9,7 @@ var pushNotifierQueue = require('../../../lib/worker/push-notifier/queue.js');
 
 var Token = mongoose.model('Token');
 
-describe.only("pushNotifier queue", function() {
+describe.skip("pushNotifier queue", function() {
   beforeEach(function clearDB(done) {
     mongoose.model('Token').remove({}, done);
   });
