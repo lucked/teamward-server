@@ -4,24 +4,35 @@ var assert = require("assert");
 var mongoose = require("mongoose");
 var async = require("async");
 var nock = require('nock');
+var sinon = require("sinon");
+
 var pushNotifierQueue = require('../../../lib/worker/push-notifier/queue.js');
 var kue = require("kue");
 
 var Token = mongoose.model('Token');
 
 describe("pushNotifier queue", function() {
+  var queue;
   beforeEach(function clearDB(done) {
     mongoose.model('Token').remove({}, done);
   });
 
   beforeEach(function clearRedis(done) {
-    kue.createQueue();
+    queue = kue.createQueue();
 
     kue.Job.range(0, 100000, 'asc', function(err, jobs) {
       async.eachLimit(jobs, 30, function(j, cb) {
         j.remove(cb);
       }, done);
     });
+  });
+
+  beforeEach(function() {
+    this.sandbox = sinon.sandbox.create();
+  });
+
+  afterEach(function() {
+    this.sandbox.restore();
   });
 
   var getDummyToken = function() {
@@ -50,6 +61,23 @@ describe("pushNotifier queue", function() {
       testing: true
     };
 
+    // Create a (complex) stub
+    this.sandbox.stub(queue, 'create', function() {
+      return {
+        ttl: function() {
+          return {
+            removeOnComplete: function() {
+              return {
+                save: function(cb) {
+                  cb();
+                }
+              };
+            }
+          };
+        }
+      };
+    });
+
     async.waterfall([
       function(cb) {
         async.parallel([
@@ -77,6 +105,7 @@ describe("pushNotifier queue", function() {
       },
       function(tokenCounter, cb) {
         assert.equal(tokenCounter, 3);
+        sinon.assert.callCount(queue.create, 3);
 
         cb();
       },
