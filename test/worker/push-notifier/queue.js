@@ -57,25 +57,19 @@ describe("pushNotifier queue", function() {
   };
 
   it("should iterate over all tokens", function(done) {
-    var options = {
-      testing: true
-    };
-
     // Create a (complex) stub
     this.sandbox.stub(queue, 'create', function() {
-      return {
-        ttl: function() {
-          return {
-            removeOnComplete: function() {
-              return {
-                save: function(cb) {
-                  cb();
-                }
-              };
-            }
-          };
+      var stub = {
+        ttl: () => stub,
+        delay: () => stub,
+        removeOnComplete: () => stub,
+        save: function(cb) {
+          cb();
+          return stub;
         }
       };
+
+      return stub;
     });
 
     async.waterfall([
@@ -100,12 +94,20 @@ describe("pushNotifier queue", function() {
           .query(true)
           .reply(404, {ok: false});
 
+        var options = {
+          testing: true
+        };
         options.cb = cb;
         pushNotifierQueue(options);
       },
       function(tokenCounter, cb) {
         assert.equal(tokenCounter, 3);
-        sinon.assert.callCount(queue.create, 3);
+        // 3 tokens + one refill = 4
+        sinon.assert.callCount(queue.create, 4);
+        assert.equal(queue.create.getCall(0).args[0], "refillQueue");
+        assert.equal(queue.create.getCall(1).args[0], "checkInGame");
+        assert.equal(queue.create.getCall(2).args[0], "checkInGame");
+        assert.equal(queue.create.getCall(3).args[0], "checkInGame");
 
         cb();
       },
