@@ -5,13 +5,23 @@ var mongoose = require("mongoose");
 var async = require("async");
 var nock = require('nock');
 var pushNotifierQueue = require('../../../lib/worker/push-notifier/queue.js');
-
+var kue = require("kue");
 
 var Token = mongoose.model('Token');
 
-describe.skip("pushNotifier queue", function() {
+describe("pushNotifier queue", function() {
   beforeEach(function clearDB(done) {
     mongoose.model('Token').remove({}, done);
+  });
+
+  beforeEach(function clearRedis(done) {
+    kue.createQueue();
+
+    kue.Job.range(0, 100000, 'asc', function(err, jobs) {
+      async.eachLimit(jobs, 30, function(j, cb) {
+        j.remove(cb);
+      }, done);
+    });
   });
 
   var getDummyToken = function() {
@@ -36,6 +46,10 @@ describe.skip("pushNotifier queue", function() {
   };
 
   it("should iterate over all tokens", function(done) {
+    var options = {
+      testing: true
+    };
+
     async.waterfall([
       function(cb) {
         async.parallel([
@@ -58,14 +72,14 @@ describe.skip("pushNotifier queue", function() {
           .query(true)
           .reply(404, {ok: false});
 
-        pushNotifierQueue({testing: true}, cb);
+        options.cb = cb;
+        pushNotifierQueue(options);
       },
-      function(tokenCounter, tokenNotifiedCounter, cb) {
+      function(tokenCounter, cb) {
         assert.equal(tokenCounter, 3);
-        assert.equal(tokenNotifiedCounter, 0);
 
         cb();
-      }
+      },
     ], done);
   });
 });
