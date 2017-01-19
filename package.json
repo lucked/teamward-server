@@ -30,6 +30,7 @@
     "gcm": "^1.0.1",
     "glob": "^7.1.1",
     "heroku-self-ping": "^1.1.3",
+    "kue": "^0.11.5",
     "memorystream": "^0.3.1",
     "mongodump-reader": "1.0.1",
     "mongoose": "^4.4.7",
@@ -52,6 +53,6 @@
     "supertest": "^2.0.1"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   }
 }

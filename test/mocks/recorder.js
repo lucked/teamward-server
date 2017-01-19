@@ -20,7 +20,7 @@ function getMockFilePath(mochaContext) {
  *
  * In the beginning of your test, call this function with "this" and done.
  * You'll get a function returned, once your test is over just call this function to save all the mocks to disk (hint: overwrite the done function from mocha).
- * You can now replace the call to recordTest with a call to useNock, and magic will happen (HTTP requests will be read through the disk)
+ * You can now replace the call to setupNock with a call to useNock, and magic will happen (HTTP requests will be read from disk)
  */
 module.exports.setupNock = function(mochaContext, done) {
   var records = [];
