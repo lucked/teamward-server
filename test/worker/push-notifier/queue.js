@@ -104,10 +104,10 @@ describe("pushNotifier queue", function() {
         assert.equal(tokenCounter, 3);
         // 3 tokens + one refill = 4
         sinon.assert.callCount(queue.create, 4);
-        assert.equal(queue.create.getCall(0).args[0], "refillQueue");
+        assert.equal(queue.create.getCall(0).args[0], "checkInGame");
         assert.equal(queue.create.getCall(1).args[0], "checkInGame");
         assert.equal(queue.create.getCall(2).args[0], "checkInGame");
-        assert.equal(queue.create.getCall(3).args[0], "checkInGame");
+        assert.equal(queue.create.getCall(3).args[0], "refillQueue");
 
         cb();
       },
