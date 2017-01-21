@@ -33,7 +33,7 @@
     "kue": "^0.11.5",
     "memorystream": "^0.3.1",
     "mongodump-reader": "1.0.1",
-    "mongoose": "^4.4.7",
+    "mongoose": "^4.7.7",
     "newrelic": "^1.28.1",
     "opbeat": "^3.6.6",
     "rarity": "^2.1.1",
