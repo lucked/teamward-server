@@ -72,9 +72,7 @@ describe("pushNotifier worker", function() {
   });
 
   it("should send a notification when player is in game", function(done) {
-    this.sandbox.stub(gameData, 'buildExternalGameData', function(res, region, cb) {
-      cb();
-    });
+    this.sandbox.stub(gameData, 'buildExternalGameData', function() {});
     this.sandbox.stub(pushNotifierWorker.gcm, 'send', stubGcmSender);
 
     async.waterfall([
@@ -113,9 +111,7 @@ describe("pushNotifier worker", function() {
     token.inGame = true;
     token.lastKnownGameId = mockGameData.gameId;
 
-    this.sandbox.stub(gameData, 'buildExternalGameData', function(res, region, cb) {
-      cb();
-    });
+    this.sandbox.stub(gameData, 'buildExternalGameData', function() {});
     this.sandbox.stub(pushNotifierWorker.gcm, 'send', stubGcmSender);
 
     async.waterfall([
@@ -176,9 +172,7 @@ describe("pushNotifier worker", function() {
   });
 
   it("should remove token when not registered on GCM anymore", function(done) {
-    this.sandbox.stub(gameData, 'buildExternalGameData', function(res, region, cb) {
-      cb();
-    });
+    this.sandbox.stub(gameData, 'buildExternalGameData', function() {});
     this.sandbox.stub(pushNotifierWorker.gcm, 'send', function(message, cb) {
       process.nextTick(function() {
         cb(new Error("NotRegistered error"));
