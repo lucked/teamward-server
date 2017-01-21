@@ -7,6 +7,8 @@ var common = require('./_common');
 require('heroku-self-ping')(process.env.APP_URL);
 
 if(process.env.CHEAP_WORKER_DYNO) {
+  log("Using web dyno to run worker");
+
   // Using a legacy web dyno to run the worker
   require('./worker-push-notifier.js');
 
