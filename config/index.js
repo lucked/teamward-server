@@ -28,5 +28,4 @@ module.exports = {
   redisUrl: process.env.REDIS_URL || "redis://localhost",
   gcmApiKey: process.env.GCM_API_KEY,
   pushNotifierQueueConcurrency: process.env.PUSH_NOTIFIER_QUEUE_CONCURRENCY || 10,
-  pushNotifierQueueMaxSize: process.env.PUSH_NOTIFIER_QUEUE_MAX_SIZE || 50,
 };
