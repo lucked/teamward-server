@@ -22,7 +22,6 @@ var currentEnv = process.env.NODE_ENV || 'development';
 module.exports = {
   nodeEnv: currentEnv,
   processType: process.env.DYNO || "development",
-  masterDyno: process.env.MASTER_DYNO || false,
   apiKey: process.env.RIOT_API_KEY,
   verifyKey: process.env.RIOT_VERIFY_KEY || "N/C",
   mongoUrl: process.env.MONGO_URL || ("mongodb://localhost/" + currentEnv),
