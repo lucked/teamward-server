@@ -61,7 +61,7 @@ describe("pushNotifier worker", function() {
           .query(true)
           .reply(404, {ok: false});
 
-        pushNotifierWorker({data: {token: token}}, cb);
+        pushNotifierWorker(token, cb);
       },
       function(notified, cb) {
         assert.equal(notified, 0);
@@ -83,7 +83,7 @@ describe("pushNotifier worker", function() {
           .query(true)
           .reply(200, mockGameData);
 
-        pushNotifierWorker({data: {token: token}}, rarity.carry([token], cb));
+        pushNotifierWorker(token, rarity.carry([token], cb));
       },
       function(token, notified, cb) {
         assert.equal(notified, 1);
@@ -122,7 +122,7 @@ describe("pushNotifier worker", function() {
           .query(true)
           .reply(200, mockGameData);
 
-        pushNotifierWorker({data: {token: token}}, cb);
+        pushNotifierWorker(token, cb);
       },
       function(notified, cb) {
         assert.equal(notified, 0);
@@ -149,7 +149,7 @@ describe("pushNotifier worker", function() {
           .query(true)
           .reply(404, {ok: false});
 
-        pushNotifierWorker({data: {token: token}}, rarity.carry([token], cb));
+        pushNotifierWorker(token, rarity.carry([token], cb));
       },
       function(token, notified, cb) {
         assert.equal(notified, 0);
@@ -187,7 +187,7 @@ describe("pushNotifier worker", function() {
           .query(true)
           .reply(200, mockGameData);
 
-        pushNotifierWorker({data: {token: token}}, rarity.carry([token], cb));
+        pushNotifierWorker(token, rarity.carry([token], cb));
       },
       function(token, notified, cb) {
         assert.equal(notified, 0);
