@@ -3,14 +3,12 @@
 var assert = require("assert");
 var mongoose = require("mongoose");
 var async = require("async");
-var nock = require('nock');
 var sinon = require("sinon");
 var pushNotifierQueue = require('../../../lib/worker/push-notifier/queue.js');
 
 var Token = mongoose.model('Token');
 
-describe.only("pushNotifier queue", function() {
-  var queue;
+describe("pushNotifier queue", function() {
   beforeEach(function clearDB(done) {
     mongoose.model('Token').remove({}, done);
   });
@@ -49,6 +47,10 @@ describe.only("pushNotifier queue", function() {
   };
 
   it("should iterate over all tokens", function(done) {
+    this.sandbox.stub(pushNotifierQueue.fjq, 'create', function(jobs, cb) {
+      cb();
+    });
+
     async.waterfall([
       function(cb) {
         async.parallel([
@@ -58,38 +60,21 @@ describe.only("pushNotifier queue", function() {
         ], cb);
       },
       function(res, cb) {
-        nock('https://euw.api.pvp.net')
-          .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + res[0].summonerId)
-          .query(true)
-          .reply(404, {ok: false});
-        nock('https://euw.api.pvp.net')
-          .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + res[0].summonerId)
-          .query(true)
-          .reply(404, {ok: false});
-        nock('https://euw.api.pvp.net')
-          .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + res[0].summonerId)
-          .query(true)
-          .reply(404, {ok: false});
-
         var options = {
           testing: true,
           thunderingHerdSpan: 0,
         };
         options.cb = cb;
 
-        console.log("QUEUE");
         pushNotifierQueue(options);
       },
       function(tokenCounter, cb) {
-        console.log("EOQ");
 
         assert.equal(tokenCounter, 3);
-        // 3 tokens + one refill = 4
-        sinon.assert.callCount(queue.create, 4);
-        assert.equal(queue.create.getCall(0).args[0], "checkInGame");
-        assert.equal(queue.create.getCall(1).args[0], "checkInGame");
-        assert.equal(queue.create.getCall(2).args[0], "checkInGame");
-        assert.equal(queue.create.getCall(3).args[0], "refillQueue");
+        // 3 tokens (in one create) + one refill = 2
+        sinon.assert.callCount(pushNotifierQueue.fjq.create, 2);
+        assert.equal(pushNotifierQueue.fjq.create.getCall(0).args[0].length, 3);
+        assert.equal(pushNotifierQueue.fjq.create.getCall(1).args[0].refillQueue, true);
 
         cb();
       },
