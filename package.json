@@ -27,7 +27,7 @@
     "dnscache": "0.0.4",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
-    "featureless-job-queue": "0.0.3",
+    "featureless-job-queue": "1.0.1",
     "gcm": "^1.0.1",
     "glob": "^7.1.1",
     "heroku-self-ping": "^1.1.3",
