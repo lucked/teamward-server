@@ -24,7 +24,7 @@
     "async": "^2.1.4",
     "auto-load": "^2.1.0",
     "debug": "^2.6.0",
-    "dnscache": "1.0.0",
+    "dnscache": "0.0.4",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "featureless-job-queue": "1.0.1",
