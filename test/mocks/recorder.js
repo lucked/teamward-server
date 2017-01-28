@@ -43,8 +43,8 @@ module.exports.setupNock = function(mochaContext, done) {
         return;
       }
 
-      // Strip API key
-      d.path = d.path.replace(/(\?|\&)api_key=.+$/g, '');
+      // Remove all GET parameters, including API key
+      d.path = d.path.replace(/\?.+$/g, '');
       records.push(d);
     }
   });
