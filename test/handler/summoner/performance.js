@@ -53,14 +53,13 @@ describe("Main server", function() {
     });
 
     it("should succeed with all params", function(done) {
-      this.timeout(50000);
       done = recorder.useNock(this, done);
 
       supertest(app)
         .get('/summoner/performance?summoner=riotneamar&region=euw&champion=Kled')
         .expect(200)
         .expect(function(res) {
-          assert.equal(res.body.matches.length, 10);
+          assert.equal(res.body.matches.length, 6);
           assert.equal(res.body.matches[0].victory, true);
           assert.equal(res.body.matches[0].ward.id, 3340);
           assert.equal(res.body.matches[0].items.length, 6);
