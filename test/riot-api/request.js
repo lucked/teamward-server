@@ -14,9 +14,7 @@ describe("Riot queue requester", function() {
       .reply({}, {ok: true});
 
     request('EUW', '/fake', false, function(err, res) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(res.ok, true);
       done();
@@ -35,9 +33,7 @@ describe("Riot queue requester", function() {
       .reply(200, {ok: true});
 
     request('EUW', '/fake', false, function(err, res) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(res.ok, true);
       done();
@@ -77,9 +73,7 @@ describe("Riot queue requester", function() {
       .reply(200, {ok: true});
 
     request('EUW', '/fake', false, function(err, res) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(res.ok, true);
       done();
@@ -101,9 +95,7 @@ describe("Riot queue requester", function() {
       function(cb) {
         // Should fetch resource the first time
         request('EUW', '/cacheable', 10000, function(err, res) {
-          if(err) {
-            return cb(err);
-          }
+          assert.ifError(err);
 
           assert.equal(res.ok, 'first time');
           cb();
@@ -115,9 +107,7 @@ describe("Riot queue requester", function() {
       function(cb) {
         // Should reuse cached value and not call the second nock request
         request('EUW', '/cacheable', 10000, function(err, res) {
-          if(err) {
-            return cb(err);
-          }
+          assert.ifError(err);
 
           assert.equal(res.ok, 'first time');
           cb();
@@ -126,9 +116,7 @@ describe("Riot queue requester", function() {
       function(cb) {
         // Witch cacheable=false however, should do a new call
         request('EUW', '/cacheable', false, function(err, res) {
-          if(err) {
-            return cb(err);
-          }
+          assert.ifError(err);
 
           assert.equal(res.ok, 'second time');
           cb();

@@ -32,9 +32,7 @@ describe("Counter helper", function() {
 
   it("should return nothing when rolesChampions and masteredChampions are empty", function(done) {
     counterHelper([], [], "TOP", function(err, results) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(results.length, 0);
       done();
@@ -57,9 +55,7 @@ describe("Counter helper", function() {
     ];
 
     counterHelper(rolesChampions, masteredChampions, "TOP", function(err, res) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(res.length, 3);
       assert.equal(res[0].champion.id, "graves");
@@ -100,9 +96,7 @@ describe("Counter helper", function() {
     ];
 
     counterHelper(rolesChampions, masteredChampions, "TOP", function(err, res) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(res.length, 3);
       assert.equal(res[0].champion.id, "graves");

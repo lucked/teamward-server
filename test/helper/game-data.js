@@ -14,9 +14,7 @@ describe("Game data", function() {
     done = recorder.useNock(this, done);
     var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
     gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(data.map_id, 11);
       assert.equal(data.teams.length, 2);
@@ -41,9 +39,7 @@ describe("Game data", function() {
     done = recorder.useNock(this, done);
     var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
     gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(data.map_id, 11);
 
@@ -51,9 +47,7 @@ describe("Game data", function() {
       nock.cleanAll();
 
       gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
-        if(err) {
-          return done(err);
-        }
+        assert.ifError(err);
 
         assert.equal(data.map_id, 11);
 
@@ -69,9 +63,7 @@ describe("Game data", function() {
 
     var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info-premade.json');
     gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
-      if(err) {
-        return done(err);
-      }
+      assert.ifError(err);
 
       assert.equal(data.map_id, 11);
       assert.equal(data.teams.length, 2);

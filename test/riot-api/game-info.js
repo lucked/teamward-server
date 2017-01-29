@@ -11,9 +11,7 @@ describe("Game info", function() {
       done = recorder.useNock(this, done);
 
       gameInfo.getCurrentGame(20481613, 'euw', function(err, data) {
-        if(err) {
-          return done(err);
-        }
+        assert.ifError(err);
 
         assert.equal(data.gameId, 2740288360);
         assert.equal(data.mapId, 12);
@@ -41,9 +39,7 @@ describe("Game info", function() {
       done = recorder.useNock(this, done);
 
       gameInfo.getExistingGame(2718749954, 'euw', function(err, data) {
-        if(err) {
-          return done(err);
-        }
+        assert.ifError(err);
 
         assert.equal(data.matchId, 2718749954);
         assert.equal(data.mapId, 11);

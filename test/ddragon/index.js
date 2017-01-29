@@ -12,9 +12,7 @@ describe("Ddragon info", function() {
     it("should return champion information", function(done) {
       done = recorder.useNock(this, done);
       ddragonInfo.getChampionData('euw', 420, function(err, data) {
-        if(err) {
-          return done(err);
-        }
+        assert.ifError(err);
 
         assert.equal(data.id, 'Illaoi');
         done();
@@ -26,9 +24,7 @@ describe("Ddragon info", function() {
       async.series([
         function firstCall(cb) {
           ddragonInfo.getChampionData('euw', 420, function(err, data) {
-            if(err) {
-              return done(err);
-            }
+            assert.ifError(err);
 
             assert.equal(data.id, 'Illaoi');
             cb();
@@ -42,9 +38,7 @@ describe("Ddragon info", function() {
             .reply(404);
 
           ddragonInfo.getChampionData('euw', 420, function(err, data) {
-            if(err) {
-              return done(err);
-            }
+            assert.ifError(err);
 
             assert.equal(data.id, 'Illaoi');
 
@@ -58,9 +52,7 @@ describe("Ddragon info", function() {
       done = recorder.useNock(this, done);
 
       ddragonInfo.getChampionData('euw', 'Illaoi', function(err, data) {
-        if(err) {
-          return done(err);
-        }
+        assert.ifError(err);
 
         assert.equal(data.id, 'Illaoi');
         assert.equal(data.key, 420);
@@ -74,9 +66,7 @@ describe("Ddragon info", function() {
     it("should return summoner spelll information", function(done) {
       done = recorder.useNock(this, done);
       ddragonInfo.getSummonerSpellData('euw', 4, function(err, data) {
-        if(err) {
-          return done(err);
-        }
+        assert.ifError(err);
 
         assert.equal(data.id, 'SummonerFlash');
 
