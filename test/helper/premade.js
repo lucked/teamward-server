@@ -1,8 +1,10 @@
 "use strict";
 
+var async = require("async");
 var assert = require('assert');
-var premadeHelper = require('../../lib/helper/premade');
+var mongoose = require("mongoose");
 
+var premadeHelper = require('../../lib/helper/premade');
 describe("Premade helper", function() {
   describe("getPremade()", function() {
     var buildFakePlayer = function(teamId, knownPlayers) {
@@ -127,6 +129,41 @@ describe("Premade helper", function() {
       assert.equal(premade['100'].length, 2);
       assert.deepEqual(premade['100'][0], ['1', '2', '3']);
       assert.deepEqual(premade['100'][1], ['4', '5']);
+    });
+  });
+
+  describe.only("loadKnownPremadesFromDB()", function() {
+    var Premade = mongoose.model('Premade');
+
+    beforeEach(function(done) {
+      Premade.remove({}, done);
+    });
+
+    it("should do nothing on an empty DB", function(done) {
+      premadeHelper.loadKnownPremadesFromDB([1, 2, 3], "euw", function(err, res) {
+        assert.ifError(err);
+
+        assert.deepEqual(res, {});
+        done();
+      });
+    });
+
+    it("should return summoner ids in an easy to use object", function(done) {
+      async.waterfall([
+        function createPremade(done) {
+          var premade = new Premade();
+          premade._id = "euw:1";
+          premade.premades = [2, 3];
+          premade.save(done);
+        },
+        function retrievePremades(premade, count, cb) {
+          premadeHelper.loadKnownPremadesFromDB([1,2], "euw", cb);
+        },
+        function ensureCorrectness(premades, cb) {
+          assert.deepEqual(premades, {1: [2, 3]});
+          cb();
+        }
+      ], done);
     });
   });
 });
