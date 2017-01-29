@@ -132,7 +132,7 @@ describe("Premade helper", function() {
     });
   });
 
-  describe.only("loadKnownPremadesFromDB()", function() {
+  describe("loadKnownPremadesFromDB()", function() {
     var Premade = mongoose.model('Premade');
 
     beforeEach(function(done) {
@@ -161,6 +161,56 @@ describe("Premade helper", function() {
         },
         function ensureCorrectness(premades, cb) {
           assert.deepEqual(premades, {1: [2, 3]});
+          cb();
+        }
+      ], done);
+    });
+  });
+
+  describe("savePremadesToDB()", function() {
+    var Premade = mongoose.model('Premade');
+
+    beforeEach(function(done) {
+      Premade.remove({}, done);
+    });
+
+    it("should create new records for unknowns premades", function(done) {
+      async.waterfall([
+        function save(cb) {
+          premadeHelper.savePremadesToDB({100: [[1, 2]]}, "euw", cb);
+        },
+        function load(cb) {
+          Premade.find({}).sort({_id: 1}).exec(cb);
+        },
+        function check(premades, cb) {
+          assert.equal(premades.length, 2);
+          assert.deepEqual(premades[0].toObject(), {_id: "euw:1", premades: [2]});
+          assert.deepEqual(premades[1].toObject(), {_id: "euw:2", premades: [1]});
+
+          cb();
+        }
+      ], done);
+    });
+
+    it("should update existing premades records", function(done) {
+      async.waterfall([
+        function add(cb) {
+          var premade = new Premade();
+          premade._id = "euw:1";
+          premade.premades = [5];
+          premade.save(cb);
+        },
+        function save(premade, count, cb) {
+          premadeHelper.savePremadesToDB({100: [[1, 2]]}, "euw", cb);
+        },
+        function load(cb) {
+          Premade.find({}).sort({_id: 1}).exec(cb);
+        },
+        function check(premades, cb) {
+          assert.equal(premades.length, 2);
+          assert.deepEqual(premades[0].toObject(), {_id: "euw:1", premades: [5, 2]});
+          assert.deepEqual(premades[1].toObject(), {_id: "euw:2", premades: [1]});
+
           cb();
         }
       ], done);
