@@ -201,15 +201,16 @@ describe("Premade helper", function() {
           premade.save(cb);
         },
         function save(premade, count, cb) {
-          premadeHelper.savePremadesToDB({100: [[1, 2]]}, "euw", cb);
+          premadeHelper.savePremadesToDB({100: [[1, 2, 3]]}, "euw", cb);
         },
         function load(cb) {
           Premade.find({}).sort({_id: 1}).exec(cb);
         },
         function check(premades, cb) {
-          assert.equal(premades.length, 2);
-          assert.deepEqual(premades[0].toObject(), {_id: "euw:1", premades: [5, 2]});
-          assert.deepEqual(premades[1].toObject(), {_id: "euw:2", premades: [1]});
+          assert.equal(premades.length, 3);
+          assert.deepEqual(premades[0].toObject(), {_id: "euw:1", premades: [5, 2, 3]});
+          assert.deepEqual(premades[1].toObject(), {_id: "euw:2", premades: [1, 3]});
+          assert.deepEqual(premades[2].toObject(), {_id: "euw:3", premades: [1, 2]});
 
           cb();
         }
