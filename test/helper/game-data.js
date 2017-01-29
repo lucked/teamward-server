@@ -1,6 +1,7 @@
 "use strict";
 
 var nock = require("nock");
+var mongoose = require("mongoose");
 
 var recorder = require('../mocks/recorder.js');
 var assert = require('assert');
@@ -8,6 +9,10 @@ var gameData = require('../../lib/helper/game-data');
 
 
 describe("Game data", function() {
+  var Premade = mongoose.model('Premade');
+  beforeEach(function(done) {
+    Premade.remove({}, done);
+  });
 
   it("should return current game data", function(done) {
     this.timeout(40000);
