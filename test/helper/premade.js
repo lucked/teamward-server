@@ -1,8 +1,9 @@
 "use strict";
 
 var assert = require('assert');
-var premadeHelper = require('../../lib/helper/premade');
 
+
+var premadeHelper = require('../../lib/helper/premade');
 describe("Premade helper", function() {
   describe("getPremade()", function() {
     var buildFakePlayer = function(teamId, knownPlayers) {
