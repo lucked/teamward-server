@@ -63,7 +63,7 @@ describe("Main server", function() {
           assert.equal(res.body.matches[0].victory, true);
           assert.equal(res.body.matches[0].ward.id, 3340);
           assert.equal(res.body.matches[0].items.length, 6);
-          assert.equal(res.body.matches[0].items[0].id, 1055);
+          assert.equal(res.body.matches[0].items[0].id, 3748);
         })
         .end(done);
     });
