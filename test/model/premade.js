@@ -43,15 +43,17 @@ describe("Premade model", function() {
     it("should create new records for unknowns premades", function(done) {
       async.waterfall([
         function save(cb) {
-          Premade.savePremadesToDB({100: [[1, 2]]}, "euw", cb);
+          Premade.savePremadesToDB({100: [[1, 2], [3, 4]]}, "euw", cb);
         },
         function load(cb) {
           Premade.find({}).sort({_id: 1}).exec(cb);
         },
         function check(premades, cb) {
-          assert.equal(premades.length, 2);
+          assert.equal(premades.length, 4);
           assert.deepEqual(premades[0].toObject(), {_id: "euw:1", premades: [2]});
           assert.deepEqual(premades[1].toObject(), {_id: "euw:2", premades: [1]});
+          assert.deepEqual(premades[2].toObject(), {_id: "euw:3", premades: [4]});
+          assert.deepEqual(premades[3].toObject(), {_id: "euw:4", premades: [3]});
 
           cb();
         }
@@ -103,6 +105,21 @@ describe("Premade model", function() {
           assert.deepEqual(premades[1].toObject(), {_id: "euw:2", premades: [1, 3]});
           assert.deepEqual(premades[2].toObject(), {_id: "euw:3", premades: [1, 2]});
 
+          cb();
+        }
+      ], done);
+    });
+
+    it("should skip empty premades", function(done) {
+      async.waterfall([
+        function save(cb) {
+          Premade.savePremadesToDB({100: [[1], [2], [3]]}, "euw", cb);
+        },
+        function load(cb) {
+          Premade.find({}).sort({_id: 1}).exec(cb);
+        },
+        function check(premades, cb) {
+          assert.equal(premades.length, 0);
           cb();
         }
       ], done);
