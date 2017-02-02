@@ -25,6 +25,14 @@ describe("Main server", function() {
         .end(done);
     });
 
+    it("should require valid region param", function(done) {
+      supertest(app)
+        .get('/summoner/data?summoner=neamar&region=fr')
+        .expect(409)
+        .expect(/invalid region param/i)
+        .end(done);
+    });
+
     it("should fail for unknown summoner", function(done) {
       done = recorder.useNock(this, done);
 
