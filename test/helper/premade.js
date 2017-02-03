@@ -53,7 +53,7 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 5);
-      assert.deepEqual(premade['100'][0], ["1", "30"]);
+      assert.deepEqual(premade['100'][0], ["1"]);
     });
 
     it("should group simple use cases of premade 5", function() {
