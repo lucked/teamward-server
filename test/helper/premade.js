@@ -24,7 +24,7 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 5);
-      assert.deepEqual(premade['100'][0], ["1"]);
+      assert.deepEqual(premade['100'][0], [1]);
     });
 
     it("should group simple use cases", function() {
@@ -38,12 +38,12 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 4);
-      assert.deepEqual(premade['100'][0], ["1", "2"]);
+      assert.deepEqual(premade['100'][0], [1, 2]);
     });
 
-    it("should still work with incomplete premade data", function() {
+    it("should discard useless premade data", function() {
       var premadeData = {
-        // 30 is not defined in the premadeData
+        // 30 is not part of the game
         1: buildFakePlayer(100, [30]),
         2: buildFakePlayer(100, []),
         3: buildFakePlayer(100, []),
@@ -53,7 +53,7 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 5);
-      assert.deepEqual(premade['100'][0], ["1"]);
+      assert.deepEqual(premade['100'][0], [1]);
     });
 
     it("should group simple use cases of premade 5", function() {
@@ -81,8 +81,8 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 2);
-      assert.deepEqual(premade['100'][0], ['1', '2', '3']);
-      assert.deepEqual(premade['100'][1], ['4', '5']);
+      assert.deepEqual(premade['100'][0], [1, 2, 3]);
+      assert.deepEqual(premade['100'][1], [4, 5]);
     });
 
     it("should group non-cyclic use cases", function() {
@@ -96,8 +96,8 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 2);
-      assert.deepEqual(premade['100'][0], ['1', '2', '3']);
-      assert.deepEqual(premade['100'][1], ['4', '5']);
+      assert.deepEqual(premade['100'][0], [1, 2, 3]);
+      assert.deepEqual(premade['100'][1], [4, 5]);
     });
 
     it("should group non-cyclic non-sorted use cases", function() {
@@ -111,8 +111,8 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 2);
-      assert.deepEqual(premade['100'][0], ['1', '3', '2']);
-      assert.deepEqual(premade['100'][1], ['4', '5']);
+      assert.deepEqual(premade['100'][0], [1, 3, 2]);
+      assert.deepEqual(premade['100'][1], [4, 5]);
     });
 
     it("should group non-cyclic non-sorted non-reeentrant use cases", function() {
@@ -126,8 +126,8 @@ describe("Premade helper", function() {
 
       var premade = premadeHelper.getPremade(premadeData);
       assert.equal(premade['100'].length, 2);
-      assert.deepEqual(premade['100'][0], ['1', '2', '3']);
-      assert.deepEqual(premade['100'][1], ['4', '5']);
+      assert.deepEqual(premade['100'][0], [1, 2, 3]);
+      assert.deepEqual(premade['100'][1], [4, 5]);
     });
   });
 });
