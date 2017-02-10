@@ -66,6 +66,40 @@ async.parallel([
       });
       cb();
     });
+  },
+  function premadeSizeForTokens(cb) {
+    mongoose.model('Token').find({}).select('summonerId region').lean().exec(function(err, res) {
+      assert.ifError(err);
+
+      var validIds = res.map(function(t) {
+        return t.region + ":" + t.summonerId;
+      });
+
+      mongoose.model('Premade').aggregate([
+      {
+        $match: {
+          _id: {$in: validIds}
+        }
+      },
+      {
+        $project: {
+          size: {$size: '$premades'}
+        }
+      },
+      {
+        $group: {
+          _id: "1",
+          avg: {$avg: "$size"}
+        }
+      }]).read('secondaryPreferred').exec(function(err, res) {
+        assert.ifError(err);
+        queue.push({
+          name: "Premades.Users.AverageLength",
+          value: res[0].avg
+        });
+        cb();
+      });
+    });
   }
 ], function(err) {
   if(err) {
