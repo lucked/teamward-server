@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Neamar/teamward-server#readme",
   "dependencies": {
+    "@risingstack/trace": "^3.3.0",
     "async": "^2.1.4",
     "auto-load": "^2.1.0",
     "debug": "^2.6.0",
