@@ -1,5 +1,5 @@
 "use strict";
-require('@risingstack/trace');
+require('newrelic');
 
 var log = require('debug')('teamward:bin:server');
 

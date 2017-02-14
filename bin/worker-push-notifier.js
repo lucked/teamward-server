@@ -1,5 +1,5 @@
 "use strict";
-require('@risingstack/trace');
+require('newrelic');
 
 require('./_common');
 require('../app');
