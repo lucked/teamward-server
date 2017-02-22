@@ -2,8 +2,6 @@
 
 // Load environment variables from .env file
 var dotenv = require('dotenv');
-var https = require("https");
-
 dotenv.config({silent: true});
 
 require('dnscache')({
@@ -13,8 +11,6 @@ require('dnscache')({
 });
 
 require('mongoose').Promise = global.Promise;
-
-https.globalAgent.keepAlive = true;
 
 /* istanbul ignore next */
 if(!process.env.RIOT_API_KEY) {
