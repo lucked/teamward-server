@@ -1,6 +1,8 @@
 machine:
   node:
     version: 6.9.0
+  services:
+    - redis
   hosts:
     # Every test should be fully mocked, or fail.
     # This remove network connectivity to the domains used for communicating with the API
