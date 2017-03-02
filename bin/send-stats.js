@@ -107,6 +107,7 @@ async.parallel([
   }
 
   queue.drain = function() {
-    process.exit(0);
+    console.log("Shutting down.");
+    setTimeout(process.exit, 1500);
   };
 });
