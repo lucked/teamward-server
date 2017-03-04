@@ -2,6 +2,7 @@
 
 var nock = require("nock");
 var mongoose = require("mongoose");
+var async = require("async");
 
 var recorder = require('../mocks/recorder.js');
 var assert = require('assert');
@@ -10,14 +11,21 @@ var gameData = require('../../lib/helper/game-data');
 
 describe("Game data", function() {
   var Premade = mongoose.model('Premade');
+  var Game = mongoose.model('Game');
+
   beforeEach(function(done) {
     Premade.remove({}, done);
+  });
+
+  beforeEach(function(done) {
+    Game.remove({}, done);
   });
 
   it("should return current game data", function(done) {
     this.timeout(40000);
     done = recorder.useNock(this, done);
     var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info.json');
+
     gameData.buildExternalGameData(fakeGameData, 'euw', function(err, data) {
       assert.ifError(err);
 
@@ -79,5 +87,36 @@ describe("Game data", function() {
 
       done();
     });
+  });
+
+  it("should save premades data and game data", function(done) {
+    this.timeout(40000);
+    done = recorder.useNock(this, done);
+
+    var fakeGameData = require('../mocks/mocks/custom_get-spectator-game-info-premade.json');
+
+    async.waterfall([
+      function build(cb) {
+        gameData.buildExternalGameData(fakeGameData, 'euw', cb);
+      },
+      function getPremades(data, cb) {
+        mongoose.model('Premade').find({}, cb);
+      },
+      function checkPremades(premades, cb) {
+        assert.ok(premades.length > 0);
+        assert.ok(premades[0].premades.length > 0);
+
+        cb();
+      },
+      function getGames(cb) {
+        mongoose.model('Game').find({}, cb);
+      },
+      function checkGames(games, cb) {
+        assert.ok(games.length > 0);
+        assert.equal(games[0].players.length, 10);
+
+        cb();
+      }
+    ], done);
   });
 });
