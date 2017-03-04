@@ -8,7 +8,7 @@ var nock = require('nock');
 var rarity = require("rarity");
 
 var pushNotifierWorker = require('../../../lib/worker/push-notifier/worker.js');
-var gameData = require('../../../lib/helper/game-data.js');
+var gameData = require('../../../lib/helper/game-data/');
 
 var mockGameData = require('../../mocks/mocks/custom_get-spectator-game-info.json');
 
