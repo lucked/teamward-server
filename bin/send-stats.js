@@ -1,4 +1,5 @@
 "use strict";
+require('newrelic');
 
 var async = require("async");
 var mongoose = require("mongoose");
