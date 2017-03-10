@@ -95,7 +95,7 @@ async.parallel([
       }]).read('secondaryPreferred').exec(function(err, res) {
         assert.ifError(err);
         queue.push({
-          name: "Premades.Users.AverageLength",
+          name: "Users.AverageLength",
           value: res[0].avg
         });
         cb();
