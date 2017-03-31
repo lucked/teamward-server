@@ -45,7 +45,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/68725724/champions",
     "body": "",
@@ -64,7 +64,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/51712507/champions",
     "body": "",
@@ -83,7 +83,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/78748191/champions",
     "body": "",
@@ -102,7 +102,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/56419638/champions",
     "body": "",
@@ -121,7 +121,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/70328060/champions",
     "body": "",
@@ -6796,7 +6796,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/82186910/champions",
     "body": "",
@@ -6815,7 +6815,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/77172642/champions",
     "body": "",
@@ -7739,7 +7739,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/73960774/champions",
     "body": "",
@@ -7757,7 +7757,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/82439212/champions",
     "body": "",
@@ -7776,7 +7776,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/championmastery/location/EUW1/player/66946946/champions",
     "body": "",
@@ -7795,7 +7795,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v2.5/league/by-summoner/70328060,73960774,82439212,66946946,68725724,56419638,78748191,51712507,82186910,77172642/entry",
     "body": "",
@@ -7819,7 +7819,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.4/summoner/70328060,73960774,82439212,66946946,68725724,56419638,78748191,51712507,82186910,77172642",
     "body": "",
@@ -7842,7 +7842,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/70328060/recent",
     "body": "",
@@ -7866,7 +7866,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/73960774/recent",
     "body": "",
@@ -7889,7 +7889,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/82439212/recent",
     "body": "",
@@ -7913,7 +7913,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/66946946/recent",
     "body": "",
@@ -7937,7 +7937,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/68725724/recent",
     "body": "",
@@ -7961,7 +7961,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/56419638/recent",
     "body": "",
@@ -7985,7 +7985,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/78748191/recent",
     "body": "",
@@ -8009,7 +8009,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/51712507/recent",
     "body": "",
@@ -8033,7 +8033,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/82186910/recent",
     "body": "",
@@ -8057,7 +8057,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/77172642/recent",
     "body": "",

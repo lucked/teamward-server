@@ -56,7 +56,7 @@ describe("pushNotifier worker", function() {
     async.waterfall([
       saveDummyToken,
       function(token, count, cb) {
-        nock('https://euw.api.pvp.net')
+        nock('https://euw.api.riotgames.com')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
           .reply(404, {ok: false});
@@ -78,7 +78,7 @@ describe("pushNotifier worker", function() {
     async.waterfall([
       saveDummyToken,
       function(token, count, cb) {
-        nock('https://euw.api.pvp.net')
+        nock('https://euw.api.riotgames.com')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
           .reply(200, mockGameData);
@@ -117,7 +117,7 @@ describe("pushNotifier worker", function() {
     async.waterfall([
       async.apply(saveDummyToken, token),
       function(token, count, cb) {
-        nock('https://euw.api.pvp.net')
+        nock('https://euw.api.riotgames.com')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
           .reply(200, mockGameData);
@@ -144,7 +144,7 @@ describe("pushNotifier worker", function() {
     async.waterfall([
       async.apply(saveDummyToken, token),
       function(token, count, cb) {
-        nock('https://euw.api.pvp.net')
+        nock('https://euw.api.riotgames.com')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
           .reply(404, {ok: false});
@@ -182,7 +182,7 @@ describe("pushNotifier worker", function() {
     async.waterfall([
       saveDummyToken,
       function(token, count, cb) {
-        nock('https://euw.api.pvp.net')
+        nock('https://euw.api.riotgames.com')
           .get('/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/' + token.summonerId)
           .query(true)
           .reply(200, mockGameData);

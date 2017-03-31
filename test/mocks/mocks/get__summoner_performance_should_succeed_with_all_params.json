@@ -1,6 +1,6 @@
 [
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.4/summoner/by-name/riotneamar",
     "body": "",
@@ -18664,7 +18664,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.3/game/by-summoner/70448430/recent",
     "body": "",
@@ -18688,7 +18688,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v2.2/matchlist/by-summoner/70448430",
     "body": "",
@@ -18711,7 +18711,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v2.2/match/2972057463",
     "body": "",
@@ -18735,7 +18735,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v2.2/match/3034669601",
     "body": "",
@@ -18758,7 +18758,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v2.2/match/2989979284",
     "body": "",
@@ -18782,7 +18782,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v2.2/match/3005522469",
     "body": "",
@@ -18806,7 +18806,7 @@
     }
   },
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v2.2/match/3006684970",
     "body": "",

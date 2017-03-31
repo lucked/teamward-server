@@ -8,8 +8,8 @@ machine:
     # This remove network connectivity to the domains used for communicating with the API
     # Also note that the Circle environment doesn't have a valid API key in environment
     ddragon.leagueoflegends.com: 127.0.0.1
-    euw.api.pvp.net: 127.0.0.1
-    na.api.pvp.net: 127.0.0.1
+    euw.api.riotgames.com: 127.0.0.1
+    na.api.riotgames.com: 127.0.0.1
   environment:
     GCM_API_KEY: fake_key
     RIOT_API_KEY: fake_key

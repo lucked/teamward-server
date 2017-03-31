@@ -8,7 +8,7 @@ var request = require('../../lib/riot-api/request.js');
 
 describe("Riot queue requester", function() {
   it("should return results on valid reply from Riot's server", function(done) {
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/fake')
       .query(true)
       .reply({}, {ok: true});
@@ -22,12 +22,12 @@ describe("Riot queue requester", function() {
   });
 
   it("should retry automatically after a 500", function(done) {
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/fake')
       .query(true)
       .reply(500, {ok: false});
 
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/fake')
       .query(true)
       .reply(200, {ok: true});
@@ -41,12 +41,12 @@ describe("Riot queue requester", function() {
   });
 
   it("should fail after a second 500", function(done) {
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/fake')
       .query(true)
       .reply(500, {ok: false});
 
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/fake')
       .query(true)
       .reply(500, {ok: true});
@@ -62,12 +62,12 @@ describe("Riot queue requester", function() {
   });
 
   it("should retry automatically after a 429", function(done) {
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/fake')
       .query(true)
       .reply(429, {ok: false}, {'retry-after': '0.01'});
 
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/fake')
       .query(true)
       .reply(200, {ok: true});
@@ -81,12 +81,12 @@ describe("Riot queue requester", function() {
   });
 
   it("should cache results when cacheStrategy is specified", function(done) {
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/cacheable')
       .query(true)
       .reply(200, {ok: 'first time'});
 
-    nock('https://euw.api.pvp.net')
+    nock('https://euw.api.riotgames.com')
       .get('/cacheable')
       .query(true)
       .reply(200, {ok: 'second time'});

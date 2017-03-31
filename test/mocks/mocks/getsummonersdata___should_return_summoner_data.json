@@ -1,6 +1,6 @@
 [
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "get",
     "path": "/api/lol/euw/v1.4/summoner/70448430,19083089,19917877,57780340,53870009,19917878,27321542,78179191,38621938,79947339",
     "body": "",

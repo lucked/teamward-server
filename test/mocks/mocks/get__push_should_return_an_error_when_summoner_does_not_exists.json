@@ -1,6 +1,6 @@
 [
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/euw/v1.4/summoner/by-name/Riot%20Neamar%20404",
     "body": "",

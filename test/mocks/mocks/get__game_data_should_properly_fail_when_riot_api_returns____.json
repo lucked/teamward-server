@@ -1,6 +1,6 @@
 [
   {
-    "scope": "https://na.api.pvp.net:443",
+    "scope": "https://na.api.riotgames.com:443",
     "method": "GET",
     "path": "/api/lol/na/v1.4/summoner/by-name/TinCanned",
     "body": "",
@@ -23,7 +23,7 @@
     }
   },
   {
-    "scope": "https://na.api.pvp.net:443",
+    "scope": "https://na.api.riotgames.com:443",
     "method": "GET",
     "path": "/observer-mode/rest/consumer/getSpectatorGameInfo/NA1/81714",
     "body": "",

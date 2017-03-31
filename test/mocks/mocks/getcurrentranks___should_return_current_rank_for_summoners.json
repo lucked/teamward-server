@@ -1,6 +1,6 @@
 [
   {
-    "scope": "https://euw.api.pvp.net:443",
+    "scope": "https://euw.api.riotgames.com:443",
     "method": "get",
     "path": "/api/lol/euw/v2.5/league/by-summoner/19083089,19917877/entry",
     "body": "",

@@ -1,6 +1,6 @@
 [
   {
-    "scope": "https://na.api.pvp.net:443",
+    "scope": "https://na.api.riotgames.com:443",
     "method": "get",
     "path": "/api/lol/na/v1.4/summoner/by-name/neamarNA",
     "body": "",
