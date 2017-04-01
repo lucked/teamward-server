@@ -89,7 +89,7 @@ describe("Game data", function() {
     });
   });
 
-  it("should save premades data and game data", function(done) {
+  it("should save premades data", function(done) {
     this.timeout(40000);
     done = recorder.useNock(this, done);
 
@@ -108,15 +108,6 @@ describe("Game data", function() {
 
         cb();
       },
-      function getGames(cb) {
-        mongoose.model('Game').find({}, cb);
-      },
-      function checkGames(games, cb) {
-        assert.ok(games.length > 0);
-        assert.equal(games[0].players.length, 10);
-
-        cb();
-      }
     ], done);
   });
 });
