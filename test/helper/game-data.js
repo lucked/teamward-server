@@ -11,14 +11,9 @@ var gameData = require('../../lib/helper/game-data');
 
 describe("Game data", function() {
   var Premade = mongoose.model('Premade');
-  var Game = mongoose.model('Game');
 
   beforeEach(function(done) {
     Premade.remove({}, done);
-  });
-
-  beforeEach(function(done) {
-    Game.remove({}, done);
   });
 
   it("should return current game data", function(done) {
