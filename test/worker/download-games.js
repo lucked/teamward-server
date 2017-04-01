@@ -15,7 +15,7 @@ describe("pushNotifier worker", function() {
     mongoose.model('ApiMatch').remove({}, done);
   });
 
-  it.only("should download match data and format them properly", function(done) {
+  it("should download match data and format them properly", function(done) {
     done = recorder.useNock(this, done);
 
     var job = {
