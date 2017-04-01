@@ -11,20 +11,28 @@ describe("pushNotifier worker", function() {
   beforeEach(function clearDB(done) {
     mongoose.model('Match').remove({}, done);
   });
+  beforeEach(function clearDB(done) {
+    mongoose.model('ApiMatch').remove({}, done);
+  });
 
-  it("should download match data and format them properly", function(done) {
+  it.only("should download match data and format them properly", function(done) {
     done = recorder.useNock(this, done);
 
     var job = {
-      gameId: 3124412952,
+      id: 3124412952,
       region: 'euw'
     };
-    downloadGamesWorker.workerFunction(job, function(err, game) {
-      assert.ifError(err);
 
-      assert.equal(game._id, job.region + ":" + job.gameId);
-      assert.equal(game.tier, "BRONZE");
-      assert.equal(game.teams[1].players[2].role, "MID");
+    downloadGamesWorker.workerFunction(job, function(err, res) {
+      assert.ifError(err);
+      var match = res[0][0];
+      var apiMatch = res[1][0];
+      assert.equal(match._id, job.region + ":" + job.id);
+      assert.equal(match.tier, "BRONZE");
+      assert.equal(match.teams[1].players[2].role, "MID");
+
+      assert.equal(match._id, apiMatch._id);
+
       done();
     });
   });
