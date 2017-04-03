@@ -56,17 +56,17 @@ sudo vi /etc/mongod.conf
 sudo service mongod restart
 
 # Reconnect to mongo shell, and create the "standard" user:
-# use test
+mongo admin -u admin -p
 # use teamward
-#db.createUser(
-#  {
-#    user: "teamward",
-#    pwd: "PASSWORD",
-#    roles: [ { role: "readWrite", db: "teamward" } ]
-#  }
-#)
+# db.createUser(
+#   {
+#     user: "teamward",
+#     pwd: "PASSWORD",
+#     roles: [ { role: "readWrite", db: "teamward" } ]
+#   }
+# )
 
 #Read the following attentively
 # Shut down dynos
 mongodump <old_db> /tmp
-mongorestore --host localhost --db teamward -u teamward -p PASSWORD /tmp/old_db/
+mongorestore --host localhost --db teamward -u teamward -p PASSWORD /tmp/
