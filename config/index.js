@@ -18,12 +18,17 @@ if(!process.env.RIOT_API_KEY) {
 }
 
 var currentEnv = process.env.NODE_ENV || 'development';
+var riotApiRateLimits = (process.env.RIOT_API_RATE_LIMITS || "10,500").split(",");
 
 module.exports = {
   nodeEnv: currentEnv,
   processType: process.env.DYNO || "development",
-  apiKey: process.env.RIOT_API_KEY,
-  verifyKey: process.env.RIOT_VERIFY_KEY || "N/C",
+  riot: {
+    apiKey: process.env.RIOT_API_KEY,
+    defaultConcurrency: riotApiRateLimits[0],
+    defaultLongConcurrency: riotApiRateLimits[1],
+    verifyKey: process.env.RIOT_VERIFY_KEY || "N/C",
+  },
   mongoUrl: process.env.MONGO_URL || ("mongodb://localhost/" + currentEnv),
   redisUrl: process.env.REDIS_URL || "redis://localhost",
   gcmApiKey: process.env.GCM_API_KEY,
