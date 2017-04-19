@@ -25,7 +25,7 @@ Using the Riot API, this app will retrieve information about the current game fo
 
 ## Architecture
 Don't forget to set an environment variable named `RIOT_API_KEY` to use the project (get a key [here](https://developer.riotgames.com/docs/api-keys)).
-If you use a production API key, you can set `RIOT_API_KEY_IS_PRODUCTION` to 1 to speed up everything by sending more calls in parralel. Don't do that with a development key, or you'll get banned!
+If you use a production API key, you can set `RIOT_API_RATE_LIMITS` to `3000,180000` or whatever your rate limit is, in the format `10s_limit,10min_limit` to speed up everything by sending more calls in parralel. Don't do that with a development key, or you'll get banned!
 
 Most of the code is in the `lib/` folder.
 
