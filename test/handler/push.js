@@ -11,15 +11,9 @@ var app = require('../../app');
 
 describe("Main server", function() {
   describe("GET /push", function() {
-    beforeEach(function clearDB(done) {
-      mongoose.model('Token').remove({}, done);
-    });
-
     var Token = mongoose.model('Token');
-
-    // Empty token collection before getting started
-    before(function(next) {
-      Token.remove({}, next);
+    beforeEach(function clearDB(done) {
+      Token.remove({}, done);
     });
 
     it("should require summoner name", function(done) {
