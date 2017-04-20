@@ -16,6 +16,7 @@ app.get('/summoner/counter', middlewares.requireSummonerRegion, handlers.summone
 app.get('/summoner/performance', middlewares.requireSummonerRegion, handlers.summoner.performance.get);
 app.get('/game/data', middlewares.requireSummonerRegion, handlers.game.data.get);
 app.get('/push', middlewares.requireSummonerRegion, handlers.push.get);
+app.get('/champion/:champion', handlers.champion.get);
 
 mongoose.connect(config.mongoUrl);
 
