@@ -74,18 +74,4 @@ describe("Ddragon info", function() {
       });
     });
   });
-
-  describe("Detailed Champion info", function() {
-    it("should return detailed champion information", function(done) {
-      done = recorder.useNock(this, done);
-      ddragonInfo.getDetailedChampionData('euw', 420, function(err, data) {
-        assert.ifError(err);
-
-        assert.equal(data.id, 'Illaoi');
-        assert.equal(data.spells[0].id, 'IllaoiQ');
-        assert.ok(data.enemytips.length > 0);
-        done();
-      });
-    });
-  });
 });
