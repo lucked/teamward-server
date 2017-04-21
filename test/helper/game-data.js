@@ -148,8 +148,8 @@ describe("Game data", function() {
         gameData.buildExternalGameData(fakeGameData, 'euw', cb);
       },
       function verify(data, cb) {
-        assert.ok(data.teams[0].players[0].teamwardUser);
-        assert.ok(!data.teams[0].players[1].teamwardUser);
+        assert.ok(data.teams[0].players[0].teamward_user);
+        assert.ok(!data.teams[0].players[1].teamward_user);
 
         cb();
       }
