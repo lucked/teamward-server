@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/Neamar/teamward-server#readme",
   "dependencies": {
+    "any-db": "^2.2.0",
+    "any-db-mysql": "^2.1.2",
+    "any-db-transaction": "^2.2.2",
     "async": "^2.1.4",
     "auto-load": "^2.1.0",
     "debug": "^2.6.0",

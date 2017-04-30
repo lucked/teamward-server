@@ -12,15 +12,10 @@ var gameData = require('../../lib/helper/game-data');
 
 describe("Game data", function() {
   var Premade = mongoose.model('Premade');
-  var Game = mongoose.model('Game');
   var Token = mongoose.model('Token');
 
   beforeEach(function(done) {
     Premade.remove({}, done);
-  });
-
-  beforeEach(function(done) {
-    Game.remove({}, done);
   });
 
   beforeEach(function(done) {
@@ -96,7 +91,7 @@ describe("Game data", function() {
     });
   });
 
-  it("should save premades data and game data", function(done) {
+  it("should save premades data", function(done) {
     this.timeout(40000);
     done = recorder.useNock(this, done);
 
@@ -115,15 +110,6 @@ describe("Game data", function() {
 
         cb();
       },
-      function getGames(cb) {
-        mongoose.model('Game').find({}, cb);
-      },
-      function checkGames(games, cb) {
-        assert.ok(games.length > 0);
-        assert.equal(games[0].players.length, 10);
-
-        cb();
-      }
     ], done);
   });
 
