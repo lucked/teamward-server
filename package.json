@@ -37,7 +37,6 @@
     "rarity": "^2.1.1",
     "request": "^2.79.0",
     "riot-lol-api": "^3.0.2",
-    "sequelize": "^3.30.4",
     "superagent": "^3.3.2",
     "throng": "^4.0.0"
   },

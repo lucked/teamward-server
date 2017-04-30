@@ -2,7 +2,7 @@
 
 var assert = require("assert");
 var async = require("async");
-var mongoose = require("mongoose");
+// var mongoose = require("mongoose");
 
 var recorder = require('../mocks/recorder');
 
