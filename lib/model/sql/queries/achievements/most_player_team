@@ -1,0 +1,14 @@
+select team, count(*) as nbgame
+from
+(
+	SELECT 
+        GROUP_CONCAT(champion_id ORDER BY champion_id SEPARATOR ',') as team
+    FROM
+        matches_participants
+    GROUP BY 
+		match_id, team_id
+) teams
+group by
+team
+order by nbgame DESC
+LIMIT 1
