@@ -9,6 +9,7 @@ FROM
 	INNER JOIN matches_participants player1 ON player1.match_id = matches.id
 WHERE
 	player1.summoner_id = 70448430
+  AND matches.region = "euw"
 GROUP BY
 	player1.champion_id
 ORDER BY winrate desc;
