@@ -28,6 +28,7 @@ CREATE TABLE `matches_participants` (
   `largest_kill` int unsigned NOT NULL,
   `largest_spree` int unsigned NOT NULL,
   `tower_kills` int unsigned NOT NULL,
+  `inhibitor_kills` int unsigned NOT NULL,
   `gold_earned` int unsigned NOT NULL,
   `last_season` enum('UNRANKED','BRONZE','SILVER','GOLD','PLATINUM','DIAMOND','MASTER','CHALLENGER') NOT NULL,
   `spell_d` int unsigned NOT NULL,
