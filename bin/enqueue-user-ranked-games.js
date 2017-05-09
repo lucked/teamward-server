@@ -2,7 +2,6 @@
 var async = require("async");
 var mongoose = require("mongoose");
 var FJQ = require("featureless-job-queue");
-
 require('./_common');
 require('../app');
 var config = require('../config/');
@@ -16,37 +15,35 @@ var summonerInfo = require('../lib/riot-api/summoner-info.js');
 
 
 async.waterfall([
-    function findAllTokens(cb) {
-      mongoose.model('Token').find({}).read('secondaryPreferred').select('_id token summonerName summonerId region lastKnownGameId inGame').lean().exec(cb);
-    },
-    function addTokensToQueue(tokens, cb) {
-      var games = {};
-      var count = 0;
-      async.eachLimit(tokens.slice(0,200), 50, function(token, cb) {
-        summonerInfo.getAllRankedMatches(token.summonerId, token.region, function(err, matches) {
-          if(err) {
-            return cb(err);
-          }
+  function findAllTokens(cb) {
+    mongoose.model('Token').find({}).read('secondaryPreferred').select('_id summonerName summonerId region').lean().exec(cb);
+  },
+  function addTokensToQueue(tokens, cb) {
+    async.eachLimit(tokens, 2, function(token, cb) {
+      summonerInfo.getAllRankedMatches(token.summonerId, token.region, function(err, matches) {
+        matches.matches = matches.matches || [];
 
-          (matches.matches || []).forEach(function(match) {
-            games[token.region.toLowerCase() + match.matchId] = {
-              id: match.matchId,
-              region: token.region.toLowerCase()
-            };
-          });
+        console.log("Got " + matches.matches.length + " ranked games for " + token.summonerName);
+        if(err) {
+          return cb(err);
+        }
 
-          count += 1;
-          console.log(count, tokens.length);
-          cb();
+        var jobs = matches.matches.map(function(match) {
+          return {
+            id: match.matchId,
+            region: token.region.toLowerCase()
+          };
         });
-      }, function(err) {
-        cb(err, games);
+
+        fjq.create(jobs, function(err) {
+          // Manual throttling
+          setTimeout(function() {
+            cb(err);
+          }, 10000);
+        });
       });
-    },
-    function enqueue(games, cb) {
-      console.log("TOTAL GAMES", Object.keys(games).length);
-      fjq.create(Object.keys(games).map(k => games[k]), cb);
-    }
+    }, cb);
+  },
 ], function(err) {
   if(err) {
     throw err;
