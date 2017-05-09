@@ -4,8 +4,10 @@ require('newrelic');
 var async = require("async");
 var mongoose = require("mongoose");
 var assert = require("assert");
+var anyDB = require("any-db");
 
 require('../app.js');
+var config = require('../config/');
 var metricTracker = require('../lib/metric-tracker.js');
 
 
@@ -101,7 +103,19 @@ async.parallel([
         cb();
       });
     });
-  }
+  },
+  function matchesSize(cb) {
+    var conn = anyDB.createConnection(config.sqlUrl);
+    conn.query("SELECT COUNT(0) AS count FROM matches", function(err, res) {
+      assert.ifError(err);
+      queue.push({
+        name: "Matches.Length",
+        value: res.rows[0].count
+      });
+
+      cb();
+    });
+  },
 ], function(err) {
   if(err) {
     throw err;
