@@ -3,7 +3,7 @@
 -- param: last_patch
 -- param: last_patch
 
-SELECT
+SELECT /*+ MAX_EXECUTION_TIME(7200) */
     participants.champion_id,
     participants.role,
     COUNT(0) AS nb_games_in_role,

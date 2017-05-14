@@ -1,7 +1,7 @@
 -- Matchup stats, over the specified patch
 -- Reads "champion1 won nb_wins games against champion2, out of a total of nb_games
 -- param: last_patch
-SELECT
+SELECT /*+ MAX_EXECUTION_TIME(7200) */
         player1.champion_id AS champion1_id,
         player2.champion_id AS champion2_id,
         player1.role AS role,
