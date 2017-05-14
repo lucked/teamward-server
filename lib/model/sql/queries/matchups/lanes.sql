@@ -1,23 +1,20 @@
--- Where is every champion playing (which lane), over the last two patches?
+-- Where is every champion playing (which lane), over the last two patches
 -- Only displays roles played in more than 10% of the champion games
--- ? last_patch
--- ? last_patch
+-- param: last_patch
+-- param: last_patch
 
 SELECT
     participants.champion_id,
-    champions.name,
     participants.role,
     COUNT(0) AS nb_games_in_role,
     COUNT(matches.winner = participants.team_id OR null) as nb_wins_in_role,
     p2.total_nb_games,
     COUNT(0) / p2.total_nb_games * 100 AS percent_play_in_role,
-    COUNT(matches.winner = participants.team_id OR null) / COUNT(0) * 100 AS percent_win_in_role
+    COUNT(matches.winner = participants.team_id OR null) / COUNT(0) * 100 AS winrate
 FROM
     matches_participants participants
         LEFT JOIN
     matches ON (matches.id = participants.match_id)
-        LEFT JOIN
-    champions ON participants.champion_id = champions.id
         LEFT JOIN
     (SELECT
         champion_id, COUNT(0) AS total_nb_games
@@ -27,6 +24,7 @@ FROM
     WHERE patch = ?
     GROUP BY champion_id) p2 ON p2.champion_id = participants.champion_id
 WHERE
-    role <> '?' AND patch = ?
+    -- question mark must be escaped... because param interpolation sucks with mysql/anydb
+    role <> CHAR(63) AND patch = ?
 GROUP BY participants.champion_id , participants.role
 HAVING percent_play_in_role > 10

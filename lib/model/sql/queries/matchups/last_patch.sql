@@ -1,5 +1,5 @@
 -- Return the most recent patch with at least the specified number of games
--- ? number_of_games
+-- param: number_of_games
 SELECT
     patch, COUNT(0) AS count
 FROM
