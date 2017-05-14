@@ -1,0 +1,11 @@
+SELECT
+    player.match_id, SUM(game_players.inhibitor_kills)
+FROM
+    matches_participants player
+        INNER JOIN
+    matches_participants game_players ON player.match_id = game_players.match_id
+WHERE
+    player.summoner_id = 19083089
+GROUP BY player.match_id
+ORDER BY SUM(game_players.inhibitor_kills) DESC
+LIMIT 1
