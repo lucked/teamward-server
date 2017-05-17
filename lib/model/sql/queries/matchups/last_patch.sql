@@ -6,5 +6,5 @@ FROM
     matches
 GROUP BY patch
 HAVING count > ?
-ORDER BY patch DESC
+ORDER BY SUBSTRING(patch,1,1)*100 + SUBSTRING(patch,3) DESC
 LIMIT 1
