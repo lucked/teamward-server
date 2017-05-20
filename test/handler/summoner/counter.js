@@ -27,6 +27,13 @@ describe("Main server", function() {
         name: 'Illaoi'
       }
     ];
+    champion.roleData = {
+      TOP: {
+        winRate: 50,
+        gameCounts: 200,
+        percentPlayInRole: 100
+      }
+    };
 
     champion.save(done);
   });

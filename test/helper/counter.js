@@ -24,6 +24,9 @@ describe("Counter helper", function() {
     return {
       _id: id,
       name: id,
+      roleData: {
+        TOP: {}
+      },
       getMatchups: function() {
         return matchups || [];
       }
