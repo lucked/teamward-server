@@ -29,7 +29,7 @@ describe("Main server", function() {
     ];
     champion.roleData = {
       TOP: {
-        winRate: 50,
+        winrate: 50,
         gameCounts: 200,
         percentPlayInRole: 100
       }
