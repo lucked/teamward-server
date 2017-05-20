@@ -17,4 +17,4 @@ GROUP BY
     player2.champion_id,
     player1.role
 HAVING
-    nb_games > 100;
+    nb_games > 150;
