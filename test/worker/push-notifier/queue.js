@@ -31,7 +31,7 @@ describe("pushNotifier queue", function() {
     token.summonerName = "dummysummoner";
     token.token = "dummytoken" + getDummyToken.i;
     token.summonerProfileId = 12;
-    token.summonerId = 123;
+    token.summonerId = getDummyToken.i;
 
     getDummyToken.i += 1;
     return token;
