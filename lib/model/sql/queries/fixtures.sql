@@ -4,12 +4,16 @@ CREATE TABLE `matches` (
   `winner` tinyint(3) unsigned NOT NULL,
   `queue` varchar(45) NOT NULL,
   `map` tinyint(3) unsigned NOT NULL,
-  `patch` varchar(15) NOT NULL,
+  `patch` varchar(15) NOT NULL DEFAULT '?',
+  `season` tinyint(2) NOT NULL DEFAULT '7',
+  `patch_number` tinyint(2) NOT NULL DEFAULT '10',
   `creation` datetime NOT NULL,
   `duration` int(10) unsigned NOT NULL,
   `rank` enum('UNRANKED','BRONZE','SILVER','GOLD','PLATINUM','DIAMOND','MASTER','CHALLENGER') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `idx_matches_patch` (`patch`),
+  KEY `idx_matches_winner_queue_season_patch_number` (`season`,`patch_number`,`queue`,`winner`) COMMENT 'season, patch_number, queue used for filtering,\nwinner added for fast row retrieval in matchups joins'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
 
 CREATE TABLE `matches_participants` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
