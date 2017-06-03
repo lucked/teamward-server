@@ -1,7 +1,9 @@
 -- Where is every champion playing (which lane), over the last two patches
 -- Only displays roles played in more than 10% of the champion games
--- param: last_patch
--- param: last_patch
+-- param: season
+-- param: patch_number
+-- param: season
+-- param: patch_number
 
 SELECT /*+ MAX_EXECUTION_TIME(7200) */
     participants.champion_id,
@@ -21,10 +23,10 @@ FROM
     FROM
         matches_participants
     LEFT JOIN matches ON (matches.id = matches_participants.match_id)
-    WHERE patch = ?
+    WHERE season = ? AND patch_number = ? AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
     GROUP BY champion_id) p2 ON p2.champion_id = participants.champion_id
 WHERE
     -- question mark must be escaped... because param interpolation sucks with mysql/anydb
-    role <> CHAR(63) AND patch = ?
+    role <> CHAR(63) AND season = ? AND patch_number = ? AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
 GROUP BY participants.champion_id , participants.role
 HAVING percent_play_in_role > 10
