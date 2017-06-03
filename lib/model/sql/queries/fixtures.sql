@@ -17,7 +17,7 @@ CREATE TABLE `matches_participants` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `match_id` bigint(20) unsigned NOT NULL,
   `team_id` tinyint(3) unsigned NOT NULL,
-  `summoner_id` int(10) unsigned NULL,
+  `summoner_id` int(10) unsigned NOT NULL,
   `role` enum('?','TOP','JUNGLE','MID','CARRY','SUPPORT') NOT NULL,
   `champion_id` int(10) unsigned NOT NULL,
   `kills` int(10) unsigned NOT NULL,
