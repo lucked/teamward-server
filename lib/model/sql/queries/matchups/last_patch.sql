@@ -6,5 +6,5 @@ FROM
     matches
 GROUP BY season, patch_number
 HAVING count > ?
-ORDER BY season, patch_number DESC
+ORDER BY season DESC, patch_number DESC
 LIMIT 1
