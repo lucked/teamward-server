@@ -1,6 +1,7 @@
 -- Matchup stats, over the specified patch
 -- Reads "champion1 won nb_wins games against champion2, out of a total of nb_games
--- param: last_patch
+-- param: season
+-- param: patch_number
 SELECT /*+ MAX_EXECUTION_TIME(7200) */
         player1.champion_id AS champion1_id,
         player2.champion_id AS champion2_id,
@@ -11,7 +12,7 @@ SELECT /*+ MAX_EXECUTION_TIME(7200) */
 FROM matches
 INNER JOIN matches_participants player1 ON player1.match_id = matches.id
 INNER JOIN matches_participants player2 ON player2.match_id = matches.id AND player2.team_id != player1.team_id AND player1.role = player2.role
-WHERE patch = ?
+WHERE season = ? AND patch_number = ?  AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
 GROUP BY
     player1.champion_id,
     player2.champion_id,
