@@ -1,5 +1,5 @@
 CREATE TYPE rankType AS ENUM('UNRANKED','BRONZE','SILVER','GOLD','PLATINUM','DIAMOND','MASTER','CHALLENGER');
-CREATE TYPE roleType AS ENUM('?','TOP','JUNGLE','MID','CARRY','SUPPORT'),
+CREATE TYPE roleType AS ENUM('?','TOP','JUNGLE','MID','CARRY','SUPPORT');
 
 CREATE TABLE public.matches
 (
@@ -9,16 +9,16 @@ CREATE TABLE public.matches
   queue character varying(45) COLLATE pg_catalog."default" NOT NULL,
   map integer NOT NULL,
   season integer NOT NULL DEFAULT 7,
-  patch_number integer NOT NULL DEFAULT 10,
+  patch integer NOT NULL DEFAULT 10,
   creation timestamp without time zone NOT NULL,
   duration integer NOT NULL,
   rank ranktype NOT NULL,
   CONSTRAINT matches_pkey PRIMARY KEY (id, region)
-)
+);
 
 CREATE TABLE public.matches_participants
 (
-  id integer NOT NULL DEFAULT nextval('matches_participants_id_seq'::regclass),
+  id SERIAL,
   match_id bigint NOT NULL,
   region character varying COLLATE pg_catalog."default" NOT NULL,
   team_id integer NOT NULL,
@@ -60,4 +60,4 @@ CREATE TABLE public.matches_participants
     REFERENCES public.matches (id, region) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE
-)
+);
