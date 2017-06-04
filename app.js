@@ -7,7 +7,10 @@ var morgan = require("morgan");
 var config = require('./config');
 var app = express();
 
-app.use(morgan(':method :url :status :response-time ms'));
+if(process.env.NODE_ENV !== 'test') {
+  app.use(morgan(':method :url :status :response-time ms'));
+}
+
 var handlers = require('./lib').handler;
 var middlewares = require('./lib').middleware;
 
