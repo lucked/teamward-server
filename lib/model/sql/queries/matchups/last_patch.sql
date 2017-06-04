@@ -5,6 +5,6 @@ SELECT
 FROM
     matches
 GROUP BY season, patch
-HAVING count > ?
+HAVING COUNT(0) > ?
 ORDER BY season DESC, patch DESC
 LIMIT 1
