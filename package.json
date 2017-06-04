@@ -21,10 +21,6 @@
   },
   "homepage": "https://github.com/Neamar/teamward-server#readme",
   "dependencies": {
-    "any-db": "^2.2.0",
-    "any-db-mysql": "^2.1.2",
-    "any-db-postgres": "^2.1.5",
-    "any-db-transaction": "^2.2.2",
     "async": "^2.1.4",
     "auto-load": "^2.1.0",
     "debug": "^2.6.0",
@@ -38,6 +34,7 @@
     "morgan": "^1.8.2",
     "newrelic": "^1.36.1",
     "opbeat": "^4.7.0",
+    "pg": "^6.2.3",
     "rarity": "^2.1.1",
     "request": "^2.79.0",
     "riot-lol-api": "^3.0.3",
