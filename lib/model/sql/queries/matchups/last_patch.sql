@@ -1,10 +1,10 @@
 -- Return the most recent patch with at least the specified number of games
 -- param: number_of_games
 SELECT
-    season, patch_number, COUNT(0) AS count
+    season, patch, COUNT(0) AS count
 FROM
     matches
-GROUP BY season, patch_number
+GROUP BY season, patch
 HAVING count > ?
-ORDER BY season DESC, patch_number DESC
+ORDER BY season DESC, patch DESC
 LIMIT 1
