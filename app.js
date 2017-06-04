@@ -7,7 +7,7 @@ var morgan = require("morgan");
 var config = require('./config');
 var app = express();
 
-app.use(morgan('short'));
+app.use(morgan(':method :url :status :response-time ms'));
 var handlers = require('./lib').handler;
 var middlewares = require('./lib').middleware;
 
