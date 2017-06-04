@@ -27,3 +27,12 @@ test:
 general:
   artifacts:
     - ./coverage
+deployment:
+  staging:
+    branch: master
+    commands:
+      - git push dokku@teamward.xyz:teamward-dev master
+  production:
+    branch: production
+    commands:
+      - git push dokku@teamward.xyz:teamward production:master
