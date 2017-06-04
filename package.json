@@ -34,6 +34,7 @@
     "gcm": "^1.0.1",
     "heroku-self-ping": "^1.1.3",
     "mongoose": "^4.7.7",
+    "morgan": "^1.8.2",
     "newrelic": "^1.36.1",
     "opbeat": "^4.7.0",
     "rarity": "^2.1.1",

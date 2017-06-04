@@ -2,10 +2,12 @@
 
 var express = require('express');
 var mongoose = require('mongoose');
+var morgan = require("morgan");
 
 var config = require('./config');
 var app = express();
 
+app.use(morgan('tiny'));
 var handlers = require('./lib').handler;
 var middlewares = require('./lib').middleware;
 
