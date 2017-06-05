@@ -31,8 +31,8 @@ deployment:
   staging:
     branch: master
     commands:
-      - git push dokku@teamward.xyz:teamward-dev master
+      - git push dokku@teamward.xyz:teamward-dev master -f
   production:
     branch: production
     commands:
-      - git push dokku@teamward.xyz:teamward production:master
+      - git push dokku@teamward.xyz:teamward production:master -f
