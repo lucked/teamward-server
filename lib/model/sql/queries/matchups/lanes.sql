@@ -13,14 +13,14 @@ SELECT
     100.0 * COUNT(matches.winner = participants.team_id OR null) / COUNT(0) AS winrate
 FROM
     matches_participants participants
-        LEFT JOIN
-    matches ON (matches.id = participants.match_id)
-        LEFT JOIN
+        INNER JOIN
+    matches ON (matches.id = participants.match_id AND matches.region = participants.region)
+        INNER JOIN
     (SELECT
         champion_id, COUNT(0) AS total_nb_games
     FROM
         matches_participants
-    LEFT JOIN matches ON (matches.id = matches_participants.match_id)
+    INNER JOIN matches ON (matches.id = matches_participants.match_id AND matches.region = matches_participants.region)
     WHERE season = $1 AND patch = $2 AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
     GROUP BY champion_id) p2 ON p2.champion_id = participants.champion_id
 WHERE
