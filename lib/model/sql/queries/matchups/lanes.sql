@@ -27,4 +27,4 @@ WHERE
     role <> '?' AND season = $1 AND patch = $2 AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
 GROUP BY participants.champion_id , participants.role, p2.total_nb_games
 
-HAVING COUNT(0) / p2.total_nb_games * 100 > 10
+HAVING 100.0 * COUNT(0) / p2.total_nb_games > 10
