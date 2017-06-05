@@ -4,7 +4,7 @@ CREATE TYPE roleType AS ENUM('?','TOP','JUNGLE','MID','CARRY','SUPPORT');
 CREATE TABLE public.matches
 (
   id bigint NOT NULL,
-  region char(4) COLLATE pg_catalog."default" NOT NULL,
+  region character(4) COLLATE pg_catalog."default" NOT NULL,
   winner integer NOT NULL,
   queue character varying(45) COLLATE pg_catalog."default" NOT NULL,
   map integer NOT NULL,
@@ -14,13 +14,13 @@ CREATE TABLE public.matches
   duration integer NOT NULL,
   rank ranktype NOT NULL,
   CONSTRAINT matches_pkey PRIMARY KEY (id, region)
-);
+)
 
 CREATE TABLE public.matches_participants
 (
   id SERIAL,
   match_id bigint NOT NULL,
-  region char(4) COLLATE pg_catalog."default" NOT NULL,
+  region character(4) COLLATE pg_catalog."default" NOT NULL,
   team_id smallint NOT NULL,
   summoner_id integer NOT NULL,
   role roletype NOT NULL,
@@ -60,4 +60,4 @@ CREATE TABLE public.matches_participants
     REFERENCES public.matches (id, region) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE
-);
+)
