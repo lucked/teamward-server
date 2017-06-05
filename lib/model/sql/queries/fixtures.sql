@@ -22,7 +22,7 @@ CREATE TABLE public.matches_participants
   match_id bigint NOT NULL,
   region character(4) COLLATE pg_catalog."default" NOT NULL,
   team_id smallint NOT NULL,
-  summoner_id integer NOT NULL,
+  summoner_id integer,
   role roletype NOT NULL,
   champion_id smallint NOT NULL,
   kills smallint NOT NULL,
