@@ -23,7 +23,6 @@
   "dependencies": {
     "any-db": "^2.2.0",
     "any-db-postgres": "^2.1.5",
-    "any-db-transaction": "^2.2.2",
     "async": "^2.1.4",
     "auto-load": "^2.1.0",
     "debug": "^2.6.0",
