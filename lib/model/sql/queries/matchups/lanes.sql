@@ -2,8 +2,6 @@
 -- Only displays roles played in more than 10% of the champion games
 -- param: season
 -- param: patch
--- param: season
--- param: patch
 
 SELECT
     participants.champion_id,
@@ -23,10 +21,10 @@ FROM
     FROM
         matches_participants
     LEFT JOIN matches ON (matches.id = matches_participants.match_id)
-    WHERE season = ? AND patch = ? AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
+    WHERE season = $1 AND patch = $2 AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
     GROUP BY champion_id) p2 ON p2.champion_id = participants.champion_id
 WHERE
-    role <> '?' AND season = ? AND patch = ? AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
+    role <> '?' AND season = $1 AND patch = $2 AND queue IN ('TEAM_BUILDER_RANKED_SOLO', 'RANKED_FLEX_SR')
 GROUP BY participants.champion_id , participants.role, p2.total_nb_games
 
 HAVING COUNT(0) / p2.total_nb_games * 100 > 10
