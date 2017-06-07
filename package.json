@@ -35,7 +35,6 @@
     "newrelic": "^1.36.1",
     "opbeat": "^4.7.0",
     "pg": "^6.2.3",
-    "pg-pool": "^1.7.1",
     "rarity": "^2.1.1",
     "riot-lol-api": "^3.0.3",
     "superagent": "^3.3.2",
