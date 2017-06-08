@@ -10,7 +10,19 @@ require('heroku-self-ping')(process.env.APP_URL);
 var throng = require('throng');
 
 var start = function() {
-  var app = require('../app');
+  var app;
+  if(process.env.IS_HEROKU) {
+    var express = require('express');
+    app = express();
+
+    app.get('/*', function(req, res) {
+      res.set('location', 'https://app.teamward.xyz' + req.originalUrl);
+      res.status(302).send();
+    });
+  }
+  else {
+    app = require('../app');
+  }
 
   if(common.opbeat) {
     app.use(common.opbeat.middleware.express());
