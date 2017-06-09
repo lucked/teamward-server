@@ -21,7 +21,11 @@ async.waterfall([
   function addTokensToQueue(tokens, cb) {
     async.eachLimit(tokens, 10, function(token, cb) {
       summonerInfo.getAllRankedMatches(token.summonerId, token.region, function(err, matches) {
-        matches.matches = matches ? (matches.matches || []) : [];
+        if(!matches) {
+          return cb();
+        }
+
+        matches.matches = matches.matches || [];
 
         console.log("Got " + matches.matches.length + " ranked games for " + token.summonerName);
         if(err) {
