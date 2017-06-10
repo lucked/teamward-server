@@ -2,7 +2,7 @@ exports.config = {
   agent_enabled: "NEW_RELIC_LICENSE_KEY" in process.env,
   app_name: require('./package.json').name,
   capture_params: true,
-  apdex_t: 0.250,
+  apdex_t: 0.500,
   error_collector: {
     // We need to disable the error collector to let Opbeat retrieve the stacktrace on uncaughtException
     enabled: true,
