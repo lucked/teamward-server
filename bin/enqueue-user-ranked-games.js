@@ -19,14 +19,21 @@ async.waterfall([
     mongoose.model('Token').find({}).read('secondaryPreferred').select('_id summonerName summonerId region').lean().exec(cb);
   },
   function addTokensToQueue(tokens, cb) {
-    async.eachLimit(tokens, 2, function(token, cb) {
+    async.eachLimit(tokens, 10, function(token, cb) {
       summonerInfo.getAllRankedMatches(token.summonerId, token.region, function(err, matches) {
+        if(err) {
+          // Skip user and move to next one.
+          console.warn(err.toString());
+          return cb();
+        }
+
+        if(!matches) {
+          return cb();
+        }
+
         matches.matches = matches.matches || [];
 
         console.log("Got " + matches.matches.length + " ranked games for " + token.summonerName);
-        if(err) {
-          return cb(err);
-        }
 
         var jobs = matches.matches.map(function(match) {
           return {
@@ -35,12 +42,7 @@ async.waterfall([
           };
         });
 
-        fjq.create(jobs, function(err) {
-          // Manual throttling
-          setTimeout(function() {
-            cb(err);
-          }, 10000);
-        });
+        fjq.create(jobs, cb);
       });
     }, cb);
   },
