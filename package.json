@@ -36,6 +36,7 @@
     "opbeat": "^4.7.0",
     "pg": "^6.2.3",
     "rarity": "^2.1.1",
+    "redis": "^2.7.1",
     "riot-lol-api": "^3.0.3",
     "superagent": "^3.3.2",
     "throng": "^4.0.0"

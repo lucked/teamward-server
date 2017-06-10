@@ -11,7 +11,7 @@ describe("Network cache", function() {
   it("should retrieve data once cached", function(done) {
     async.waterfall([
       function set(cb) {
-        cache.set('euw', '/test', 10000, {foo: "bar"}, rarity.slice(1, cb));
+        cache.set('euw', '/test', 10, {foo: "bar"}, rarity.slice(1, cb));
       },
       function get(cb) {
         cache.get('euw', '/test', cb);
@@ -24,10 +24,10 @@ describe("Network cache", function() {
   });
 
   // Skipped for now: mongo removal of old documents is slow :(
-  it.skip("should not return outdated content", function(done) {
+  it("should not return outdated content", function(done) {
     async.waterfall([
       function set(cb) {
-        cache.set('euw', '/old', -1000, {foo: 'nope'}, rarity.slice(1, cb));
+        cache.set('euw', '/old', 0, {foo: 'nope'}, rarity.slice(1, cb));
       },
       function getOld(cb) {
         cache.get('euw', '/old', cb);
