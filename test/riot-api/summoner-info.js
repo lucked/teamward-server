@@ -6,7 +6,7 @@ var recorder = require('../mocks/recorder');
 
 
 describe("Summoner data", function() {
-  describe.only('getSummonerData()', function() {
+  describe('getSummonerData()', function() {
     it("should return summoner data", function(done) {
       done = recorder.useNock(this, done);
       summonerData.getSummonerData('neamar', 'euw', function(err, data) {
