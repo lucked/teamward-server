@@ -7,6 +7,8 @@ var morgan = require("morgan");
 var config = require('./config');
 var app = express();
 
+require('mongoose').Promise = global.Promise;
+
 if(process.env.NODE_ENV !== 'test') {
   app.use(morgan(':method :url :status :response-time ms'));
 }
