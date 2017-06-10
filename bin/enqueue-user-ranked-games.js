@@ -21,6 +21,12 @@ async.waterfall([
   function addTokensToQueue(tokens, cb) {
     async.eachLimit(tokens, 10, function(token, cb) {
       summonerInfo.getAllRankedMatches(token.summonerId, token.region, function(err, matches) {
+        if(err) {
+          // Skip user and move to next one.
+          console.warn(err.toString());
+          return cb();
+        }
+
         if(!matches) {
           return cb();
         }
@@ -28,9 +34,6 @@ async.waterfall([
         matches.matches = matches.matches || [];
 
         console.log("Got " + matches.matches.length + " ranked games for " + token.summonerName);
-        if(err) {
-          return cb(err);
-        }
 
         var jobs = matches.matches.map(function(match) {
           return {
