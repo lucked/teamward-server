@@ -8,7 +8,7 @@ var recorder = require('../../mocks/recorder.js');
 var supertest = require('supertest');
 
 describe("Main server", function() {
-  describe.only("GET /summoner/data", function() {
+  describe("GET /summoner/data", function() {
     it("should require summoner name", function(done) {
       supertest(app)
         .get('/summoner/data')
