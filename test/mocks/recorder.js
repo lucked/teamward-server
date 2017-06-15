@@ -61,6 +61,9 @@ module.exports.setupNock = function setupNock(mochaContext, done) {
 
 
 module.exports.useNock = function useNock(mochaContext, done) {
+  if(process.env.RECORD_ALL_TESTS) {
+    return module.exports.setupNock(mochaContext, done);
+  }
   // Disabled for now, see
   // https://github.com/node-nock/nock/issues/211
   // nock.disableNetConnect();

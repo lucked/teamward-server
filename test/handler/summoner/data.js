@@ -8,7 +8,7 @@ var recorder = require('../../mocks/recorder.js');
 var supertest = require('supertest');
 
 describe("Main server", function() {
-  describe("GET /summoner/data", function() {
+  describe.only("GET /summoner/data", function() {
     it("should require summoner name", function(done) {
       supertest(app)
         .get('/summoner/data')
@@ -51,7 +51,7 @@ describe("Main server", function() {
         .expect(200)
         .expect(function(res) {
           assert.equal(res.body.name, 'Neamar');
-          assert.equal(res.body.profileIcon, 'https://ddragon.leagueoflegends.com/cdn/6.13.1/img/profileicon/26.png');
+          assert.equal(res.body.profileIcon, 'https://ddragon.leagueoflegends.com/cdn/7.11.1/img/profileicon/932.png');
         })
         .end(done);
     });

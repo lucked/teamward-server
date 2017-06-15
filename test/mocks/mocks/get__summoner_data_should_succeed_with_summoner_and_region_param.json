@@ -1,70 +1,67 @@
 [
   {
     "scope": "https://ddragon.leagueoflegends.com:443",
-    "method": "get",
+    "method": "GET",
     "path": "/realms/euw.json",
     "body": "",
     "status": 200,
     "response": {
       "n": {
-        "item": "6.13.1",
-        "rune": "6.13.1",
-        "mastery": "6.13.1",
-        "summoner": "6.13.1",
-        "champion": "6.13.1",
-        "profileicon": "6.13.1",
-        "map": "6.13.1",
-        "language": "6.13.1"
+        "item": "7.11.1",
+        "rune": "7.11.1",
+        "mastery": "7.11.1",
+        "summoner": "7.11.1",
+        "champion": "7.11.1",
+        "profileicon": "7.11.1",
+        "map": "7.11.1",
+        "language": "7.11.1",
+        "sticker": "7.11.1"
       },
-      "v": "6.13.1",
+      "v": "7.11.1",
       "l": "en_GB",
-      "cdn": "https://ddragon.leagueoflegends.com/cdn",
-      "dd": "6.13.1",
-      "lg": "6.13.1",
-      "css": "6.13.1",
+      "cdn": "http://ddragon.leagueoflegends.com/cdn",
+      "dd": "7.11.1",
+      "lg": "7.11.1",
+      "css": "7.11.1",
       "profileiconmax": 28,
       "store": null
     },
     "headers": {
       "content-type": "text/json; charset=UTF-8",
-      "content-length": "307",
+      "content-length": "326",
       "connection": "close",
       "accept-ranges": "bytes",
       "access-control-allow-origin": "*",
-      "age": "229",
+      "age": "19",
       "cache-control": "must-revalidate, no-cache, private",
-      "date": "Sun, 03 Jul 2016 13:05:03 GMT",
-      "etag": "\"6962fb1def17ebaa634a35d360c35b95\"",
+      "date": "Thu, 15 Jun 2017 18:04:07 GMT",
+      "etag": "\"00f953cb019b44ad6cd4d43cbb220fa0\"",
       "server": "Apache/2.2.29 (Amazon)",
-      "via": "1.1 varnish, 1.1 901427b25164532ae97382d031da28b7.cloudfront.net (CloudFront)",
-      "x-content-digest": "en034c9376c426512e54f0b1260947ccab5f386ac1",
+      "via": "1.1 varnish, 1.1 4d5be0c32ab72b6c33235a202f24eb73.cloudfront.net (CloudFront)",
+      "x-content-digest": "end82fe67a2ab4911e6157f5290a7928c97da7f4df",
       "x-powered-by": "PHP/5.3.29",
-      "x-varnish": "157090350 157038224",
+      "x-varnish": "1838995790 1838993035",
       "x-cache": "Miss from cloudfront",
-      "x-amz-cf-id": "BiTpLODPC197ya22Pv9ONG5HuclZjc_DeCu51wghBZLncnV7qv7JOA=="
+      "x-amz-cf-id": "ckdfA-LRLkTGDqR8KoHjo0RAI9z78hh10oZZfD6XlGrE7mJnuRQd5w=="
     }
   },
   {
-    "scope": "https://euw.api.riotgames.com:443",
-    "method": "get",
-    "path": "/api/lol/euw/v1.4/summoner/by-name/neamar",
+    "scope": "https://euw1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/summoner/v3/summoners/by-name/neamar",
     "body": "",
     "status": 200,
     "response": [
-      "1f8b0800000000000000",
-      "258b3b0a80301005eff2ea14eb2f84d436827887a02b04cc46e2a791dcdd88cd3433f340d80597601ff805d668a29a6aad202e302ca65f2bec29ae7ee3618e3294f04b8e2b84289c46be79836d4821f1ed0f1fa57767b9ab56371d19534094f30b155567f86d000000"
+      "1f8b080000000000000015ccbb0ac3300c40d17fd1ec418995f831770994fe83711430c452711e4be9bfd75d2f87fb81b2427448e4c9a28194b35e722e3d8e4370ceced36840526588f0e254530303efa65bd979c92a7f196c378def721495473abb1d28b88966ef3d62df1e57ad2adc9e7cf30ed1e2f707ff7b7c6d79000000"
     ],
     "headers": {
-      "access-control-allow-headers": "Content-Type",
-      "access-control-allow-methods": "GET, POST, DELETE, PUT",
-      "access-control-allow-origin": "*",
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "date": "Sun, 03 Jul 2016 13:05:03 GMT",
-      "vary": "Accept-Encoding, User-Agent",
-      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IDUwFQDQwBHh5UFUMDVwcDVwRWA18GW1BTXQADFWw=",
-      "x-rate-limit-count": "1:10,26:600",
-      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "4:10,13:600",
+      "x-method-rate-limit-count": "2:10,5:600",
+      "x-rate-limit-count": "4:10,13:600",
+      "content-length": "128",
       "connection": "Close"
     }
   }
