@@ -1,24 +1,21 @@
 [
   {
-    "scope": "https://euw.api.riotgames.com:443",
-    "method": "get",
-    "path": "/api/lol/euw/v1.4/summoner/by-name/riotneamar",
+    "scope": "https://euw1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/summoner/v3/summoners/by-name/neamar",
     "body": "",
     "status": 200,
     "response": [
       "1f8b0800000000000000",
-      "25cc310ec2300c46e1aba07fcee0a82e85cc2c9510033788c048911a1bb9a54bd5bb13c4febdb7c18b2d2ab96647da509e4803319fb8a300cd5590706fe470fb9b80b7dbab4c323e4cc7a6638c1c307f6a3515bfca2a13d22f7659cb5c4c2f796993c8c7a1a7be3b3311edfb1734c3c4d878000000"
+      "15ccbb0ac3300c40d17fd1ec418995f831770994fe83711430c452711e4be9bfd75d2f87fb81b2427448e4c9a28194b35e722e3d8e4370ceced36840526588f0e254530303efa65bd979c92a7f196c378def721495473abb1d28b88966ef3d62df1e57ad2adc9e7cf30ed1e2f707ff7b7c6d79000000"
     ],
     "headers": {
-      "access-control-allow-headers": "Content-Type",
-      "access-control-allow-methods": "GET, POST, DELETE, PUT",
-      "access-control-allow-origin": "*",
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "date": "Sun, 03 Jul 2016 13:33:48 GMT",
-      "vary": "Accept-Encoding, User-Agent",
-      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IBVQlTCwkBHh5UFUMCAlVSXQJUVFUGXAABUwdUFWw=",
-      "x-rate-limit-count": "1:10,13:600",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "3:10,117:600",
+      "x-method-rate-limit-count": "1:10,3:600",
+      "x-rate-limit-count": "3:10,117:600",
       "transfer-encoding": "chunked",
       "connection": "Close"
     }

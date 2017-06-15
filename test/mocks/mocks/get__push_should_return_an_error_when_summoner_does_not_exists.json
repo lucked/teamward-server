@@ -1,20 +1,21 @@
 [
   {
-    "scope": "https://euw.api.riotgames.com:443",
+    "scope": "https://euw1.api.riotgames.com:443",
     "method": "GET",
-    "path": "/api/lol/euw/v1.4/summoner/by-name/Riot%20Neamar%20404",
+    "path": "/lol/summoner/v3/summoners/by-name/Riot%20Neamar%20404",
     "body": "",
     "status": 404,
-    "response": {
-      "status": {
-        "message": "Not Found",
-        "status_code": 404
-      }
-    },
+    "response": [
+      "1f8b0800000000000000ab562a2e492c292d56b2aa56ca4d2d2e4e4c4f55b25272492c4954c8cb2f5148cb2fcd4b51d055282ecdcdcdcf4b2d42082ae94075c627e7a700f5981898d4d602000e6d59e04e000000"
+    ],
     "headers": {
+      "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "x-rate-limit-count": "2:10,2:600",
-      "content-length": "66",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "1:10,39:600",
+      "x-method-rate-limit-count": "1:10,15:600",
+      "x-rate-limit-count": "1:10,39:600",
+      "content-length": "84",
       "connection": "Close"
     }
   }

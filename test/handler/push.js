@@ -45,7 +45,7 @@ describe("Main server", function() {
       async.waterfall([
         function sendRequest(cb) {
           supertest(app)
-            .get('/push?summoner=riotneamar&region=euw&token=123')
+            .get('/push?summoner=neamar&region=euw&token=123')
             .expect(200)
             .end(rarity.slice(1, cb));
         },
@@ -53,8 +53,8 @@ describe("Main server", function() {
           Token.findOne({token: "123"}, rarity.slice(2, cb));
         },
         function ensureTokenSaved(token, cb) {
-          assert.equal(token.summonerName, "riotneamar");
-          assert.equal(token.summonerId, "70448430");
+          assert.equal(token.summonerName, "neamar");
+          assert.equal(token.summonerId, 70448430);
           assert.equal(token.region, "euw");
 
           cb();
@@ -65,7 +65,13 @@ describe("Main server", function() {
     it("should overwrite existing token with new summoner, region and token param", function(done) {
       done = recorder.useNock(this, done);
       async.waterfall([
-        function sendRequest(cb) {
+        function sendRequestOnce(cb) {
+          supertest(app)
+            .get('/push?summoner=neamar&region=euw&token=123')
+            .expect(200)
+            .end(rarity.slice(1, cb));
+        },
+        function sendRequestAgain(cb) {
           supertest(app)
             .get('/push?summoner=neamarNA&region=na&token=123')
             .expect(200)
