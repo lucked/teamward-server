@@ -109,7 +109,7 @@ describe("Main server", function() {
       done = recorder.useNock(this, done);
 
       supertest(app)
-        .get('/summoner/counter?summoner=riotneamar&region=euw&role=TOP&level=5')
+        .get('/summoner/counter?summoner=neamar&region=euw&role=TOP&level=5')
         .expect(200)
         .expect(function(res) {
           assert.equal(res.body.counters[0].champion.id, 39);
