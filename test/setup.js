@@ -1,10 +1,14 @@
 'use strict';
 var nock = require("nock");
+var fs = require("fs");
+var async = require("async");
 
+var config = require('../config/');
 var ddragon = require("../lib/ddragon");
 var cache = require('../lib/riot-api/cache.js');
+var getPool = require('../lib/model/sql/create-pool.js');
 
-// Fake ddragon data for all tests
+// Fake ddragon data for all tests, only once
 before(function loadDdragon() {
   ddragon._cache = {
     '/realms/euw.json': require('./mocks/mocks/custom_ddragon_realms_euw.json'),
@@ -14,6 +18,18 @@ before(function loadDdragon() {
   };
 });
 
+// Create Postgres tables, only once
+before(function initializeDatabase(done) {
+  if(config.sqlUrl.indexOf('localhost') === -1) {
+    throw new Error("Refusing to drop a non localhost database.");
+  }
+
+  var fixtures = fs.readFileSync(__dirname + '/../lib/model/sql/queries/fixtures.sql').toString();
+
+  async.eachLimit(fixtures.split(";"), 1, function(query, cb) {
+    getPool(1).query(query, cb);
+  }, done);
+});
 
 beforeEach(function cleanCaches() {
   // Previous nocks

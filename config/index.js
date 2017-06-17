@@ -30,7 +30,7 @@ module.exports = {
     verifyKey: process.env.RIOT_VERIFY_KEY || "N/C",
   },
   mongoUrl: process.env.MONGO_URL || ("mongodb://localhost/" + currentEnv),
-  sqlUrl: process.env.SQL_URL || "mysql://root@127.0.0.1/teamward",
+  sqlUrl: process.env.SQL_URL || "postgres://test:test@localhost/teamward-dev",
   redisUrl: process.env.REDIS_URL || "redis://localhost",
   gcmApiKey: process.env.GCM_API_KEY,
   pushNotifierQueueConcurrency: process.env.PUSH_NOTIFIER_QUEUE_CONCURRENCY || 10,
