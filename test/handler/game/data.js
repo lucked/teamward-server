@@ -12,7 +12,7 @@ describe("Main server", function() {
   describe("GET /game/data", function() {
     before(function() {
       gameData._buildExternalGameData = gameData.buildExternalGameData;
-      gameData.buildExternalGameData = sinon.spy(function(gameDAta, region, cb) {
+      gameData.buildExternalGameData = sinon.spy(function(gameData, region, cb) {
         cb(null, {
           stub: true,
           game_id: 123,

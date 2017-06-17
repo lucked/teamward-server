@@ -44,5 +44,5 @@ beforeEach(function cleanRedisCache(done) {
 
 module.exports.dbPool = pool;
 module.exports.truncateDatabase = function(done) {
-  pool.query('TRUNCATE TABLE matches_participants CASCADE', done);
+  pool.query('TRUNCATE TABLE matches CASCADE', done);
 };
