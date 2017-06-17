@@ -5,7 +5,7 @@ var sinon = require('sinon');
 var assert = require('assert');
 
 var app = require('../../../app');
-var gameData = require('../../../lib/helper/game-data');
+var gameData = require('../../../lib/helper/game-data-v3');
 var recorder = require('../../mocks/recorder');
 
 describe("Main server", function() {

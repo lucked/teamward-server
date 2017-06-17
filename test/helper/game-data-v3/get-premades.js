@@ -96,4 +96,27 @@ describe("getPremades()", function() {
       }
     ], done);
   });
+
+  it("should save premades data", function(done) {
+    async.waterfall([
+      function postgres(cb) {
+        insertFakePostgresPremade(cb);
+      },
+      function compute(cb) {
+        getPremades([
+          {summonerId: 1, teamId: 100},
+          {summonerId: 2, teamId: 100},
+          {summonerId: 3, teamId: 100},
+        ], 'euw', cb);
+      },
+      function getPremades(res, cb) {
+        mongoose.model('Premade').find({}, cb);
+      },
+      function checkPremades(premades, cb) {
+        assert.ok(premades[0].premades.length > 0);
+
+        cb();
+      },
+    ], done);
+  });
 });
