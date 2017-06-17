@@ -2,10 +2,12 @@
 
 var assert = require("assert");
 
+var recorder = require('../../mocks/recorder.js');
 var getChampionData = require('../../../lib/helper/game-data-v3/get-champion-data.js');
 
 describe("getChampionData()", function() {
   it("should return all champion data", function(done) {
+    done = recorder.useNock(this, done);
     getChampionData([{summonerId: 70448430, championId: 420}], 'euw', function(err, data) {
       assert.ifError(err);
       assert.equal(data[70448430].id, 420);
