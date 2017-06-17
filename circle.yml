@@ -13,6 +13,11 @@ machine:
   environment:
     GCM_API_KEY: fake_key
     RIOT_API_KEY: fake_key
+dependencies:
+  post:
+    - psql -c "create user test"
+    - psql -c "alter user test with password 'test'"
+    - psql -c "create database \"teamward-dev\" owner test"
 test:
   pre:
     - npm run-script lint
