@@ -20,7 +20,6 @@ describe("Ddragon info", function() {
     });
 
     it("should cache champion information", function(done) {
-      done = recorder.useNock(this, done);
       async.series([
         function firstCall(cb) {
           ddragonInfo.getChampionData('euw', 420, function(err, data) {
@@ -49,8 +48,6 @@ describe("Ddragon info", function() {
     });
 
     it("should return champion information from champion name too", function(done) {
-      done = recorder.useNock(this, done);
-
       ddragonInfo.getChampionData('euw', 'Illaoi', function(err, data) {
         assert.ifError(err);
 
@@ -63,8 +60,7 @@ describe("Ddragon info", function() {
 
   describe("Summoner spell info", function() {
 
-    it("should return summoner spelll information", function(done) {
-      done = recorder.useNock(this, done);
+    it("should return summoner spell information", function(done) {
       ddragonInfo.getSummonerSpellData('euw', 4, function(err, data) {
         assert.ifError(err);
 

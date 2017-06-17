@@ -1,51 +1,5 @@
 [
   {
-    "scope": "https://ddragon.leagueoflegends.com:443",
-    "method": "GET",
-    "path": "/realms/euw.json",
-    "body": "",
-    "status": 200,
-    "response": {
-      "n": {
-        "item": "7.11.1",
-        "rune": "7.11.1",
-        "mastery": "7.11.1",
-        "summoner": "7.11.1",
-        "champion": "7.11.1",
-        "profileicon": "7.11.1",
-        "map": "7.11.1",
-        "language": "7.11.1",
-        "sticker": "7.11.1"
-      },
-      "v": "7.11.1",
-      "l": "en_GB",
-      "cdn": "http://ddragon.leagueoflegends.com/cdn",
-      "dd": "7.11.1",
-      "lg": "7.11.1",
-      "css": "7.11.1",
-      "profileiconmax": 28,
-      "store": null
-    },
-    "headers": {
-      "content-type": "text/json; charset=UTF-8",
-      "content-length": "326",
-      "connection": "close",
-      "accept-ranges": "bytes",
-      "access-control-allow-origin": "*",
-      "age": "18",
-      "cache-control": "must-revalidate, no-cache, private",
-      "date": "Thu, 15 Jun 2017 18:04:06 GMT",
-      "etag": "\"00f953cb019b44ad6cd4d43cbb220fa0\"",
-      "server": "Apache/2.2.29 (Amazon)",
-      "via": "1.1 varnish, 1.1 1db278c8e469bf153ddbad41891640cd.cloudfront.net (CloudFront)",
-      "x-content-digest": "end82fe67a2ab4911e6157f5290a7928c97da7f4df",
-      "x-powered-by": "PHP/5.3.29",
-      "x-varnish": "1838995694 1838993035",
-      "x-cache": "Miss from cloudfront",
-      "x-amz-cf-id": "JcQv791mohfiuoeTMvsCNYSGMJCDA-2yMxXCV0hL6KLonlQRDnpvFg=="
-    }
-  },
-  {
     "scope": "https://euw1.api.riotgames.com:443",
     "method": "GET",
     "path": "/lol/summoner/v3/summoners/by-name/404summ",
@@ -58,9 +12,9 @@
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
       "vary": "Accept-Encoding",
-      "x-app-rate-limit-count": "3:10,12:600",
-      "x-method-rate-limit-count": "1:10,4:600",
-      "x-rate-limit-count": "3:10,12:600",
+      "x-app-rate-limit-count": "3:10,35:600",
+      "x-method-rate-limit-count": "1:10,1:600",
+      "x-rate-limit-count": "3:10,35:600",
       "content-length": "84",
       "connection": "Close"
     }
