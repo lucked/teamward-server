@@ -5,7 +5,7 @@ var assert = require("assert");
 var recorder = require('../../mocks/recorder.js');
 var getSummonerData = require('../../../lib/helper/game-data-v3/get-summoner-data.js');
 
-describe.only("getSummonerData()", function() {
+describe("getSummonerData()", function() {
   it("should return summoner ranked information when player is ranked", function(done) {
     done = recorder.useNock(this, done);
     var fakeParticipants = [require('../../mocks/mocks/custom_get-spectator-game-info.json').participants[0]];

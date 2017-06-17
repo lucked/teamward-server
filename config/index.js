@@ -34,6 +34,6 @@ module.exports = {
   redisUrl: process.env.REDIS_URL || "redis://localhost",
   gcmApiKey: process.env.GCM_API_KEY,
   pushNotifierQueueConcurrency: process.env.PUSH_NOTIFIER_QUEUE_CONCURRENCY || 10,
-  teamwardUsersOverride: (process.env.TEAMWARD_USERS_OVERRIDE || '').split(','),
+  teamwardUsersOverride: process.env.TEAMWARD_USERS_OVERRIDE ? process.env.TEAMWARD_USERS_OVERRIDE.split(',') : [],
   gameDownloadQueueConcurrency: process.env.GAME_DOWNLOAD_QUEUE_CONCURRENCY || 10,
 };
