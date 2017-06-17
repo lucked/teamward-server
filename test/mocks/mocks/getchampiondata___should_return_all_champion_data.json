@@ -2,26 +2,6 @@
   {
     "scope": "https://euw1.api.riotgames.com:443",
     "method": "GET",
-    "path": "/lol/summoner/v3/summoners/by-name/neamar",
-    "body": "",
-    "status": 200,
-    "response": [
-      "1f8b080000000000000015cc390ac3301040d1bb4cad6264ad569dc6107c87419980c0d204796982ef1ea5fd3cfe17ca0b52406ba335a8807296b31dcb88939e4330de4d0a1a5586042b53a50e0a3e5dde65e3254bfb4bedbd53d0f92a7b91f6a063606de7e05dd41811c7773f6b95c6fdc9176f900cde3f395516857a000000"
-    ],
-    "headers": {
-      "content-encoding": "gzip",
-      "content-type": "application/json;charset=utf-8",
-      "vary": "Accept-Encoding",
-      "x-app-rate-limit-count": "3:10,87:600",
-      "x-method-rate-limit-count": "1:10,7:600",
-      "x-rate-limit-count": "3:10,87:600",
-      "content-length": "128",
-      "connection": "Close"
-    }
-  },
-  {
-    "scope": "https://euw1.api.riotgames.com:443",
-    "method": "GET",
     "path": "/lol/champion-mastery/v3/champion-masteries/by-summoner/70448430",
     "body": "",
     "status": 200,
@@ -33,9 +13,9 @@
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
       "vary": "Accept-Encoding",
-      "x-app-rate-limit-count": "4:10,88:600",
-      "x-method-rate-limit-count": "1:10,11:600",
-      "x-rate-limit-count": "4:10,88:600",
+      "x-app-rate-limit-count": "3:10,81:600",
+      "x-method-rate-limit-count": "1:10,1:600",
+      "x-rate-limit-count": "3:10,81:600",
       "transfer-encoding": "chunked",
       "connection": "Close"
     }

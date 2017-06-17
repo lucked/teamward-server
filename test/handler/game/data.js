@@ -5,14 +5,14 @@ var sinon = require('sinon');
 var assert = require('assert');
 
 var app = require('../../../app');
-var gameData = require('../../../lib/helper/game-data');
+var gameData = require('../../../lib/helper/game-data-v3');
 var recorder = require('../../mocks/recorder');
 
 describe("Main server", function() {
   describe("GET /game/data", function() {
     before(function() {
       gameData._buildExternalGameData = gameData.buildExternalGameData;
-      gameData.buildExternalGameData = sinon.spy(function(gameDAta, region, cb) {
+      gameData.buildExternalGameData = sinon.spy(function(gameData, region, cb) {
         cb(null, {
           stub: true,
           game_id: 123,

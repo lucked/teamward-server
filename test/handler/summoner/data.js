@@ -51,7 +51,7 @@ describe("Main server", function() {
         .expect(200)
         .expect(function(res) {
           assert.equal(res.body.name, 'Neamar');
-          assert.equal(res.body.profileIcon, 'https://ddragon.leagueoflegends.com/cdn/6.13.1/img/profileicon/26.png');
+          assert.equal(res.body.profileIcon, 'https://ddragon.leagueoflegends.com/cdn/7.12.1/img/profileicon/1665.png');
         })
         .end(done);
     });

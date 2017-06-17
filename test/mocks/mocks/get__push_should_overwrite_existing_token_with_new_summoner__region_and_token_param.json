@@ -1,24 +1,42 @@
 [
   {
-    "scope": "https://na.api.riotgames.com:443",
-    "method": "get",
-    "path": "/api/lol/na/v1.4/summoner/by-name/neamarNA",
+    "scope": "https://euw1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/summoner/v3/summoners/by-name/neamar",
     "body": "",
     "status": 200,
     "response": [
-      "1f8b08000000000000002dccb10a83301405d07fb97386dca06d9aadd04510ffe1d1be42c0bc94585dc47faf43f7c3d9612a459a09d28efc42baf60c8cf1e6605214e90fa63b1c3eadbef3acc3b3da7052929dc3b296524ddba89bce48810e4db7bce46a0ff99e03bb0b63e8e983f7fe387e0a7f2c1e73000000"
+      "1f8b080000000000000015ccbb0ac3300c40d17fd1ec418995f831770994fe83711430c452711e4be9bfd75d2f87fb81b2427448e4c9a28194b35e722e3d8e4370ceced36840526588f0e254530303efa65bd979c92a7f196c378def721495473abb1d28b88966ef3d62df1e57ad2adc9e7cf30ed1e2f707ff7b7c6d79000000"
     ],
     "headers": {
-      "access-control-allow-headers": "Content-Type",
-      "access-control-allow-methods": "GET, POST, DELETE, PUT",
-      "access-control-allow-origin": "*",
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "date": "Sun, 03 Jul 2016 14:35:52 GMT",
-      "vary": "Accept-Encoding, User-Agent",
-      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgAVkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMDFE+FxQJFgBuHBZMDFwOXQcWahgDH05WUl0BPU0dExtWSgEaA0xWU1MHVw5UCAEYHwJJGwUGWQZSB1IOU1ACW1IGVABAag==",
-      "x-rate-limit-count": "1:10,3:600",
-      "content-length": "122",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "3:10,19:600",
+      "x-method-rate-limit-count": "1:10,9:600",
+      "x-rate-limit-count": "3:10,19:600",
+      "content-length": "128",
+      "connection": "Close"
+    }
+  },
+  {
+    "scope": "https://na1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/summoner/v3/summoners/by-name/neamarNA",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "15cc3d0ac3300c40e1bb68d660398963672b740994dcc1b82a1862a9383f4be8dde3ae8f8f77417ec3340e64c9fb801053d243f6b945db59ef82238720b1304c201c4baccb0310be553f79e539a9fc2d11f50895cfbc659567dc1ba73e0ca30f3674c61884ed284585eb8b4f5edbddfd6ec7904b1d7c000000"
+    ],
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "1:10,6:600",
+      "x-method-rate-limit-count": "1:10,6:600",
+      "x-rate-limit-count": "1:10,6:600",
+      "transfer-encoding": "chunked",
       "connection": "Close"
     }
   }

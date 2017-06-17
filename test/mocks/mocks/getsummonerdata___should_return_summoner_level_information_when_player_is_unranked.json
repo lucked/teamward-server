@@ -1,0 +1,47 @@
+[
+  {
+    "scope": "https://na1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/league/v3/leagues/by-summoner/75121889",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b08000000000000008b8e050029bb4c0d02000000"
+    ],
+    "headers": {
+      "access-control-allow-headers": "Content-Type",
+      "access-control-allow-methods": "GET, POST, DELETE, PUT",
+      "access-control-allow-origin": "*",
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "date": "Sat, 17 Jun 2017 13:49:17 GMT",
+      "x-app-rate-limit-count": "2:10,4:600",
+      "x-method-rate-limit-count": "1:10,2:600",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVZSBwAGVkYdFGQHBDcQUQxLA1tMXV1dORYzVBJHNQFUZAQUFVFQVThOA0dYa0kIXlpvTR0RB1cLVwxFZBtEAUsMPR4NVgMDQ1I9SQFBHkMRDA9YX1IUOB5NQBcLDg1eB0orXEsOGmhVFFhsShtKSEoSUyVKYwMdXTxJHhseG0QZcXY2T0FOAEwITggWBAIFUwBXAlEATkkHG0NeAA0CVFJTVQBXAAJUUgBXQEoFA1wRXT8=",
+      "x-rate-limit-count": "2:10,4:600",
+      "content-length": "22",
+      "connection": "Close"
+    }
+  },
+  {
+    "scope": "https://na1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/summoner/v3/summoners/by-name/NeamarNA",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "15cc3d0ac3300c40e1bb68d660398963672b740994dcc1b82a1862a9383f4be8dde3ae8f8f77417ec3340e64c9fb801053d243f6b945db59ef82238720b1304c201c4baccb0310be553f79e539a9fc2d11f50895cfbc659567dc1ba73e0ca30f3674c61884ed284585eb8b4f5edbddfd6ec7904b1d7c000000"
+    ],
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "1:10,3:600",
+      "x-method-rate-limit-count": "1:10,2:600",
+      "x-rate-limit-count": "1:10,3:600",
+      "transfer-encoding": "chunked",
+      "connection": "Close"
+    }
+  }
+]

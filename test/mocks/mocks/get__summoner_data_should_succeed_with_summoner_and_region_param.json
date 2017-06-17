@@ -1,69 +1,21 @@
 [
   {
-    "scope": "https://ddragon.leagueoflegends.com:443",
-    "method": "get",
-    "path": "/realms/euw.json",
-    "body": "",
-    "status": 200,
-    "response": {
-      "n": {
-        "item": "6.13.1",
-        "rune": "6.13.1",
-        "mastery": "6.13.1",
-        "summoner": "6.13.1",
-        "champion": "6.13.1",
-        "profileicon": "6.13.1",
-        "map": "6.13.1",
-        "language": "6.13.1"
-      },
-      "v": "6.13.1",
-      "l": "en_GB",
-      "cdn": "https://ddragon.leagueoflegends.com/cdn",
-      "dd": "6.13.1",
-      "lg": "6.13.1",
-      "css": "6.13.1",
-      "profileiconmax": 28,
-      "store": null
-    },
-    "headers": {
-      "content-type": "text/json; charset=UTF-8",
-      "content-length": "307",
-      "connection": "close",
-      "accept-ranges": "bytes",
-      "access-control-allow-origin": "*",
-      "age": "229",
-      "cache-control": "must-revalidate, no-cache, private",
-      "date": "Sun, 03 Jul 2016 13:05:03 GMT",
-      "etag": "\"6962fb1def17ebaa634a35d360c35b95\"",
-      "server": "Apache/2.2.29 (Amazon)",
-      "via": "1.1 varnish, 1.1 901427b25164532ae97382d031da28b7.cloudfront.net (CloudFront)",
-      "x-content-digest": "en034c9376c426512e54f0b1260947ccab5f386ac1",
-      "x-powered-by": "PHP/5.3.29",
-      "x-varnish": "157090350 157038224",
-      "x-cache": "Miss from cloudfront",
-      "x-amz-cf-id": "BiTpLODPC197ya22Pv9ONG5HuclZjc_DeCu51wghBZLncnV7qv7JOA=="
-    }
-  },
-  {
-    "scope": "https://euw.api.riotgames.com:443",
-    "method": "get",
-    "path": "/api/lol/euw/v1.4/summoner/by-name/neamar",
+    "scope": "https://euw1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/summoner/v3/summoners/by-name/neamar",
     "body": "",
     "status": 200,
     "response": [
       "1f8b0800000000000000",
-      "258b3b0a80301005eff2ea14eb2f84d436827887a02b04cc46e2a791dcdd88cd3433f340d80597601ff805d668a29a6aad202e302ca65f2bec29ae7ee3618e3294f04b8e2b84289c46be79836d4821f1ed0f1fa57767b9ab56371d19534094f30b155567f86d000000"
+      "15cc390ac3301040d1bb4cad6264ad569dc6107c87419980c0d204796982ef1ea5fd3cfe17ca0b52406ba335a8807296b31dcb88939e4330de4d0a1a5586042b53a50e0a3e5dde65e3254bfb4bedbd53d0f92a7b91f6a063606de7e05dd41811c7773f6b95c6fdc9176f900cde3f395516857a000000"
     ],
     "headers": {
-      "access-control-allow-headers": "Content-Type",
-      "access-control-allow-methods": "GET, POST, DELETE, PUT",
-      "access-control-allow-origin": "*",
       "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "date": "Sun, 03 Jul 2016 13:05:03 GMT",
-      "vary": "Accept-Encoding, User-Agent",
-      "x-newrelic-app-data": "PxQFWFFSDwQTVVdUBAgPUkYdFGQHBDcQUQxLA1tMXV1dORYzVBBGBxdCdhUSEVFRRRAEPhhQRw84HlpcDjpMB0UVZE1OCRoGb0pKFFwMXAwBRGtOBBoVXVEJBD4YGxVKVB8GH1JIU1IDUwFQDQwBHh5UFUMDVwcDVwRWA18GW1BTXQADFWw=",
-      "x-rate-limit-count": "1:10,26:600",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "3:10,38:600",
+      "x-method-rate-limit-count": "2:10,2:600",
+      "x-rate-limit-count": "3:10,38:600",
       "transfer-encoding": "chunked",
       "connection": "Close"
     }

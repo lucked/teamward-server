@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS matches_participants;
+DROP TABLE IF EXISTS matches;
+DROP TYPE IF EXISTS rankType;
+DROP TYPE IF EXISTS roleType;
+
 CREATE TYPE rankType AS ENUM('UNRANKED','BRONZE','SILVER','GOLD','PLATINUM','DIAMOND','MASTER','CHALLENGER');
 CREATE TYPE roleType AS ENUM('?','TOP','JUNGLE','MID','CARRY','SUPPORT');
 
@@ -14,7 +19,7 @@ CREATE TABLE public.matches
   duration integer NOT NULL,
   rank ranktype NOT NULL,
   CONSTRAINT matches_pkey PRIMARY KEY (id, region)
-)
+);
 
 CREATE TABLE public.matches_participants
 (
@@ -60,4 +65,4 @@ CREATE TABLE public.matches_participants
     REFERENCES public.matches (id, region) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE
-)
+);

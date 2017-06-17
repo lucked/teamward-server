@@ -1,64 +1,21 @@
 [
   {
-    "scope": "https://ddragon.leagueoflegends.com:443",
+    "scope": "https://euw1.api.riotgames.com:443",
     "method": "GET",
-    "path": "/realms/euw.json",
-    "body": "",
-    "status": 200,
-    "response": {
-      "n": {
-        "item": "6.21.1",
-        "rune": "6.21.1",
-        "mastery": "6.21.1",
-        "summoner": "6.21.1",
-        "champion": "6.21.1",
-        "profileicon": "6.21.1",
-        "map": "6.21.1",
-        "language": "6.21.1"
-      },
-      "v": "6.21.1",
-      "l": "en_GB",
-      "cdn": "http://ddragon.leagueoflegends.com/cdn",
-      "dd": "6.21.1",
-      "lg": "6.21.1",
-      "css": "6.21.1",
-      "profileiconmax": 28,
-      "store": null
-    },
-    "headers": {
-      "content-type": "text/json; charset=UTF-8",
-      "content-length": "307",
-      "connection": "close",
-      "accept-ranges": "bytes",
-      "access-control-allow-origin": "*",
-      "cache-control": "must-revalidate, no-cache, private",
-      "date": "Sun, 06 Nov 2016 09:44:29 GMT",
-      "etag": "\"89b376aa3d1ca56a0db73019ef158cc2\"",
-      "server": "Apache/2.2.29 (Amazon)",
-      "via": "1.1 varnish, 1.1 28e1bd291bf9b996c8d272e4eb691366.cloudfront.net (CloudFront)",
-      "x-content-digest": "en0bb0db99ba6eaaeb0ba4bb7c1d898bf646f54351",
-      "x-powered-by": "PHP/5.3.29",
-      "x-varnish": "2465973860 2465893017",
-      "x-cache": "RefreshHit from cloudfront",
-      "x-amz-cf-id": "55UbqSlYyY5IuyzEUW9nwd12qG8LfzgA_kIPtlcFMCjkgSGQBwa1mQ=="
-    }
-  },
-  {
-    "scope": "https://euw.api.riotgames.com:443",
-    "method": "GET",
-    "path": "/api/lol/euw/v1.4/summoner/by-name/404summ",
+    "path": "/lol/summoner/v3/summoners/by-name/404summ",
     "body": "",
     "status": 404,
-    "response": {
-      "status": {
-        "message": "Not Found",
-        "status_code": 404
-      }
-    },
+    "response": [
+      "1f8b0800000000000000ab562a2e492c292d56b2aa56ca4d2d2e4e4c4f55b25272492c4954c8cb2f5148cb2fcd4b51d055282ecdcdcdcf4b2d42082ae94075c627e7a700f5981898d4d602000e6d59e04e000000"
+    ],
     "headers": {
+      "content-encoding": "gzip",
       "content-type": "application/json;charset=utf-8",
-      "x-rate-limit-count": "56:10,16741:600",
-      "content-length": "66",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "3:10,35:600",
+      "x-method-rate-limit-count": "1:10,1:600",
+      "x-rate-limit-count": "3:10,35:600",
+      "content-length": "84",
       "connection": "Close"
     }
   }

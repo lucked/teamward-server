@@ -22,7 +22,7 @@ function getMockFilePath(mochaContext) {
  * You'll get a function returned, once your test is over just call this function to save all the mocks to disk (hint: overwrite the done function from mocha).
  * You can now replace the call to setupNock with a call to useNock, and magic will happen (HTTP requests will be read from disk)
  */
-module.exports.setupNock = function(mochaContext, done) {
+module.exports.setupNock = function setupNock(mochaContext, done) {
   var records = [];
   var testPath = getMockFilePath(mochaContext);
 
@@ -53,13 +53,17 @@ module.exports.setupNock = function(mochaContext, done) {
     // Delay call to done, to ensure we catch all ongoing requests.
     setTimeout(function() {
       fs.writeFileSync(testPath, JSON.stringify(records, null, 2));
+      nock.restore();
       done(err);
     }, 500);
   };
 };
 
 
-module.exports.useNock = function(mochaContext, done) {
+module.exports.useNock = function useNock(mochaContext, done) {
+  if(process.env.RECORD_ALL_TESTS) {
+    return module.exports.setupNock(mochaContext, done);
+  }
   // Disabled for now, see
   // https://github.com/node-nock/nock/issues/211
   // nock.disableNetConnect();

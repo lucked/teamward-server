@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var morgan = require("morgan");
 
 var config = require('./config');
+var ddragon = require('./lib/ddragon/');
+
 var app = express();
 
 if(process.env.NODE_ENV !== 'test') {
@@ -26,3 +28,8 @@ app.get('/champion/:champion', handlers.champion.get);
 mongoose.connect(config.mongoUrl);
 
 module.exports = app;
+
+// Preload ddragon cache
+var noop = function() {};
+ddragon.getChampionData('euw', 420, noop);
+ddragon.getSummonerSpellData('euw', 4, noop);
