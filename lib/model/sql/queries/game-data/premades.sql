@@ -4,3 +4,4 @@ inner join matches_participants p2 ON (p1.match_id = p2.match_id)
 WHERE p1.summoner_id = ANY($1) AND p1.region = $2
 AND p2.summoner_id = ANY($1) AND p2.region = $2
 AND p1.summoner_id <> p2.summoner_id
+AND p1.team_id = p2.team_id
