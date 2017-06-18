@@ -5,7 +5,7 @@ var summonerData = require('../../lib/riot-api/summoner-info-v3');
 var recorder = require('../mocks/recorder');
 
 
-describe.only("Summoner data v3", function() {
+describe("Summoner data v3", function() {
   describe('getSummonerData() v3', function() {
     it("should return summoner data", function(done) {
       done = recorder.useNock(this, done);
@@ -30,7 +30,7 @@ describe.only("Summoner data v3", function() {
 
   });
 
-  describe.only('getCurrentRank() v3', function() {
+  describe('getCurrentRank() v3', function() {
     it("should return current rank for summoner", function(done) {
       done = recorder.useNock(this, done);
       summonerData.getCurrentRank(70448430, 'euw', function(err, data) {
