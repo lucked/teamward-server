@@ -21,9 +21,9 @@
     }
   },
   {
-    "scope": "https://euw.api.riotgames.com:443",
+    "scope": "https://euw1.api.riotgames.com:443",
     "method": "GET",
-    "path": "/observer-mode/rest/consumer/getSpectatorGameInfo/EUW1/70448430",
+    "path": "/lol/spectator/v3/active-games/by-summoner/70448430",
     "body": "",
     "status": 404,
     "response": [
