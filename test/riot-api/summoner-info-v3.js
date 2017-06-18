@@ -35,7 +35,6 @@ describe("Summoner data v3", function() {
       done = recorder.useNock(this, done);
       summonerData.getCurrentRank(70448430, 'euw', function(err, data) {
         assert.ifError(err);
-
         assert.equal(data.RANKED_SOLO_5x5.tier, 'SILVER');
         assert.equal(data.RANKED_SOLO_5x5.rank, 'V');
         assert.equal(data.RANKED_FLEX_SR.tier, 'BRONZE');
