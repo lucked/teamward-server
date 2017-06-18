@@ -1,0 +1,27 @@
+[
+  {
+    "scope": "https://na1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/league/v3/leagues/by-summoner/75121889",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "8b8e050029bb4c0d02000000"
+    ],
+    "headers": {
+      "access-control-allow-headers": "Content-Type",
+      "access-control-allow-methods": "GET, POST, DELETE, PUT",
+      "access-control-allow-origin": "*",
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "date": "Sun, 18 Jun 2017 10:22:44 GMT",
+      "x-app-rate-limit-count": "1:10,1:600",
+      "x-method-rate-limit-count": "1:10,1:600",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVZSBwAGVkYdFGQHBDcQUQxLA1tMXV1dORYzVBJHNQFUZAQUFVFQVThOA0dYa0kIXlpvTR0RB1cLVwxFZBtEAUsMPR4NVgMDQ1I9SQFBHkMRDA9YX1IUOB5NQBcLDg1eB0orXEsOGmhVFFhsShtKSEoSUyVKYwMdXTxJHhseG0QZcXY2T0FOAEwITggWBAYEUAtSB1ALTkkHG0MABgAKVVYDAwNTVFJcVVNQQEoFA1wRXT8=",
+      "x-rate-limit-count": "1:10,1:600",
+      "transfer-encoding": "chunked",
+      "connection": "Close"
+    }
+  }
+]
