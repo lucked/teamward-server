@@ -1,6 +1,10 @@
 exports.config = {
   agent_enabled: "NEW_RELIC_LICENSE_KEY" in process.env,
   app_name: require('./package.json').name,
+  process_host: {
+    // If undefined, will default to os;hostname() which is likely a sha hash in Docker
+    display_name: process.env.DYNO
+  },
   capture_params: true,
   apdex_t: 0.500,
   error_collector: {
