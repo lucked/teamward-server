@@ -1,8 +1,8 @@
 [
   {
-    "scope": "https://na.api.riotgames.com:443",
+    "scope": "https://na1.api.riotgames.com:443",
     "method": "GET",
-    "path": "/api/lol/na/v1.4/summoner/by-name/TinCanned",
+    "path": "/lol/summoner/v3/summoners/by-name/TinCanned",
     "body": "",
     "status": 502,
     "response": [
