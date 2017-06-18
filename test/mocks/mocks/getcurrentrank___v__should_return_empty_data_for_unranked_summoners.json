@@ -1,0 +1,26 @@
+[
+  {
+    "scope": "https://na1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/league/v3/positions/by-summoner/75121889",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b08000000000000008b8e050029bb4c0d02000000"
+    ],
+    "headers": {
+      "access-control-allow-headers": "Content-Type",
+      "access-control-allow-methods": "GET, POST, DELETE, PUT",
+      "access-control-allow-origin": "*",
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "date": "Sun, 18 Jun 2017 11:44:45 GMT",
+      "x-app-rate-limit-count": "1:10,1:600",
+      "x-method-rate-limit-count": "1:10,1:600",
+      "x-newrelic-app-data": "PxQFWFFSDwQTVVZSBwAGVkYdFGQHBDcQUQxLA1tMXV1dORYzVBJHNQFUZAQUFVFQVThOA0dYa0kIXlpvTR0RB1cLVwxFZBtEAUsMPR4NVgMDQ1I9SQFBHkMRDA9YX1IUOB5NQBcLDg1eB0orXEsOGmhVFFhsShtKSEoSUyVKYwMdXTxJHhseGzgeU10WFBpCGCV9NhEaGAIdVRVRH1EAW1AHBFlXTxUCHEZRUwcAVV4ABQZXVFNVWgVaGk5eWVhBVjg=",
+      "x-rate-limit-count": "1:10,1:600",
+      "content-length": "22",
+      "connection": "Close"
+    }
+  }
+]

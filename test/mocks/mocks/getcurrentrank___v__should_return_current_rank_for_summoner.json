@@ -1,0 +1,28 @@
+[
+  {
+    "scope": "https://euw1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/league/v3/positions/by-summoner/70448430",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "ad90414bc3401085ff4ad94b2f39049254cdadc5088b61234929a24818da49bb34ddadb39b6811ffbb53acad164fe2edcdfb1866de7b7c132dc2b243051b14a99084ad86a11b64a6b134477222105e2331ab643ecb4a9e9f3bec70badbee17cab1bacdaeebaac88b3a794d981298358319cb6d0b3ba482a6081bb960f3228ce3cb380acfd8e1b86209c4ecf3a53bab8d77228da340bc68c32a1a31b3cee15e5f05a2478f7c4ea40db40e03a10dccbdeef16834846e3569ad5d1cad95f5952784f5c1790fce2a50e03ac70d8c7b34cb1f054cca423d64bf17709367f775559ef24bf96f05845ff993f0947f147fcbefa9fb6bfca70f84a585d603020000"
+    ],
+    "headers": {
+      "access-control-allow-headers": "Content-Type",
+      "access-control-allow-methods": "GET, POST, DELETE, PUT",
+      "access-control-allow-origin": "*",
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "date": "Sun, 18 Jun 2017 11:43:59 GMT",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "13:10,281:600",
+      "x-method-rate-limit-count": "1:10,1:600",
+      "x-newrelic-app-data": "PxQFWFFSDwQTUlBSDgkOVEYdFGQHBDcQUQxLA1tMXV1dORYzVBJHNQFUZAQUFVFQVThOA0dYa0kIXlpvTR0RB1cLVwxFZBtEAUsMPR4NVgMDQ1I9SQFBHkMRDA9YX1IUOB5NQBcLDg1eB0orXEsOGmhVFFhsShtKSEoSUyVKYwMdXTxJHhseGzgeU10WFBpCGCV9NhEaGAIdVRVRH1ECVFIFBFFTVRQeAUhDU1RQBlBXVwJWVAdaBAZXC0AUXlVeQABk",
+      "x-rate-limit-count": "13:10,281:600",
+      "transfer-encoding": "chunked",
+      "connection": "Close"
+    }
+  }
+]

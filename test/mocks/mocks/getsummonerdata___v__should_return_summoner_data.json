@@ -1,0 +1,23 @@
+[
+  {
+    "scope": "https://euw1.api.riotgames.com:443",
+    "method": "GET",
+    "path": "/lol/summoner/v3/summoners/by-name/neamar",
+    "body": "",
+    "status": 200,
+    "response": [
+      "1f8b0800000000000000",
+      "158cbb0ec3200c00ffc5338309065ae62e91aafc03a2ae8414ec8a3c962aff5eba9eeeee0bf5052922d18d1c1ac8a5e821fb3ce064ef31bae02703921b43828573cb1d0c7cbabeebca7351f99b36046fa0f359b7aaf2c8fb902d8d9ad0078738bedbd19a0af7279fbc427278fd0064c87aee7a000000"
+    ],
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json;charset=utf-8",
+      "vary": "Accept-Encoding",
+      "x-app-rate-limit-count": "3:10,52:600",
+      "x-method-rate-limit-count": "1:10,1:600",
+      "x-rate-limit-count": "3:10,52:600",
+      "transfer-encoding": "chunked",
+      "connection": "Close"
+    }
+  }
+]
