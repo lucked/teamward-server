@@ -14,4 +14,10 @@ exports.config = {
     // We ignore common 4XX errors. By default they trigger alarms on newrelic, but on a REST API they're pretty standard and should not be considered errors.
     ignore_status_codes: [401, 403, 404, 405, 409, 410, 413, 429],
   },
+  transaction_tracer: {
+    record_sql: 'raw',
+  },
+  slow_sql: {
+    enabled: true
+  }
 };
