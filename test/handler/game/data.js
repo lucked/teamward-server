@@ -21,7 +21,7 @@ describe("Main server", function() {
               players: [
                 {
                   summoner: {
-                    id: 20481613
+                    id: 19083089
                   },
                   champion: {
                     id: 0
@@ -62,11 +62,11 @@ describe("Main server", function() {
       done = recorder.useNock(this, done);
 
       supertest(app)
-        .get('/game/data?summoner=amoki&region=euw')
+        .get('/game/data?summoner=n4dlpb&region=euw')
         .expect(200)
         .expect(function(res) {
           assert.ok(res.body.stub);
-          assert.ok(res.body.teams[0].own_team);
+          assert.equal(res.body.teams[0].own_team, true);
           assert.equal(res.body.teams[1].own_team, false);
           assert.ok(gameData.buildExternalGameData.calledOnce);
         })
@@ -93,7 +93,7 @@ describe("Main server", function() {
         .end(done);
     });
 
-    it("should properly fail when riot api returns 503", function(done) {
+    it("should properly fail when riot api returns 502", function(done) {
       done = recorder.useNock(this, done);
 
       supertest(app)
