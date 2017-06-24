@@ -1,9 +1,9 @@
 SELECT
   player2.champion_id AS champion,
     name,
-  SUM(CASE
+  ROUND((100.0 * SUM(CASE
     WHEN (matches.winner = player1.team_id) THEN 1
-    ELSE 0 END)/COUNT(0) * 100 AS winrate,
+    ELSE 0 END)/COUNT(0))::numeric, 2) AS winrate,
   COUNT(0) AS nbgame
 FROM
   matches
@@ -12,7 +12,8 @@ INNER JOIN matches_participants player2 ON player2.match_id = matches.id AND pla
 INNER JOIN champions on (player2.champion_id=champions.id)
 WHERE
   player1.summoner_id = 70448430
-  AND matches.region = "euw"
+  AND matches.region = 'euw'
 GROUP BY
-  player2.champion_id
+  player2.champion_id,
+  champions.name
 ORDER BY winrate desc;
