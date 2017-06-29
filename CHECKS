@@ -1,5 +1,7 @@
-WAIT=2     # Wait 2s before starting
-TIMEOUT=1  # Timeout after 1s
-ATTEMPTS=15
+# Wait 2s before starting
+WAIT=2
+# Timeout after 1s
+TIMEOUT=1
+ATTEMPTS=10
 
 /download/riot.txt
